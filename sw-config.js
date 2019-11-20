@@ -24,6 +24,10 @@ const config = {
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.js',
 		'https://cdn.kernvalley.us/components/login-form/login-form.html',
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
+		'https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.esm.js',
+		'https://cdn.kernvalley.us/components/open-street-map.js',
+		'https://cdn.kernvalley.us/components/open-street-map.html',
+		'https://cdn.kernvalley.us/components/map-marker.js',
 		'/css/index.css',
 		'/css/vars.css',
 		'/css/layout.css',
@@ -47,6 +51,7 @@ const config = {
 		'https://cdn.kernvalley.us/css/core-css/layout/default/index.css',
 		'https://cdn.kernvalley.us/css/normalize/normalize.css',
 		'https://cdn.kernvalley.us/css/animate.css/animate.css',
+		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
 		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-192.png',
@@ -63,4 +68,7 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/instagram.svg',
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 	].map(path => new URL(path, location.origin).href),
+	allow: [
+		'https://maps.wikimedia.org',
+	].map(url => new URL(url).host),
 };
