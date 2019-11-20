@@ -22,13 +22,12 @@
       default-src 'self';
       base-uri 'self';
       img-src 'self' *;
-      script-src 'self' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
+      script-src 'self' mox-extension: https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
       style-src 'self' 'unsafe-inline' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
       connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
       worker-src: 'self';
       font-src 'self' https://cdn.kernvalley.us;
       media-src 'none';
-      child-src 'self';
       object-src: 'none';
       manifest-src 'self';
       form-action 'self';
