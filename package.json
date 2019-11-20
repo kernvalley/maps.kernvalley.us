@@ -1,8 +1,8 @@
 {
-  "name": "static-template",
+  "name": "maps.kernvalley.us",
   "version": "1.0.0",
   "private": true,
-  "description": "A template repository for static sites, including skeleton JS, CSS, SVGs, fonts, etc.",
+  "description": "Maps for the Kern River Valley",
   "config": {
     "serve": {
       "domain": "localhost",
@@ -18,34 +18,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shgysk8zer0/static-template.git"
+    "url": "git+https://github.com/kernvalley/maps.kernvalley.us.git"
   },
   "keywords": [
-    "static",
-    "template",
-    "ecmascript",
-    "javascript",
-    "css",
-    "svg",
-    "icons"
+    "maps",
+    "kern valley",
+    "kern river valley"
   ],
   "author": "Chris Zuber <shgysk8zer0@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shgysk8zer0/static-template/issues"
+    "url": "https://github.com/kernvalley/maps.kernvalley.us/issues"
   },
-  "homepage": "https://github.com/shgysk8zer0/static-template",
+  "homepage": "https://github.com/kernvalley/maps.kernvalley.us",
   "scripts": {
-    "preinstall": "if [[ -f '.gitmodules' ]]; then git submodule update --recursive --init; fi",
+    "preinstall": "if [ -f '.gitmodules' ]; then git submodule update --recursive --init; fi",
     "postinstall": "npm run build:icons",
-    "start": "npm run netlify:serve",
+    "start": "npm run netlify:live",
     "test": "npm run lint:js && npm run lint:css",
     "fix": "npm run fix:js && npm run fix:css",
     "build": "npm run build:icons",
     "build:all": "npm run build:js && npm run build:css && npm run build:icons",
-    "build:css": "if [[ -f 'postcss.config.js' ]]; then postcss ${npm_package_config_dir_css}index.css -o ${npm_package_config_dir_css}index.min.css; fi",
-    "build:js": "if [[ -f 'rollup.config.js' ]]; then rollup --config; fi",
-    "build:icons": "if [[ ! -d 'img/adwaita-icons/' || ! -f 'icons.csv' ]]; then $(svg-sprite-generate -c 'icons.csv' -o 'img/icons.svg'); fi",
+    "build:css": "if [ -f 'postcss.config.js' ]; then postcss ${npm_package_config_dir_css}index.css -o ${npm_package_config_dir_css}index.min.css; fi",
+    "build:js": "if [ -f 'rollup.config.js' ]; then rollup --config; fi",
+    "build:icons": "if [ -f 'icons.csv' ]; then svg-sprite-generate -c 'icons.csv' -o 'img/icons.svg'; fi",
     "lint:css": "stylelint ${npm_package_config_dir_css}",
     "lint:js": "eslint ${npm_package_config_dir_js}",
     "fix:css": "stylelint ${npm_package_config_dir_css} --fix",

@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Maps | KernValley.us",
+  "short_name": "KRV Maps",
   "version": "1.0.0",
   "start_url": "/",
   "lang": "en",
-  "description": "",
+  "description": "Maps for the Kern River Valley",
   "icons": [{
     "src": "/img/favicon.svg",
     "sizes": "any",
@@ -19,9 +19,9 @@
     "type": "image/png"
   }],
   "screenshots": [{
-    "src": "url",
-    "sizes": "wxh",
-    "type": "image/*"
+    "src": "https://i.imgur.com/qZakAkSl.png",
+    "sizes": "640x376",
+    "type": "image/png"
   }],
   "theme_color": "#528ff9",
   "background_color": "#fefefe",
