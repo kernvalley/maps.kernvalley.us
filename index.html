@@ -53,18 +53,24 @@
 			<button is="logout-button" title="Sign Out" class="btn btn-reject" hidden="">Sign Out</button>
 		</nav>
 		<main id="main" class="card shadow">
-			<article>
-				<header>
-					<h2 class="center">Bacon Ipsum</h2>
-					<details>
-						<summary>By <b>Chris Zuber</b><img is="gravatar-img" hash="43578597e449298f5488c2407c8a8ae5" class="round avatar" alt="Gravatar" sizes="2rem" /></summary>
-						<div>Published on <time>Oct. 26, 2019</time></div>
-					</details>
-				</header>
-				<section data-columns="auto">
-					<bacon-ipsum paras="8"></bacon-ipsum>
-				</section>
-			</article>
+			<open-street-map center="35.756003,-118.4206114" zoom="15">
+				<map-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork">
+					<img src="https://cdn.kernvalley.us/img/octicons/organization.svg" height="32" width="32" slot="icon" />
+					<div slot="popup">
+						<h4>Kernville Cowork</h4>
+						<img src="https://lh5.googleusercontent.com/p/AF1QipMxQJcb7_090Gkke0WPu92xeXgl_zdLS9XtC8BI=w203-h152-k-no" crossorigin="anonymous" />
+						<hr />
+						<address>
+							<div>21 Sierra Drive</div>
+							<div>Box 1417</div>
+							<div>Kernville, CA 93238</div>
+						</address>
+						<a href="https://kernvillecowork.com/en" rel="noopener external">kernvillecowork.com</a>
+						<br />
+						<a href="geo:35.756003,-118.4206114">Open in Map App</a
+					</div>
+				</map-marker>
+			</open-street-map>
 		</main>
 		<aside id="sidebar" class="card shadow"></aside>
 		<footer id="footer">
