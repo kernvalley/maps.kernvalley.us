@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-service-worker="/service-worker.js" data-layout="right-sidebar" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#"  itemscope="">
+<html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-service-worker="/service-worker.js" data-layout="full" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#"  itemscope="">
 	<head>
 		<base href="/" />
 		<meta charset="utf-8" />
@@ -11,7 +11,7 @@
 		<meta itemprop="keywords" content="maps, kern valley, kern river valley, kernville" />
 		<meta name="referrer" content="origin-when-cross-origin"/>
 		<meta name="mobile-web-app-capable" content="yes" />
-		<meta itemprop="thumbnailUrl" content="" />
+		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/qZakAkSl.png" />
 		<!-- Social data -->
 		<!-- Facebook | OpenGraph -->
 		<meta property="og:type" content="website" />
@@ -62,15 +62,15 @@
 						</address>
 						<a href="https://kernvillecowork.com/en" rel="noopener external">kernvillecowork.com</a>
 						<br />
-						<a href="geo:35.756003,-118.4206114">Open in Map App</a
+						<a href="geo:35.756003,-118.4206114">Open in Map App</a>
 					</div>
 				</map-marker>
 			</open-street-map>
 		</main>
 		<footer id="footer">
-			<div class="social-links cols-2">
-				<div class="cols inline-block">
-					<a class="block" href="https://github.com/shgysk8zer0/" target="_blank" rel="external noopener">
+			<div class="social-links cols-2" id="org-info">
+				<div class="cols inline-block" id="social-links">
+					<a class="block" href="https://github.com/kernvalley/" target="_blank" rel="external noopener">
 						<svg class="current-color icon social-icon">
 							<use xlink:href="/img/icons.svg#mark-github" />
 						</svg>
@@ -90,19 +90,19 @@
 					</a>
 				</div>
 				<div class="cols inline-block">
-					<a class="block" href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="sameAs">
-						<svg class="current-color icon social-icon">
-							<use xlink:href="/img/icons.svg#web-browser" />
+					<a class="block" href="https://www.facebook.com/KernValley.us/" target="_blank" rel="external noopener" itemprop="sameAs">
+						<svg class="icon social-icon">
+							<use xlink:href="/img/icons.svg#facebook" />
 						</svg>
-						<span>My Website</span>
+						<span>On Facebook</span>
 					</a>
-					<a class="block" href="https://twitter.com/shgysk8zer0" target="_blank" rel="external noopener" itemprop="sameAs">
+					<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener" itemprop="sameAs">
 						<svg class="icon social-icon">
 							<use xlink:href="/img/icons.svg#twitter" />
 						</svg>
 						<span>On Twitter</span>
 					</a>
-					<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
+					<a class="block" href="https://www.linkedin.com/company/18644791/" target="_blank" rel="external noopener" itemprop="sameAs">
 						<svg class="icon social-icon">
 							<use xlink:href="/img/icons.svg#linkedin" />
 						</svg>
@@ -115,13 +115,17 @@
 				<span>&copy;</span>
 				<time itemprop="copyrightYear" is="current-year">2019</time>
 				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="">
-					<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+					<meta itemprop="name" cotnent="KernValley.US" />
+					<meta itemprop="url" content="https://kernvalley.us" />
+					<meta itemprop="email" content="admin@kernvalley.us" />
+					<meta itemprop="logo" content="https://kernvalley.us/img/icon-192.png" />
+					<a href="https://kernvalley.us" target="_blank" rel="external noopener">
 						<span itemprop="name">KernValley.US</span>
 					</a>
 				</span>
 			</div>
 		</footer>
-		<button type="button" is="share-button" class="round shadow fixed z-4" aria-label="Share">
+		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="round shadow fixed z-4" aria-label="Share">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>
 			</svg>
