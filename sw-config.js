@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.1',
+	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.2',
 	stale: [
 		'/',
 		'/js/index.js',
@@ -53,6 +53,7 @@ const config = {
 		'https://cdn.kernvalley.us/css/animate.css/animate.css',
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
 		'/img/icons.svg',
+		'https://cdn.kernvalley.us/img/octicons/organization.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-192.png',
 		'/img/favicon.svg',
