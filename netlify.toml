@@ -24,7 +24,7 @@
       img-src 'self' *;
       script-src 'self' mox-extension: https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
       style-src 'self' 'unsafe-inline' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
+      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/;
       worker-src: 'self';
       font-src 'self' https://cdn.kernvalley.us;
       media-src 'none';
