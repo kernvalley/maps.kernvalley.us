@@ -1,6 +1,6 @@
 'use strict';
 /*eslint no-undef: 0*/
-/* 2019-11-20T12:47 */
+/* 2019-11-25T11:04 */
 self.importScripts('/sw-config.js');
 
 self.addEventListener('install', async event => {
@@ -21,7 +21,7 @@ self.addEventListener('install', async event => {
 self.addEventListener('activate', event => event.waitUntil(clients.claim()));
 
 self.addEventListener('fetch', event => {
-	if (event.request.method === 'GET' && event.request.url.startsWith(location.origin)) {
+	if (event.request.method === 'GET') {
 		event.respondWith((async () => {
 			const url = new URL(event.request.url);
 			url.hash = '';
@@ -43,14 +43,14 @@ self.addEventListener('fetch', event => {
 				} else {
 					return caches.match(event.request);
 				}
-			} else if (Array.isArray(config.allowed) && config.allowed.some(host => new URL(event.request.url).host === host)) {
+			} else if (Array.isArray(config.allowed) && config.allowed.some(host => url.host === host)) {
 				const resp = await caches.match(event.request);
 				if (resp instanceof Response) {
 					return resp;
 				} else if (navigator.onLine) {
-					const resp = await fetch(event.request);
+					const resp = await fetch(event.request, {mode: 'cors', credentials: 'omit'});
 					const cache = await caches.open(config.version);
-					cache.add(resp.clone());
+					cache.put(event.request.url, resp.clone());
 					return resp;
 				}
 			} else {
