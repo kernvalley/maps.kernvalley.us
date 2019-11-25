@@ -1,8 +1,9 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: '1.0.7',
+	version: '1.0.8',
 	stale: [
 		'/',
+		'/manifest.json',
 		'/js/index.js',
 		'https://cdn.kernvalley.us/components/share-button.js',
 		'https://cdn.kernvalley.us/js/std-js/share-config.js',
@@ -57,6 +58,9 @@ const config = {
 		'/img/icons.svg',
 		'https://cdn.kernvalley.us/img/octicons/organization.svg',
 		'/img/apple-touch-icon.png',
+		'/img/icon-16.png',
+		'/favicon.ico',
+		'/img/icon-32.png',
 		'/img/icon-192.png',
 		'/img/favicon.svg',
 		/* Social Icons for Web Share API shim */
