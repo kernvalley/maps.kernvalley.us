@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: '1.0.05',
+	version: '1.0.7',
 	stale: [
 		'/',
 		'/js/index.js',
@@ -73,5 +73,6 @@ const config = {
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
 		'https://maps.wikimedia.org',
+		'https://i.imgur.com'
 	].map(url => new URL(url).host),
 };
