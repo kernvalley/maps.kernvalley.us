@@ -30,14 +30,16 @@ self.addEventListener('fetch', event => {
 				const cached = await caches.match(url);
 				if (cached instanceof Response) {
 					return cached;
+				} else {
+					return fetch(event.request);
 				}
 			} else if (Array.isArray(config.fresh) && config.fresh.includes(url.href)) {
 				if (navigator.onLine) {
-					const resp = await fetch(url.href);
+					const resp = await fetch(event.request);
 					const cache = await caches.open(config.version);
 
 					if (resp.ok) {
-						cache.add(resp.clone());
+						cache.put(event.request, resp.clone());
 					}
 					return resp;
 				} else {
@@ -50,11 +52,11 @@ self.addEventListener('fetch', event => {
 				} else if (navigator.onLine) {
 					const resp = await fetch(event.request, {mode: 'cors', credentials: 'omit'});
 					const cache = await caches.open(config.version);
-					cache.put(event.request.url, resp.clone());
+					cache.put(event.request, resp.clone());
 					return resp;
 				}
 			} else {
-				return fetch(event.request.url);
+				return fetch(event.request);
 			}
 		})());
 	}
