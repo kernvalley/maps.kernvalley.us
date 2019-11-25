@@ -33,3 +33,8 @@ img.avatar {
 	vertical-align: middle;
 	margin-left: 1.2em;
 }
+
+#search {
+	padding: 0.4rem 1rem;
+	background: #e8e8e8a3;
+}

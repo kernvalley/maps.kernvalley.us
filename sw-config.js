@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.3',
+	version: '1.0.05',
 	stale: [
 		'/',
 		'/js/index.js',
@@ -24,10 +24,12 @@ const config = {
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.js',
 		'https://cdn.kernvalley.us/components/login-form/login-form.html',
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
+		'https://cdn.kernvalley.us/components/toast-message.js',
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.esm.js',
 		'https://cdn.kernvalley.us/components/open-street-map.js',
 		'https://cdn.kernvalley.us/components/open-street-map.html',
 		'https://cdn.kernvalley.us/components/map-marker.js',
+		'https://cdn.kernvalley.us/components/image-overlay.js',
 		'/css/index.css',
 		'/css/vars.css',
 		'/css/layout.css',
@@ -69,7 +71,7 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/instagram.svg',
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 	].map(path => new URL(path, location.origin).href),
-	allow: [
+	allowed: [
 		'https://maps.wikimedia.org',
 	].map(url => new URL(url).host),
 };
