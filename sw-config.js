@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: '1.0.8',
+	version: '1.0.9',
 	stale: [
 		'/',
 		'/manifest.json',
@@ -27,10 +27,9 @@ const config = {
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
 		'https://cdn.kernvalley.us/components/toast-message.js',
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.esm.js',
-		'https://cdn.kernvalley.us/components/open-street-map.js',
-		'https://cdn.kernvalley.us/components/open-street-map.html',
-		'https://cdn.kernvalley.us/components/map-marker.js',
-		'https://cdn.kernvalley.us/components/image-overlay.js',
+		'https://cdn.kernvalley.us/components/leaflet/map.js',
+		'https://cdn.kernvalley.us/components/leaflet/map.html',
+		'https://cdn.kernvalley.us/components/leaflet/marker.js',
 		'/css/index.css',
 		'/css/vars.css',
 		'/css/layout.css',

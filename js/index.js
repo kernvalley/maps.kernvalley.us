@@ -5,10 +5,10 @@ import 'https://cdn.kernvalley.us/components/current-year.js';
 import 'https://cdn.kernvalley.us/components/gravatar-img.js';
 import 'https://cdn.kernvalley.us/components/login-button.js';
 import 'https://cdn.kernvalley.us/components/logout-button.js';
-import HTMLOpenStreetMapElement from 'https://cdn.kernvalley.us/components/open-street-map.js';
-import { registerServiceWorker, $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import 'https://cdn.kernvalley.us/components/leaflet/map.js';
+import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 
-customElements.define(HTMLOpenStreetMapElement.tagName, HTMLOpenStreetMapElement);
+import { registerServiceWorker, $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
 	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
@@ -19,10 +19,10 @@ document.body.classList.toggle('no-dialog', document.createElement('dialog') ins
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
 ready().then(async () => {
-	const map = document.querySelector('open-street-map');
+	const map = document.querySelector('leaflet-map');
 	await map.ready;
 
-	$('#search').input(({target}) => {
+	$('#search').input(({ target }) => {
 		const value = target.value.toLowerCase();
 		const markers = map.markers;
 
@@ -46,7 +46,7 @@ ready().then(async () => {
 		passive: true,
 	});
 
-	document.getElementById('search-items').append(...map.markers.map(({title}) => {
+	document.getElementById('search-items').append(...map.markers.map(({ title }) => {
 		const item = document.createElement('option');
 		item.textContent = title;
 		return item;

@@ -9,7 +9,7 @@
 		<meta itemprop="description" content="Maps for the Kern River Valley" />
 		<meta name="keywords" content="maps, kern valley, kern river valley, kernville" />
 		<meta itemprop="keywords" content="maps, kern valley, kern river valley, kernville" />
-		<meta name="referrer" content="origin-when-cross-origin"/>
+		<meta name="referrer" content="no-referrer"/>
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/qZakAkSl.png" />
 		<!-- Social data -->
@@ -51,8 +51,8 @@
 		<datalist id="search-items"></datalist>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<open-street-map center="35.756003,-118.4206114" zoom="15">
-				<map-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork">
+			<leaflet-map center="35.756003,-118.4206114" zoom="15" crossorigin="annonymous" detectretina="">
+				<leaflet-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork">
 					<img src="https://cdn.kernvalley.us/img/octicons/organization.svg" height="32" width="32" slot="icon" />
 					<div slot="popup">
 						<h4>Kernville Cowork</h4>
@@ -67,8 +67,8 @@
 						<br />
 						<a href="geo:35.756003,-118.4206114">Open in Map App</a>
 					</div>
-				</map-marker>
-			</open-street-map>
+				</leaflet-marker>
+			</leaflet-map>
 		</main>
 		<footer id="footer">
 			<div class="social-links cols-2" id="org-info">
