@@ -32,7 +32,11 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
-		'https://maps.wikimedia.org',
-		'https://i.imgur.com'
+		/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
+		/https:\/\/i\.imgur\.com\/.*/,
+		/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
+		/https:\/\/*\.githubusercontent\.com\/*/,
+		/https:\/\/api\.github\.com\/users\/*/,
+		/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
 	].map(url => new URL(url).host),
 };
