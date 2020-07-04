@@ -1,5 +1,5 @@
 {
-  "name": "Maps | KernValley.us",
+  "name": "Kern Valley Maps",
   "short_name": "KRV Maps",
   "version": "1.0.0",
   "start_url": "/",
@@ -19,15 +19,25 @@
     "type": "image/png"
   }],
   "screenshots": [{
-    "src": "https://i.imgur.com/qZakAkSl.png",
+    "src": "https://i.imgur.com/qZakAkSl.jpg",
     "sizes": "640x376",
-    "type": "image/png"
+    "type": "image/jpeg"
   }],
   "theme_color": "#528ff9",
   "background_color": "#fefefe",
   "display": "standalone",
+  "features": [
+    "When installed, it will be available and display just like a native app",
+    "Find local businesses and landmarks"
+  ],
+  "categories": [
+    "lifestyle",
+    "navigation",
+    "travel",
+    "utilities"
+  ],
   "developer": {
 		"name": "Chris Zuber",
-		"url": "http://shgysk8zer0.github.io"
+		"url": "https://kernvalley.us"
 	}
 }

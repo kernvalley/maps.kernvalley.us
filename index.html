@@ -11,6 +11,7 @@
 		<meta itemprop="keywords" content="maps, kern valley, kern river valley, kernville" />
 		<meta name="referrer" content="no-referrer"/>
 		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/qZakAkSl.png" />
 		<!-- Social data -->
 		<!-- Facebook | OpenGraph -->
@@ -33,8 +34,11 @@
 		<meta name="msapplication-TileColor" content="#528ff9" />
 		<meta name="msapplication-config" content="/browserconfig.xml" />
 		<meta name="theme-color" content="#528ff9" />
-		<title itemprop="headline">Maps | KernValley.US</title>
-		<script type="module" src="/js/index.js" async=""></script>
+		<meta name="apple-mobile-web-app-status-bar-style" content="#528ff9" />
+		<title itemprop="headline">Kern Valley Maps</title>
+		<script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js" crossorigin="anonymous"></script>
+		<!-- <script type="module" src="/js/index.js" async=""></script> -->
+		<script src="/js/index.min.js" async=""></script>
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="license" href="/LICENSE" />
 		<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" sizes="any" />
@@ -44,19 +48,20 @@
 		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#528ff9" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
-		<link rel="stylesheet" href="/css/index.css" media="all" />
+		<!-- <link rel="stylesheet" href="/css/index.css" media="all" /> -->
+		<link rel="stylesheet" href="/css/index.min.css" media="all" />
 	</head>
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
-		<input type="search" id="search" list="search-items" placeholder="Search for..." class="fixed top left z-2 no-border shadow" />
+		<input type="search" id="search" list="search-items" placeholder="Search for..." class="fixed top right z-2 no-border shadow" />
 		<datalist id="search-items"></datalist>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.756003,-118.4206114" zoom="15" crossorigin="annonymous" detectretina="">
+			<leaflet-map center="35.756003,-118.4206114" zoom="15" crossorigin="annonymous" detectretina="" zoomcontrol="">
 				<leaflet-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork">
 					<img src="https://cdn.kernvalley.us/img/octicons/organization.svg" height="32" width="32" slot="icon" />
 					<div slot="popup">
 						<h4>Kernville Cowork</h4>
-						<img src="https://i.imgur.com/0XfeaGjt.jpg" alt="Street view" height="120" width="160" crossorigin="anonymous" decoding="async" />
+						<img src="https://i.imgur.com/0XfeaGjt.jpg" alt="Street view" height="120" width="160" crossorigin="anonymous" decoding="async" loading="lazy" />
 						<hr />
 						<address>
 							<div>21 Sierra Drive</div>
@@ -113,22 +118,29 @@
 					</a>
 				</div>
 			</div>
+			<button is="pwa-install" class="btn btn-primary btn-big btn-wide" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+				<svg class="icon current-color" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#system-software-install"></use>
+				</svg>
+				<span>Install</span>
+			</button>
 			<hr />
 			<div class="copyright">
-				<span>&copy;</span>
-				<time itemprop="copyrightYear" is="current-year">2019</time>
-				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="">
-					<meta itemprop="name" cotnent="KernValley.US" />
-					<meta itemprop="url" content="https://kernvalley.us" />
-					<meta itemprop="email" content="admin@kernvalley.us" />
-					<meta itemprop="logo" content="https://kernvalley.us/img/icon-192.png" />
-					<a href="https://kernvalley.us" target="_blank" rel="external noopener">
-						<span itemprop="name">KernValley.US</span>
-					</a>
-				</span>
+				<github-user user="kernvalley">
+					<h3 slot="header" class="center">Created By</h3>
+					<div slot="footer">
+						<span>&copy;</span>
+						<time itemprop="copyrightYear">2020</time>
+						<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+							<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+								<span itemprop="name">KernValley.US</span>
+							</a>
+						</span>
+					</div>
+				</github-user>
 			</div>
 		</footer>
-		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="round shadow fixed z-4" aria-label="Share">
+		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="round shadow fixed z-4" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>
 			</svg>

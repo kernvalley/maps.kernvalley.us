@@ -1,5 +1,13 @@
 version: 2
 updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
+  reviewers:
+  - shgysk8zer0
 - package-ecosystem: gitsubmodule
   directory: "/"
   schedule:
@@ -8,10 +16,10 @@ updates:
   open-pull-requests-limit: 10
   reviewers:
   - shgysk8zer0
-- package-ecosystem: npm
+- package-ecosystem: github-actions
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
     time: "13:00"
   open-pull-requests-limit: 10
   reviewers:
