@@ -26,6 +26,10 @@
   "theme_color": "#528ff9",
   "background_color": "#fefefe",
   "display": "standalone",
+  "related_applications": [{
+    "platform": "play",
+    "id": "com.krv_maps.twa"
+  }],
   "features": [
     "When installed, it will be available and display just like a native app",
     "Find local businesses and landmarks"

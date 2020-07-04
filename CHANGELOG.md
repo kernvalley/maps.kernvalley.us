@@ -6,12 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 <!-- markdownlint-disable -->
+## [v1.1.0] - 2020-07-03
+
 ### Added
 - CHANGELOG
 - Dependabot config
 - Super Linter
 - Minifying of JS & CSS
 - Add `<github-user>` to footer
+- `.well-known/assetlinks.json` for TWA support
+- Play Store app id for install prompt
 
 ### Changed
 - Update service worker cache & config to use minified resources
