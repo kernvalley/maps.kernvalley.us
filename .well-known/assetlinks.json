@@ -1,0 +1,11 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.krv_maps.twa",
+    "sha256_cert_fingerprints": [
+      "C8:96:10:BA:7E:95:24:1C:34:14:BD:7D:82:C1:FF:C2:73:98:72:4F:98:9B:6A:CD:06:2F:E1:6D:03:ED:C3:67",
+      "12:56:E5:E9:90:77:2E:76:4C:CC:88:EE:03:AE:E7:BF:A7:7B:06:C7:CA:15:90:09:2E:DC:D1:99:E0:4F:9D:14"
+    ]
+  }
+}]
