@@ -22,7 +22,7 @@
       default-src 'self';
       base-uri 'self';
       img-src 'self' * https://*.githubusercontent.com/u/;
-      script-src 'self' mox-extension: https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
+      script-src 'self' moz-extension: https://cdn.kernvalley.us https://polyfill.io/v3/polyfill.min.js https://unpkg.com/leaflet@1.6.0/dist/;
       style-src 'self' 'unsafe-inline' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
       connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/ https://i.imgur.com;
       worker-src: 'self';
