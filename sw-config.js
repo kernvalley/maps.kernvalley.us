@@ -38,5 +38,5 @@ const config = {
 		/https:\/\/*\.githubusercontent\.com\/*/,
 		/https:\/\/api\.github\.com\/users\/*/,
 		/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
-	].map(url => new URL(url).host),
+	],
 };
