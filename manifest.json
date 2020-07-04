@@ -24,7 +24,7 @@
     "type": "image/jpeg"
   }],
   "theme_color": "#528ff9",
-  "background_color": "#fefefe",
+  "background_color": "#242424",
   "display": "standalone",
   "related_applications": [{
     "platform": "play",
