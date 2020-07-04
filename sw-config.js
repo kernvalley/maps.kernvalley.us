@@ -1,11 +1,10 @@
 /* eslint no-unused-vars: 0 */
 const config = {
-	version: '1.1.0-a2',
+	version: '1.1.0-a3',
 	fresh: [
-		'/,'
+		'/'
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		'/',
 		'/js/index.min.js',
 		'/css/index.min.css',
 		'/img/icons.svg',
