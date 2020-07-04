@@ -6,4 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 <!-- markdownlint-disable -->
+### Added
+- CHANGELOG
+- Dependabot config
+- Super Linter
+- Minifying of JS & CSS
+- Add `<github-user>` to footer
+
+### Changed
+- Update service worker cache & config to use minified resources
+
+### Removed
+- Travis-CI config file (just use GitHub Actions)
 <!-- markdownlint-restore -->

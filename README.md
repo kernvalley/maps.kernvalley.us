@@ -2,7 +2,7 @@
 Maps for the Kern River Valley
 
 [![Node CI](https://github.com/kernvalley/maps.kernvalley.us/workflows/Node%20CI/badge.svg)](https://github.com/kernvalley/maps.kernvalley.us/actions)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/56c88c0a-8a05-41d8-a7a2-48a868f92f2f/deploy-status)](https://app.netlify.com/sites/angry-leavitt-d91f7f/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/94cf2751-76e2-4701-976d-0c11b0efe39d/deploy-status)](https://app.netlify.com/sites/kind-ramanujan-d7bf00/deploys)
 
 [![GitHub license](https://img.shields.io/github/license/kernvalley/maps.kernvalley.us.svg)](https://github.com/kernvalley/maps.kernvalley.us/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/kernvalley/maps.kernvalley.us.svg)](https://github.com/kernvalley/maps.kernvalley.us/issues)
