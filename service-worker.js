@@ -1,6 +1,8 @@
 'use strict';
-/*eslint no-undef: 0*/
-/* 2020-07-03T17:35*/
+/* global config */
+/* eslint-env serviceworker */
+/* 2020-07-15T18:56 */
+
 self.importScripts('/sw-config.js');
 
 self.addEventListener('install', async event => {

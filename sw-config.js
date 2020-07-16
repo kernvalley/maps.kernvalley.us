@@ -1,6 +1,8 @@
 /* eslint no-unused-vars: 0 */
+/* eslint-env serviceworker */
+
 const config = {
-	version: '1.1.0',
+	version: '1.1.1',
 	fresh: [
 		'/'
 	].map(path => new URL(path, location.origin).href),
@@ -9,8 +11,13 @@ const config = {
 		'/css/index.min.css',
 		'/img/icons.svg',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
+		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.html',
+		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
+		'https://cdn.kernvalley.us/components/pwa/prompt.css',
+		'https://cdn.kernvalley.us/components/toast-message.html',
+		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/img/octicons/organization.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-16.png',
@@ -31,11 +38,10 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
-		/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
 		/https:\/\/i\.imgur\.com\/.*/,
-		/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
+		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
 		/https:\/\/*\.githubusercontent\.com\/*/,
 		/https:\/\/api\.github\.com\/users\/*/,
-		/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
+		/https:\/\/cdn\.kernvalley\.us\/img\/*/,
 	],
 };
