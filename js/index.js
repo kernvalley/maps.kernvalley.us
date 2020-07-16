@@ -3,9 +3,6 @@ import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/gravatar-img.js';
-import 'https://cdn.kernvalley.us/components/login-button.js';
-import 'https://cdn.kernvalley.us/components/logout-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
@@ -49,5 +46,4 @@ ready().then(async () => {
 		item.textContent = title;
 		return item;
 	}));
-
 });
