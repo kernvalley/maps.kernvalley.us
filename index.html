@@ -36,7 +36,7 @@
 		<meta name="theme-color" content="#528ff9" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="#528ff9" />
 		<title itemprop="headline">Kern Valley Maps</title>
-		<script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://cdn.polyfill.io/v3/polyfill.min.js" crossorigin="anonymous"></script>
 		<!-- <script type="module" src="/js/index.js" async=""></script> -->
 		<script src="/js/index.min.js" async=""></script>
 		<link rel="manifest" href="/manifest.json" />
@@ -56,8 +56,8 @@
 		<datalist id="search-items"></datalist>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.756003,-118.4206114" zoom="15" crossorigin="annonymous" detectretina="" zoomcontrol="">
-				<leaflet-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork">
+			<leaflet-map center="35.756003,-118.4206114" zoom="15" crossorigin="anonymous" detectretina="" zoomcontrol="">
+				<leaflet-marker slot="markers" longitude="-118.4206114" latitude="35.756003" title="Kernville Cowork" id="653eab6d-a4e0-48b9-a084-324e06b20e13">
 					<img src="https://cdn.kernvalley.us/img/octicons/organization.svg" height="32" width="32" slot="icon" />
 					<div slot="popup">
 						<h4>Kernville Cowork</h4>
@@ -71,6 +71,13 @@
 						<a href="https://kernvillecowork.com/en" rel="noopener external">kernvillecowork.com</a>
 						<br />
 						<a href="geo:35.756003,-118.4206114">Open in Map App</a>
+						<hr />
+						<button type="button" is="share-button" text="Kernville Cowork" url="/#653eab6d-a4e0-48b9-a084-324e06b20e13">
+							<svg height="18" width="18" aria-hidden="true" role="presentation">
+								<use xlink:href="/img/icons.svg#public-share"></use>
+							</svg>
+							<span>Share</span>
+						</button>
 					</div>
 				</leaflet-marker>
 			</leaflet-map>

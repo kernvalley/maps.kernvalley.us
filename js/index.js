@@ -8,17 +8,82 @@ import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { stateHandler } from './handlers.js';
+import { site } from './consts.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
 ready().then(async () => {
-	const map = document.querySelector('leaflet-map');
-	await map.ready;
+	if (location.pathname === '/') {
+		addEventListener('popstate', stateHandler);
 
-	$('#search').input(({ target }) => {
+		Promise.all([
+			customElements.whenDefined('leaflet-map'),
+			customElements.whenDefined('leaflet-marker'),
+		]).then(async () => {
+			if (history.state === null && location.hash !== '') {
+				if (location.hash.includes(',')) {
+					const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',', 2).map(parseFloat);
+					history.replaceState({
+						latitude,
+						longitude,
+						title: 'Location',
+						body: `Coorinates: ${latitude}, ${longitude}`,
+					}, `Location: ${site.title}`, location.href);
+
+					stateHandler(history);
+				} else {
+					const marker = document.getElementById(location.hash.substr(1));
+
+					if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
+						document.title = `${marker.title} | ${site.title}`;
+						history.replaceState({
+							title: marker.title,
+							longitude: marker.longitude,
+							latitude: marker.latitude,
+							uuid: marker.id,
+						}, document.title, location.href);
+
+						stateHandler(history);
+					}
+
+				}
+			} else if (history.state !== null) {
+				stateHandler(history);
+			}
+		});
+		const map = document.querySelector('leaflet-map');
+		await map.ready;
+
+		document.getElementById('search-items').append(...map.markers.map(({ title }) => {
+			const item = document.createElement('option');
+			item.textContent = title;
+			return item;
+		}));
+	}
+
+	$('leaflet-marker').on('open', ({target}) => {
+		const url = new URL(location.pathname, location.origin);
+		url.hash = `#${target.id}`;
+		document.title = `${target.title} | ${site.title}`;
+
+		if (location.hash.substr(1) !== target.id) {
+			history.pushState({
+				latitude: target.latitude,
+				longitude: target.longitude,
+				title: target.title,
+				uuid: target.id,
+			}, document.title, url.href);
+		}
+	});
+
+	$('#search').input(async ({ target }) => {
 		const value = target.value.toLowerCase();
+		const map = document.querySelector('leaflet-map');
+		await map.ready;
+
 		const markers = map.markers;
 
 		if (value !== '') {
@@ -40,10 +105,4 @@ ready().then(async () => {
 	}, {
 		passive: true,
 	});
-
-	document.getElementById('search-items').append(...map.markers.map(({ title }) => {
-		const item = document.createElement('option');
-		item.textContent = title;
-		return item;
-	}));
 });

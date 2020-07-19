@@ -22,9 +22,9 @@
       default-src 'self';
       base-uri 'self';
       img-src 'self' * https://*.githubusercontent.com/u/;
-      script-src 'self' moz-extension: https://cdn.kernvalley.us https://polyfill.io/v3/polyfill.min.js https://unpkg.com/leaflet@1.6.0/dist/;
+      script-src 'self' moz-extension: https://cdn.kernvalley.us https://cdn.polyfill.io/v3/polyfill.min.js https://unpkg.com/leaflet@1.6.0/dist/;
       style-src 'self' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/ https://i.imgur.com;
+      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/ https://i.imgur.com https://cdn.polyfill.io/v3/;
       worker-src: 'self';
       font-src 'self' https://cdn.kernvalley.us;
       media-src 'none';
@@ -32,7 +32,6 @@
       manifest-src 'self';
       form-action 'self';
       reflected-xss block;
-      report-uri https://api.kernvalley.us/Errors/CSP/;
       block-all-mixed-content;
       upgrade-insecure-requests;
       disown-opener;'''

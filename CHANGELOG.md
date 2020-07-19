@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.2] - 2020-07-18
+
+### Changed
+- Update icons to be "maskable"
+- Update [`.editorconfig`]() to set indent style and width
+- Use `history.state` for map navigation
+- Update misc config
+
 ## [v1.1.1] - 2020-07-15
 
 ### Updated

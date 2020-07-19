@@ -2,7 +2,7 @@
 /* eslint-env serviceworker */
 
 const config = {
-	version: '1.1.1',
+	version: '1.1.2',
 	fresh: [
 		'/'
 	].map(path => new URL(path, location.origin).href),
@@ -10,6 +10,7 @@ const config = {
 		'/js/index.min.js',
 		'/css/index.min.css',
 		'/img/icons.svg',
+		'https://cdn.polyfill.io/v3/polyfill.min.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.html',

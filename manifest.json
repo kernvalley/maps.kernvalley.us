@@ -1,38 +1,52 @@
 {
   "name": "Kern Valley Maps",
   "short_name": "KRV Maps",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "start_url": "/",
   "lang": "en",
+  "dir": "ltr",
   "description": "Maps for the Kern River Valley",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#528ff9",
+  "background_color": "#242424",
   "icons": [{
     "src": "/img/favicon.svg",
-    "sizes": "any",
-    "type": "image/svg+xml"
+    "sizes": "192x192",
+    "type": "image/svg+xml",
+    "purpose": "maskable any"
   }, {
     "src": "/img/icon-192.png",
     "sizes": "192x192",
-    "type": "image/png"
+    "type": "image/png",
+    "purpose": "maskable any"
   }, {
     "src": "/img/icon-512.png",
     "sizes": "512x512",
-    "type": "image/png"
+    "type": "image/png",
+    "purpose": "maskable any"
   }],
   "screenshots": [{
-    "src": "https://i.imgur.com/qZakAkSl.jpg",
+    "src": "https://i.imgur.com/qZakAkSl.png",
     "sizes": "640x376",
-    "type": "image/jpeg"
+    "type": "image/png"
+  }, {
+    "src": "https://i.imgur.com/qZakAkSm.png",
+    "sizes": "320x188",
+    "type": "image/png"
+  }, {
+    "src": "https://i.imgur.com/qZakAkSt.png",
+    "sizes": "160x94",
+    "type": "image/png"
   }],
-  "theme_color": "#528ff9",
-  "background_color": "#242424",
-  "display": "standalone",
   "related_applications": [{
     "platform": "play",
     "id": "com.krv_maps.twa"
   }],
   "features": [
     "When installed, it will be available and display just like a native app",
-    "Find local businesses and landmarks"
+    "Find local businesses and landmarks",
+    "Dark mode enabled by system preference"
   ],
   "categories": [
     "lifestyle",
