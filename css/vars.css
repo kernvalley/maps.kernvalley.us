@@ -1,6 +1,6 @@
 :root {
 	--map-width: 100vw;
-	--map-height: calc(90vh - var(nav-height, 4rem));
+	--map-height: calc(90vh - var(--nav-height, 4rem));
 	--scrollbar-color: var(--accent-color);
 	--scrollbar-track: var(--primary-color);
 }
