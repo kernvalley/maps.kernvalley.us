@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.3]
+
+### Added
+- Add markers using Whiskey Flat Days info
+
+### Changed
+- Starlite -> Eddy Out
+- Update icons for map
+
 ## [v1.1.2] - 2020-07-18
 
 ### Changed
