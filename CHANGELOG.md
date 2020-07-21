@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- But map search inside `<div slot="toolbar">`
+- Do not show an `<leaflet-marker>`s unless `<leaflet-map>` is defined
+- Add warning if `<leaflet-map>` is not defined
+
 ## [v1.1.3]
 
 ### Added
