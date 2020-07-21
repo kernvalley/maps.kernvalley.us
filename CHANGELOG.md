@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.4] - 2020-07-21
+
 ### Changed
 - But map search inside `<div slot="toolbar">`
 - Do not show an `<leaflet-marker>`s unless `<leaflet-map>` is defined
 - Add warning if `<leaflet-map>` is not defined
 
-## [v1.1.3]
+## [v1.1.3] - 2020-07-20
 
 ### Added
 - Add markers using Whiskey Flat Days info
