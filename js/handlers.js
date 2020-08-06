@@ -1,5 +1,6 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { site } from './consts.js';
+import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 
 export async function stateHandler({ state }) {
 	const { uuid = null, longitude = NaN, latitude = NaN, title = null, body = null } = state || {};
@@ -17,15 +18,13 @@ export async function stateHandler({ state }) {
 	} else if (! (Number.isNaN(longitude) || Number.isNaN(latitude))) {
 		const marker = await createCustomElement('leaflet-marker');
 		const map = document.querySelector('leaflet-map');
-		const icon = new Image(32, 32);
 		await map.ready;
 
-		icon.decoding = 'async';
-		icon.loading = 'lazy';
-		icon.alt = '';
-		icon.referrerPolicy = 'no-referrer';
-		icon.crossOrigin = 'anonymous';
-		icon.src = new URL('./img/adwaita-icons/actions/mark-location.svg', site.iconBaseUri).href;
+		const icon = await loadImage(new URL('./img/adwaita-icons/actions/mark-location.svg', site.iconBaseUri), {
+			loading: 'lazy',
+			height: 32,
+			width: 32,
+		});
 		icon.slot = 'icon';
 
 		marker.longitude = longitude;
