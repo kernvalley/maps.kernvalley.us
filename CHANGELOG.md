@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `geo:` URI handler registration
-- Handling of `geo:` URIs -> `#${latitude},#{longitude}`
+- Handling of `geo:` URIs -> `#${latitude},${longitude}`
 
 ### Changed
 - Loading polyfill.io dynamically
