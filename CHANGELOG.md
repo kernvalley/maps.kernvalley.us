@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.5] - 2020-08-08
+
+### Added
+- `geo:` URI handler registration
+- Handling of `geo:` URIs -> `#${latitude},${longitude}`
+
+### Changed
+- Loading polyfill.io dynamically
+- Update eslint
+
 ## [v1.1.4] - 2020-07-21
 
 ### Changed

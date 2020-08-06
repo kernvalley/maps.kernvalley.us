@@ -1,6 +1,6 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
-import 'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js';
+import 'https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
@@ -8,14 +8,50 @@ import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
+import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { stateHandler } from './handlers.js';
-import { site } from './consts.js';
+import { site, ga } from './consts.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
-ready().then(async () => {
+if (typeof ga === 'string' && ga.length !== 0) {
+	importGa(ga).catch(console.error);
+}
+
+if (navigator.registerProtocolHandler instanceof Function) {
+	navigator.registerProtocolHandler('geo', `${location.origin}/?geo=%s`, site.title);
+}
+
+if (location.search.includes('geo=geo')) {
+	const params = new URLSearchParams(location.search);
+
+	if (params.has('geo')) {
+		const geo = params.get('geo');
+		if (geo.startsWith('geo:')) {
+			const [latitude = NaN, longitude = NaN] = geo.substr(4).split(';', 2)[0].split(',', 2).map(parseFloat);
+
+			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+				const url = new URL(location.pathname, location.origin);
+				url.hash = `#${latitude},${longitude}`;
+
+				history.replaceState({
+					latitude,
+					longitude,
+					title: 'Location',
+					body: `Coorinates: ${latitude}, ${longitude}`,
+				}, `Location: ${site.title}`, url.href);
+			}
+		}
+	}
+}
+
+Promise.all([
+	ready(),
+	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
+]).then(async () => {
 	if (location.pathname === '/') {
 		addEventListener('popstate', stateHandler);
 
