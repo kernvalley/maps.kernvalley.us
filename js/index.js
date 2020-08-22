@@ -11,14 +11,14 @@ import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { stateHandler } from './handlers.js';
-import { site, ga } from './consts.js';
+import { site, GA } from './consts.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
-if (typeof ga === 'string' && ga.length !== 0) {
-	importGa(ga).catch(console.error);
+if (typeof GA === 'string' && GA.length !== 0) {
+	importGa(GA).catch(console.error);
 }
 
 if (navigator.registerProtocolHandler instanceof Function) {
