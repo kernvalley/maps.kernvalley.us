@@ -20,6 +20,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/img/octicons/organization.svg',
+		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-16.png',
 		'/favicon.ico',
