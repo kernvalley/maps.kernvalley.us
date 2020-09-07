@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.7] - 2020-09-06
+
+### Added
+- Implement preloading
+- Import icons from WFD app
+
+### Changed
+- Update various dependencies
+
+### Fixed
+- Add missing popup content for Kernville Saloon
+
+### Removed
+- Do not set preload headers
+
 ## [v1.1.6] - 2020-08-21
 
 ### Added

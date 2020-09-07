@@ -3,16 +3,9 @@
   base = "./"
   publish = "./"
   command = "npm run build"
-  [build.environment]
-    GIT_LFS_ENABLED = "1"
 [[headers]]
   for="/*"
   [headers.values]
-    Link = '''
-      </css/index.min.css>; rel=preload; as=style, \
-      </css/js/index.min.js>; rel=preload; as=script, \
-      </img/icons.svg>; rel=preload; as=image
-    '''
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
