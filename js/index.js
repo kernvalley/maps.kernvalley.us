@@ -18,8 +18,40 @@ document.body.classList.toggle('no-dialog', document.createElement('dialog') ins
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
 if (typeof GA === 'string' && GA.length !== 0) {
-	importGa(GA).catch(console.error);
+	importGa(GA).then(async () => {
+		/* global ga */
+		ga('create', GA, 'auto');
+		ga('set', 'transport', 'beacon');
+		ga('send', 'pageview');
+
+
+		function outbound() {
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'outbound',
+				eventAction: 'click',
+				eventLabel: this.href,
+				transport: 'beacon',
+			});
+		}
+
+		function madeCall() {
+			ga('send', {
+				hitType: 'event',
+				eventCategory: 'call',
+				eventLabel: 'Called',
+				transport: 'beacon',
+			});
+		}
+
+		await ready();
+
+		$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
+		$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
+
+	});
 }
+
 
 if (navigator.registerProtocolHandler instanceof Function) {
 	navigator.registerProtocolHandler('geo', `${location.origin}/?geo=%s`, site.title);

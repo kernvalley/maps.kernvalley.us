@@ -36,7 +36,11 @@
 		<meta name="theme-color" content="#528ff9" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="#528ff9" />
 		<title itemprop="headline">Kern Valley Maps</title>
-		<script type="text/javascript" src="https://cdn.polyfill.io/v3/polyfill.min.js" crossorigin="anonymous"></script>
+		<link rel="preload" href="https://cdn.polyfill.io/v3/polyfill.min.js" as="script" type="text/javascript" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
+		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.html" as="fetch" type="text/html" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
+		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.css" as="style" type="text/css" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
+		<link rel="preload" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" as="style" type="text/css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://maps.wikimedia.org/" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<!-- <script type="module" src="/js/index.js" async=""></script> -->
 		<script src="/js/index.min.js" async=""></script>
 		<link rel="manifest" href="/manifest.json" />
@@ -47,7 +51,6 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/img/icon-16.png" />
 		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#528ff9" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
 		<!-- <link rel="stylesheet" href="/css/index.css" media="all" /> -->
 		<link rel="stylesheet" href="/css/index.min.css" media="all" />
 	</head>
@@ -186,8 +189,46 @@
 						</footer>
 					</div>
 				</leaflet-marker>
-				<leaflet-marker itemtype="https://schema.org/LocalBusiness" id="ee8d2e72-4370-4f3c-97ba-c0af3d29234b" class="business-marker if-defined" longitude="-118.424971" latitude="35.755727" slot="markers" title="Kernville Saloon" data-category="bar" itemscope="">
-					<img src="/img/adwaita-icons/actions/mark-location.svg" slot="icon" width="32" height="32" alt="" />
+				<leaflet-marker itemtype="https://schema.org/LocalBusiness" id="ee8d2e72-4370-4f3c-97ba-c0af3d29234b" class="business-marker" longitude="-118.424971" latitude="35.755727" slot="markers" title="Kernville Saloon" data-category="bar" itemscope="">
+					<img src="/img/markers/bar.svg" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
+					<div slot="popup">
+						<h4 itemprop="name">Kernville Saloon</h4>
+						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+							<meta itemprop="longitude" content="-118.424971" />
+							<meta itemprop="latitude" content="35.755727" />
+						</div>
+						<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+							<div itemprop="streetAddress">20 Tobias Street</div>
+							<div>
+								<span itemprop="addressLocality">Kernville</span>,
+								<span itemprop="addressRegion">CA</span>
+							</div>
+							<meta itemprop="addressCountry" content="US" />
+							<meta itemprop="postalCode" content="93238" />
+						</address>
+						<div>
+							<a href="tel:+1-760-376-2500">
+								<svg class="icon current-color" width="16" height="16" role="img" aria-hidden="true">
+									<use xlink:href="/img/icons.svg#call-start"></use>
+								</svg>
+								<span itemprop="telephone">1-760-376-2500</span>
+							</a>
+						</div>
+						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+						<a itemprop="url" href="https://www.google.com/maps/?q=35.755727,-118.424971" class="inline-block btn btn-primary" rel="noopener external" role="button">
+							<svg class="icon current-color" width="16" height="16" role="img" aria-hidden="true">
+								<use xlink:href="/img/icons.svg#map"></use>
+							</svg>
+							<span>View in Map App</span>
+						</a>
+						<br />
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#ee8d2e72-4370-4f3c-97ba-c0af3d29234b" text="Check out Kernville Saloon" title="Kernville Saloon | Whiskey Flat Days Map" hidden="">
+							<svg width="16" height="16" aria-hidden="true">
+								<use xlink:href="/img/icons.svg#public-share"></use>
+							</svg>
+							<span>Share</span>
+						</button>
+					</div>
 				</leaflet-marker>
 				<leaflet-marker itemtype="https://schema.org/LocalBusiness" id="102477d0-8539-4a8a-b9c7-3b9e5c2bdf51" class="business-marker if-defined" longitude="-118.419232" latitude="35.757488" slot="markers" title="Kern River Brewing Company" data-category="restaurant dining pub" itemscope="">
 					<img src="/img/adwaita-icons/actions/mark-location.svg" slot="icon" width="32" height="32" alt="" />
@@ -688,7 +729,7 @@
 				<github-user user="kernvalley">
 					<h3 slot="header" class="center">Created By</h3>
 					<div slot="footer">
-						<span>&copy;</span>
+						<span>©</span>
 						<time itemprop="copyrightYear">2020</time>
 						<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
 							<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">

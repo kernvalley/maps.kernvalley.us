@@ -2,7 +2,7 @@
 /* eslint-env serviceworker */
 
 const config = {
-	version: '1.1.6',
+	version: '1.1.7',
 	fresh: [
 		'/'
 	].map(path => new URL(path, location.origin).href),
@@ -27,6 +27,7 @@ const config = {
 		'/img/icon-32.png',
 		'/img/icon-192.png',
 		'/img/favicon.svg',
+		'/img/markers/bar.svg',
 		/* Social Icons for Web Share API shim */
 		'https://cdn.kernvalley.us/img/octicons/mail.svg',
 		'https://cdn.kernvalley.us/img/logos/facebook.svg',
