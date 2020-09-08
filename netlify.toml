@@ -14,10 +14,10 @@
     Content-Security-Policy = '''
       default-src 'self';
       base-uri 'self';
-      img-src 'self' * https://*.githubusercontent.com/u/ https://www.google-analytics.com/collect;
+      img-src 'self' * https://*.githubusercontent.com/u/ https://www.google-analytics.com/;
       script-src 'self' moz-extension: https://cdn.kernvalley.us https://cdn.polyfill.io/v3/polyfill.min.js https://unpkg.com/leaflet@1.6.0/dist/ https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/analytics.js;
       style-src 'self' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/dist/;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/ https://i.imgur.com https://cdn.polyfill.io/v3/ https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/analytics.js https://www.google-analytics.com/collect;
+      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.6.0/dist/ https://maps.wikimedia.org/ https://i.imgur.com https://cdn.polyfill.io/v3/ https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/analytics.js https://www.google-analytics.com/;
       worker-src: 'self';
       font-src 'self' https://cdn.kernvalley.us;
       media-src 'none';
