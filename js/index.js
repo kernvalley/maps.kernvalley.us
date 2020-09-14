@@ -12,50 +12,31 @@ import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { stateHandler } from './handlers.js';
 import { site, GA } from './consts.js';
+import { outbound, madeCall } from './analytics.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
-if (typeof GA === 'string' && GA.length !== 0) {
-	importGa(GA).then(async () => {
-		/* global ga */
-		ga('create', GA, 'auto');
-		ga('set', 'transport', 'beacon');
-		ga('send', 'pageview');
+requestIdleCallback(() => {
+	if (typeof GA === 'string' && GA.length !== 0) {
+		importGa(GA).then(async () => {
+			/* global ga */
+			ga('create', GA, 'auto');
+			ga('set', 'transport', 'beacon');
+			ga('send', 'pageview');
 
+			await ready();
 
-		function outbound() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'outbound',
-				eventAction: 'click',
-				eventLabel: this.href,
-				transport: 'beacon',
-			});
-		}
+			$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
+			$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
+		});
+	}
 
-		function madeCall() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'call',
-				eventLabel: 'Called',
-				transport: 'beacon',
-			});
-		}
-
-		await ready();
-
-		$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
-		$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
-
-	});
-}
-
-
-if (navigator.registerProtocolHandler instanceof Function) {
-	navigator.registerProtocolHandler('geo', `${location.origin}/?geo=%s`, site.title);
-}
+	if (navigator.registerProtocolHandler instanceof Function) {
+		navigator.registerProtocolHandler('geo', `${location.origin}/?geo=%s`, site.title);
+	}
+});
 
 if (location.search.includes('geo=geo')) {
 	const params = new URLSearchParams(location.search);
@@ -80,7 +61,7 @@ if (location.search.includes('geo=geo')) {
 	}
 }
 
-Promise.all([
+Promise.allSettled([
 	ready(),
 	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 ]).then(async () => {
