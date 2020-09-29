@@ -1,9 +1,21 @@
-import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { createCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { site } from './consts.js';
-import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
+
+export async function locate() {
+	const { coords: { longitude, latitude }} = await getLocation({ enableHighAccuracy: true });
+	const url = new URL(location.href);
+	url.hash = `#${latitude},${longitude}`;
+	history.pushState({
+		latitude,
+		longitude,
+		title: 'Current Location',
+		body: `Location: ${latitude}, ${longitude}`,
+	}, `Location | ${site.title}`, url);
+	stateHandler(history.state);
+}
 
 export async function stateHandler({ state }) {
-	const { uuid = null, longitude = NaN, latitude = NaN, title = null, body = null } = state || {};
+	const { uuid = null, longitude = NaN, latitude = NaN, title = null, body = null } = state || history.state;
 
 	if (typeof uuid === 'string') {
 		const marker = document.getElementById(uuid);
@@ -16,54 +28,46 @@ export async function stateHandler({ state }) {
 			marker.open = true;
 		}
 	} else if (! (Number.isNaN(longitude) || Number.isNaN(latitude))) {
-		const marker = await createCustomElement('leaflet-marker');
+		document.title = `${title || 'Marked Location'} | ${site.title}`;
 		const map = document.querySelector('leaflet-map');
 		await map.ready;
-
-		const icon = await loadImage(new URL('./img/adwaita-icons/actions/mark-location.svg', site.iconBaseUri), {
-			loading: 'lazy',
-			height: 32,
-			width: 32,
+		const marker = await map.addMarker({
+			latitude,
+			longitude,
+			title,
+			icon: new URL('./img/adwaita-icons/actions/mark-location.svg', site.iconBaseUri).href,
+			open: false,
+			center: false,
+			popup: body || `Marked Location: ${latitude}, ${longitude}`,
 		});
-		icon.slot = 'icon';
 
-		marker.longitude = longitude;
-		marker.latitude = latitude;
-		marker.slot = 'markers';
-		marker.title = title;
+		// if (body instanceof HTMLElement) {
+		// 	body.slot = 'popup';
+		// 	body.append(document.createElement('hr'), await getShareButton({text: title}));
 
-		if (body instanceof HTMLElement) {
-			body.slot = 'popup';
-			body.append(document.createElement('hr'), await getShareButton({text: title}));
-			if ('part' in body) {
-				body.part.add('popup');
-			}
-			marker.append(icon, body);
-			map.center = marker;
-			marker.open = true;
-		} else if (typeof body === 'string') {
-			const popup = document.createElement('div');
-			const h4 = document.createElement('h4');
-			const content = document.createElement('div');
+		// 	if ('part' in body) {
+		// 		body.part.add('popup');
+		// 	}
+		// 	marker.append(body);
+		// } else if (typeof body === 'string') {
+		// 	const popup = document.createElement('div');
+		// 	const h4 = document.createElement('h4');
+		// 	const content = document.createElement('div');
 
-			h4.textContent = title;
-			content.textContent = body;
-			popup.slot = 'popup';
-			popup.append(h4, content, document.createElement('hr'), await getShareButton({text: title}));
+		// 	h4.textContent = title;
+		// 	content.textContent = body;
+		// 	popup.slot = 'popup';
+		// 	popup.append(h4, content, document.createElement('hr'), await getShareButton({text: title}));
 
-			if ('part' in popup) {
-				popup.part.add('popup');
-			}
-			marker.append(icon, popup);
-			map.center = marker;
-			map.append(marker);
-			marker.open = true;
-		} else {
-			marker.append(icon);
-			map.center = marker;
-			map.append(marker);
-			marker.open = true;
-		}
+		// 	if ('part' in popup) {
+		// 		popup.part.add('popup');
+		// 	}
+
+		// 	marker.append(popup);
+		// }
+
+		map.center = marker;
+		marker.open = true;
 	} else if (state === null) {
 		document.title = `Home | ${site.title}`;
 	}

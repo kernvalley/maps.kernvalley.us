@@ -10,7 +10,7 @@ import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
-import { stateHandler } from './handlers.js';
+import { stateHandler, locate } from './handlers.js';
 import { site, GA } from './consts.js';
 import { outbound, madeCall } from './analytics.js';
 
@@ -112,6 +112,8 @@ Promise.allSettled([
 			return item;
 		}));
 	}
+
+	$('#locate-btn').click(locate);
 
 	$('leaflet-marker').on('open', ({target}) => {
 		const url = new URL(location.pathname, location.origin);

@@ -13,6 +13,7 @@ const config = {
 		'https://cdn.polyfill.io/v3/polyfill.min.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
+		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/github/user.html',
 		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',

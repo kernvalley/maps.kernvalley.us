@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Update to Leaflet [1.7.1](https://leafletjs.com/2020/09/04/leaflet-1.7.1.html)
+
 ### Fixed
 - Fix CSP blocking Analytics [#58](https://github.com/kernvalley/maps.kernvalley.us/issues/58)
 
