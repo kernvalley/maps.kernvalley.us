@@ -39,7 +39,7 @@
 		<link rel="preload" href="https://cdn.polyfill.io/v3/polyfill.min.js" as="script" type="text/javascript" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.html" as="fetch" type="text/html" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
 		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.css" as="style" type="text/css" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
-		<link rel="preload" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" as="style" type="text/css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preload" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" as="style" type="text/css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preconnect" href="https://maps.wikimedia.org/" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<!-- <script type="module" src="/js/index.js" async=""></script> -->
 		<script src="/js/index.min.js" async=""></script>
@@ -70,6 +70,11 @@
 					<br /><br />
 				</div>
 				<div slot="toolbar" class="if-defined">
+					<button type="button" id="locate-btn" class="btn btn-primary float-left">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#mark-location"></use>
+						</svg>
+					</button>
 					<input type="search" id="search" list="search-items" placeholder="Search for..." class="fixed top right z-2 no-border shadow" />
 					<datalist id="search-items"></datalist>
 				</div>
@@ -222,7 +227,7 @@
 							<span>View in Map App</span>
 						</a>
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#ee8d2e72-4370-4f3c-97ba-c0af3d29234b" text="Check out Kernville Saloon" title="Kernville Saloon | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="/#ee8d2e72-4370-4f3c-97ba-c0af3d29234b" text="Check out Kernville Saloon" title="Kernville Saloon | Kern Valley Maps" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="/img/icons.svg#public-share"></use>
 							</svg>
