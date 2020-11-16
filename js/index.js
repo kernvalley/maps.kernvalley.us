@@ -19,7 +19,7 @@ document.body.classList.toggle('no-details', document.createElement('details') i
 
 requestIdleCallback(() => {
 	if (typeof GA === 'string' && GA.length !== 0) {
-		importGa(GA).then(async ({ ga }) =>
+		importGa(GA).then(async ({ ga }) => {
 			ga('create', GA, 'auto');
 			ga('set', 'transport', 'beacon');
 			ga('send', 'pageview');
