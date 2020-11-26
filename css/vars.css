@@ -1,6 +1,7 @@
+@import url("https://cdn.kernvalley.us/css/core-css/theme/default/index.css");
+@import url("https://cdn.kernvalley.us/css/core-css/theme/properties.css");
+
 :root {
 	--map-width: 100vw;
 	--map-height: calc(90vh - var(--nav-height, 4rem));
-	--scrollbar-color: var(--accent-color);
-	--scrollbar-track: var(--primary-color);
 }
