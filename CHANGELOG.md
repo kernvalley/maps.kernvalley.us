@@ -7,8 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.1.8] - 2020-12-13
+
+### Added
+
+- Use `<button is="app-list">` component
+- Add `cookieStore` handling for theme
+
 ### Changed
+
 - Update to Leaflet [1.7.1](https://leafletjs.com/2020/09/04/leaflet-1.7.1.html)
+- Allow `apps.kernvalley.us` in CSP
+- Update style of nav links & buttons
+- Use weather component via `_includes/`
+- Move `<button is="pwa-install">` to `<nav>`
 
 ### Fixed
 - Fix CSP blocking Analytics [#58](https://github.com/kernvalley/maps.kernvalley.us/issues/58)

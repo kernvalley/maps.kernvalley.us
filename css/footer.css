@@ -4,6 +4,10 @@
 	color: #fafafa;
 }
 
+#install-btn > svg {
+	margin-bottom: 10px;
+}
+
 .social-links {
 	font-size: 1.3rem;
 }

@@ -55,6 +55,19 @@
 		<link rel="stylesheet" href="/css/index.min.css" media="all" />
 	</head>
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
+		<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-w">
+			<button type="button" is="app-list" id="app-menu" source="krv-maps" hidden="">
+				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#apps"></use>
+				</svg>
+			</button>
+			<button is="pwa-install" id="install-btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+				<svg class="icon current-color" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#system-software-install"></use>
+				</svg>
+				<span class="mobile-hidden">Install</span>
+			</button>
+		</nav>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
 			<leaflet-map center="35.75444393106021,-118.42502302653762" class="relative custom-element contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
@@ -718,12 +731,6 @@
 					</a>
 				</div>
 			</div>
-			<button is="pwa-install" class="btn btn-primary btn-big btn-wide" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
-				<svg class="icon current-color" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#system-software-install"></use>
-				</svg>
-				<span>Install</span>
-			</button>
 			<hr />
 			<div class="copyright">
 				<github-user user="kernvalley">
