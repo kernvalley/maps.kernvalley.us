@@ -3,31 +3,3 @@
   base = "./"
   publish = "./"
   command = "npm run build"
-[[headers]]
-  for="/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000"
-    Content-Security-Policy = '''
-      default-src 'self';
-      base-uri 'self';
-      img-src 'self' * https://*.githubusercontent.com/u/ https://www.google-analytics.com/;
-      script-src 'self' moz-extension: https://cdn.kernvalley.us https://cdn.polyfill.io/v3/polyfill.min.js https://unpkg.com/leaflet@1.7.1/dist/ https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/analytics.js;
-      style-src 'self' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.7.1/dist/;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://unpkg.com/leaflet@1.7.1/dist/ https://maps.wikimedia.org/ https://i.imgur.com https://cdn.polyfill.io/v3/ https://www.googletagmanager.com/gtag/js https://www.google-analytics.com/analytics.js https://www.google-analytics.com/;
-      worker-src: 'self';
-      font-src 'self' https://cdn.kernvalley.us;
-      media-src 'none';
-      object-src: 'none';
-      manifest-src 'self';
-      form-action 'self';
-      reflected-xss block;
-      block-all-mixed-content;
-      upgrade-insecure-requests;
-      disown-opener;'''
-# [[redirects]]
-  # from = ""
-  # to = ""
