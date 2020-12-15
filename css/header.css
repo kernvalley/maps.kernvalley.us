@@ -1,3 +1,4 @@
 #header {
+	grid-area: header;
 	background-image: url("/img/neon.svg");
 }
