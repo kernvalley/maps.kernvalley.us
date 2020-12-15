@@ -1,5 +1,6 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
+import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
@@ -22,33 +23,6 @@ $(document.documentElement).toggleClass({
 	'no-js': false,
 });
 
-cookieStore.get({ name: 'theme' }).then(async cookie => {
-	await $.ready;
-	const $ads = $('ad-block:not([data-theme]), ad-block[data-theme="auto"]');
-
-	const setTheme = (async ({ name, value = 'auto' }) => {
-		if (name === 'theme') {
-			await Promise.all([
-				$(':root, [data-theme]').data({ theme: value }),
-				$('[theme]:not(ad-block)').attr({ theme: value }),
-				$ads.attr({ theme: value }),
-			]);
-		}
-	});
-
-	if (cookie && typeof cookie.value === 'string') {
-		setTheme(cookie);
-	}
-
-	cookieStore.addEventListener('change', ({ changed, deleted }) => {
-		const cookie = [...changed, ...deleted].find(({ name }) => name === 'theme');
-
-		if (cookie) {
-			setTheme(cookie);
-		}
-	});
-});
-
 requestIdleCallback(() => {
 	if (typeof GA === 'string' && GA.length !== 0) {
 		importGa(GA).then(async ({ ga }) => {
@@ -62,10 +36,6 @@ requestIdleCallback(() => {
 			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
 			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
 		});
-	}
-
-	if (navigator.registerProtocolHandler instanceof Function) {
-		navigator.registerProtocolHandler('geo', `${location.origin}/?geo=%s`, site.title);
 	}
 });
 

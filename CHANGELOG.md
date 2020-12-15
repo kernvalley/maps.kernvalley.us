@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v1.1.8] - 2020-12-13
 
 ### Added
-
+- Fullscreen button
 - Use `<button is="app-list">` component
 - Add `cookieStore` handling for theme
 
