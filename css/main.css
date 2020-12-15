@@ -1,6 +1,7 @@
 #main {
 	--link-color: #049ccf;
 	--link-decoration: underline;
+	grid-area: main;
 }
 
 leaflet-marker::part(popup) {
