@@ -49,7 +49,7 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
-					<leaflet-marker id="{{ town.identifier }}" class="town-marker" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/AdministrativeArea" itemscope="">
+					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/AdministrativeArea" itemscope="">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
@@ -58,31 +58,31 @@ tags:
 					</leaflet-marker>
 				{% endfor %}
 				{% for restaurant in site.data.places.restaurants %}
-					{% include restaurant-marker.html restaurant=restaurant icon="restaurant" %}
+					{% include restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.bars %}
-					{% include restaurant-marker.html restaurant=restaurant icon="bar" %}
+					{% include restaurant-marker.html business=restaurant icon="bar" type="bar" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.cafes %}
-					{% include restaurant-marker.html restaurant=restaurant icon="cafe" %}
+					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" %}
 				{% endfor %}
 				{% for business in site.data.places.stores %}
-					{% include business-marker.html business=business icon="store" %}
+					{% include business-marker.html business=business icon="store" type="store" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
-					{% include local-business-marker.html business=business icon="business" %}
+					{% include local-business-marker.html business=business icon="business" type="other" %}
 				{% endfor %}
 				{% for business in site.data.places.banks %}
-					{% include business-marker.html business=business icon="atm" %}
+					{% include business-marker.html business=business icon="atm" type="bank" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
-					{% include business-marker.html business=business icon="gas" %}
+					{% include business-marker.html business=business icon="gas" type="gas" %}
 				{% endfor %}
 				{% for business in site.data.places.lodging %}
-					{% include local-business-marker.html business=business icon="hotel" %}
+					{% include local-business-marker.html business=business icon="hotel" type="lodging" %}
 				{% endfor %}
 				{% for business in site.data.places.campgrounds %}
-					{% include local-business-marker.html business=business icon="tent" %}
+					{% include local-business-marker.html business=business icon="tent" type="campground" %}
 				{% endfor %}
 			</leaflet-map>
 		</main>
@@ -150,6 +150,17 @@ referrerpolicy="no-referrer" width="256" height="282"/>
 </a>
 			</div>
 		</footer>
+		<toast-message id="map-filters" class="custom-elements if-defined" backdrop="">
+			<div slot="content" class="flex row wrap space-evenly">
+				{% for marker in site.data.places.filters %}
+					<span class="marker-filter-item center" data-type="{{ marker.type }}">
+						<img src="/img/markers/{{ marker.icon }}.svg" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="64" height="64" alt="" />
+						<br />
+						<span>{{ marker.name }}</span>
+					</span>
+				{% endfor %}
+			</div>
+		</toast-message>
 		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="btn btn-primary round shadow fixed z-4" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>

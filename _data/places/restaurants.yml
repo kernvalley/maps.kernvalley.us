@@ -140,7 +140,7 @@
   telephone: 1-760-379-2719
   url: https://www.paradisecovelodge.com
   logo: https://www.paradisecovelodge.com/img/raster/logo.png
-  image: https://www.paradisecovelodge.com/img/raster/background/motel-400.jpg
+  image: https://www.paradisecovelodge.com/img/raster/background/restaurant-350.jpg
   priceRange: $$$
   servesCuisine:
     - American
@@ -160,3 +160,102 @@
     latitude: 35.648277
     longitude: -118.427673
     url: "https://goo.gl/maps/HVrsM1jr7cbRykck9"
+- name: Pizza Factory
+  identifier: a25b7d30-ee03-45ad-b7bf-7d47a457ddbf
+  "@context": https://schema.org
+  "@type": Restaurant
+  telephone: 760-379-5605
+  url: https://lake-isabella.pizzafactory.com
+  address:
+    "@type": PostalAddress
+    streetAddress: 5640 Lake Isabella Blvd.
+    addressLocality: Lake Isabella
+    addressRegion: CA
+    postalCode: 93240
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.618883
+    longitude: -118.476711
+- name: Nelda's Diner
+  identifier: e148b601-c307-4a40-a49a-e345db7a2d94
+  "@context": https://schema.org
+  "@type": Restaurant
+  telephone: 760-379-8448
+  address:
+    "@type": PostalAddress
+    streetAddress: 5128 Lake Isabella Blvd.
+    addressLocality: Lake Isabella
+    addressRegion: CA
+    posstalCode: 93240
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.611481
+    longitude: -118.481487
+- name: 178 Bar & Grill
+  identifier: d059a6dd-bb06-4501-8201-338e32158332
+  "@context": https://schema.org
+  "@type": BarOrPub
+  url: https://www.toasttab.com/178-bar-grill-6107-lake-isabella-blvd/v3
+  telephone: 760-379-0178
+  address:
+    "@type": PostalAddress
+    streetAddress: 6107 Lake Isabella Blvd.
+    addressLocality: Lake Isabella
+    addressRegion: CA
+    postalCode: 93240
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.624876
+    longitude: -118.475142
+- name: Chef Sarape
+  identifier: 47a4698b-150e-4e3a-aac2-feae756e98d0
+  "@context": https://schema.org
+  "@type": Restuarant
+  telephone: 760-379-3663
+  servesCuisine:
+    - Mexican
+  address:
+    "@type": PostalAddress
+    streetAddress: 6106 Lake Isabella Blvd.
+    addressLocality: Lake Isabella
+    addressRegion: CA
+    postalCode: 93240
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.624763
+    longitude: -118.473991
+- name: El Poral Mexican Grill
+  identifier: 16a2d7a5-505f-4e96-92ba-41590ebec567
+  "@context": https://schema.org
+  "@type": Restuarant
+  telephone: 760-379-2779
+  servesCuisine:
+    - Mexican
+  address:
+    "@type": PostalAddress
+    streetAddress: 12598 Mountain Mesa Rd.
+    addressLocality: Lake Isabella
+    addressRegion: CA
+    postalCode: 93240
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.637766
+    longitude: -118.402439
+- name: Johhny McNally's Fairview Lodge
+  "@context": https://schema.org
+  "@type": Restaurant
+  identifier: 1a5c7e00-1541-465d-bbfb-7cdf1e10dda5
+  telephone: 760-376-2430
+  url: https://johhnymcnallys.com
+  servesCuisine:
+    - Steak
+  address:
+    "@type": PostalAddress
+    streetAddress: 7300 Kern River Hwy.
+    addressLocality: Kernville
+    addressRegion: CA
+    postalCode: 93238
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.927049
+    longitude: -118.493456

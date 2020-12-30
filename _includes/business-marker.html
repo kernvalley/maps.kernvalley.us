@@ -1,12 +1,15 @@
-<leaflet-marker id="{{ include.business.identifier }}" class="business-marker" latitude="{{ include.business.location.geo.latitude }}" longitude="{{ include.business.location.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" itemscope="">
+<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.location.geo.latitude }}" longitude="{{ include.business.location.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" itemscope="">
 	<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 		<meta itemprop="latitude" content="{{ include.business.location.geo.latitude }}" />
 		<meta itemprop="longitude" content="{{ include.business.location.geo.longitude }}" />
 	</div>
+	{% if include.business.image %}<meta itemprop="image" content="{{ include.business.image }}" />{% endif %}
+	{% if include.business.logo %}<meta itemprop="image" content="{{ include.business.logo }}" />{% endif %}
 	<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
 	<img src="/img/markers/{{ include.icon | default: 'business' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
 	<div slot="popup">
 		<h3 itemprop="name">{{ include.business.name }}</h3>
+		{% if include.business.description %}<blockquote itemprop="description">{{ include.business.description }}</blockquote>{% endif %}
 		{% if include.business.location.address %}<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
 			<div itemprop="streetAddress">{{ include.business.location.address.streetAddress }}</div>
 			<div>
