@@ -3,6 +3,8 @@
 		<meta itemprop="latitude" content="{{ include.restaurant.geo.latitude }}" />
 		<meta itemprop="longitude" content="{{ include.restaurant.geo.longitude }}" />
 	</div>
+	<meta itemprop="priceRange" content="{{ include.restaurant.priceRange | default: '$$' }}" />
+	<meta itemprop="servesCuisine" content="{{ include.restaurant.servesCuisine }}" />
 	<img src="/img/markers/{{ include.icon | default: 'restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
 	<div slot="popup">
 		<h3 itemprop="name">{{ include.restaurant.name }}</h3>
