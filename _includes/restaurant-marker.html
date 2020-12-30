@@ -1,0 +1,27 @@
+<leaflet-marker id="{{ include.restaurant.identifier }}" class="resturant-marker" latitude="{{ include.restaurant.geo.latitude }}" longitude="{{ include.restaurant.geo.longitude }}" title="{{ include.restaurant.name | escape }}" itemtype="https://schema.org/{{ include.restaurant['@type'] | default: 'Restaurant' }}" itemscope="">
+	<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+		<meta itemprop="latitude" content="{{ include.restaurant.geo.latitude }}" />
+		<meta itemprop="longitude" content="{{ include.restaurant.geo.longitude }}" />
+	</div>
+	<img src="/img/markers/{{ include.icon | default: 'restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+	<div slot="popup">
+		<h3 itemprop="name">{{ include.restaurant.name }}</h3>
+		{% if include.restaurant.address %}<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+			<div itemprop="streetAddress">{{ include.restaurant.address.streetAddress }}</div>
+			<div>
+				<span itemprop="addressLocality">{{ include.restaurant.address.addressLocality }}</span>,
+				<span itemprop="addressRegion">{{ include.restaurant.address.addressRegion }}</span>
+				<meta itemprop="postalCode" content="{{ include.restaurant.address.postalCode }}" />
+				<meta itemprop="addressCountry" content="{{ include.restaurant.address.addressCountry | default: 'US' }}" />
+			</div>
+		</address>{% endif %}
+		{% if include.restaurant.telephone %}<div><a href="tel:+{{ restarant.telephone }}" itemprop="telephone" content="{{ include.restaurant.telephone }}">
+			{% include icon.html icon="call-start" width="20" height="20" fill="currentColor" %}
+			<span>{{ include.restaurant.telephone }}</span>
+		</a></div>{% endif %}
+		{% if include.restaurant.url %}<div><a href="{{ include.restaurant.url }}" itemprop="url" rel="noopener noreferrer external">
+			{% include icon.html icon="link-external" height="20" width="20" fill="currentColor" %}
+			<span>{{ include.restaurant.url | replace: 'https://', '' | replace: 'www.', '' }}</span>
+		</a></div>{% endif %}
+	</div>
+</leaflet-marker>

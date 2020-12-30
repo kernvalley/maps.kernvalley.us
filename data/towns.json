@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /data/towns.json
+---
+{{ site.data.places.towns | jsonify }}

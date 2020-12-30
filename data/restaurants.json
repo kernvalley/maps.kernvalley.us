@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /data/restaurants.json
+---
+{{ site.data.places.restaurants | jsonify }}

@@ -1,5 +1,7 @@
 *.sql
 /img/icons.svg
+_site/
+.jekyll-cache/
 *.min.*
 *.map
 ~*
@@ -69,3 +71,4 @@ typings/
 
 # Local Netlify folder
 .netlify
+.buildconfig
