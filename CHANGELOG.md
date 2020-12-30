@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Replace `_data/places/` directory with `kernvalley/places` submodule
+
 ## [v2.0.0] - 2020-12-29
 
 ### Changed
