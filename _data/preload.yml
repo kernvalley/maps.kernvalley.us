@@ -3,6 +3,7 @@
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
+  importance: high
 - href: "https://cdn.kernvalley.us/components/github/user.css"
   as: style
   type: text/css
@@ -14,3 +15,8 @@
   crossOrigin: anonymous
   referrerPolicy: no-referrer
   importance: high
+- href: https://cdn.kernvalley.us/components/toast-message.css
+  as: style
+  type: text/css
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer
