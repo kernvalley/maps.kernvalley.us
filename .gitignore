@@ -1,6 +1,7 @@
 *.sql
 /img/icons.svg
-_site/
+_site/*
+!/_site/.gitkeep
 .jekyll-cache/
 *.min.*
 *.map
