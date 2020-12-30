@@ -210,7 +210,7 @@
 - name: Chef Sarape
   identifier: 47a4698b-150e-4e3a-aac2-feae756e98d0
   "@context": https://schema.org
-  "@type": Restuarant
+  "@type": Restaurant
   telephone: 760-379-3663
   servesCuisine:
     - Mexican
@@ -227,7 +227,7 @@
 - name: El Poral Mexican Grill
   identifier: 16a2d7a5-505f-4e96-92ba-41590ebec567
   "@context": https://schema.org
-  "@type": Restuarant
+  "@type": Restaurant
   telephone: 760-379-2779
   servesCuisine:
     - Mexican
