@@ -6,3 +6,6 @@
   referrerPolicy: origin
 - href: https://api.github.com
   crossOrigin: anonymous
+- href: https://maps.wikimedia.org/
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer

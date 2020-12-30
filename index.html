@@ -85,7 +85,7 @@ tags:
 					{% include local-business-marker.html business=business icon="tent" type="campground" %}
 				{% endfor %}
 				{% for business in site.data.places.civic %}
-					{% assign icon=site.data.places.iconmap[business['@type']] %}
+					{% assign icon=site.data.iconmap[business['@type']] %}
 					{% include local-business-marker.html business=business icon=icon type="public" %}
 				{% endfor %}
 			</leaflet-map>
@@ -156,7 +156,7 @@ referrerpolicy="no-referrer" width="256" height="282"/>
 		</footer>
 		<toast-message id="map-filters" class="custom-elements if-defined" backdrop="">
 			<div slot="content" class="flex row wrap space-evenly">
-				{% for marker in site.data.places.filters %}
+				{% for marker in site.data.filters %}
 					<span class="marker-filter-item center" data-type="{{ marker.type }}">
 						<img src="/img/markers/{{ marker.icon }}.svg" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="64" height="64" alt="" />
 						<br />
