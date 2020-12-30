@@ -1,64 +1,16 @@
 ---
 layout: null
 pinned: true
+description: Map of the Kern River Valley and surrounding areas
+title: Kern Valley Map
+tags:
+  - map
+  - Kern Valley
+  - Kern River Valley
 ---
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-layout="full" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#"  itemscope="">
-	<head>
-		<base href="/" />
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="robots" content="follow,index" />
-		<meta name="description" content="Maps for the Kern River Valley" />
-		<meta itemprop="description" content="Maps for the Kern River Valley" />
-		<meta name="keywords" content="maps, kern valley, kern river valley, kernville" />
-		<meta itemprop="keywords" content="maps, kern valley, kern river valley, kernville" />
-		<meta name="referrer" content="no-referrer"/>
-		<meta name="mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/qZakAkSl.png" />
-		<!-- Social data -->
-		<!-- Facebook | OpenGraph -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Maps | KernValley.US" />
-		<meta property="og:url" content="https://maps.kernvalley.us" />
-		<meta property="og:description" content="Maps for the Kern River Valley" />
-		<meta property="og:keywords" content="maps, kern valley, kern river valley, kernville" />
-		<meta property="og:image" content="https://i.imgur.com/qZakAkSl.png" />
-		<meta property="og:image:height" content="376" />
-		<meta property="og:image:width" content="640" />
-		<!-- /Facebook | OpenGraph -->
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:creator" content="@kern_valley" />
-		<meta name="twitter:description" content="Maps for the Kern River Valley" />
-		<meta name="twitter:image" content="https://i.imgur.com/qZakAkSl.png" />
-		<!-- /Twitter -->
-		<!-- /Social data -->
-		<meta name="msapplication-TileColor" content="#528ff9" />
-		<meta name="msapplication-config" content="/browserconfig.xml" />
-		<meta name="theme-color" content="#528ff9" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="#528ff9" />
-		<title itemprop="headline">Kern Valley Maps</title>
-		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.html" as="fetch" type="text/html" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
-		<link rel="preload" href="https://cdn.kernvalley.us/components/leaflet/map.css" as="style" type="text/css" crossorigin="anonymous" referrerpolicy="no-referrer" importance="high" />
-		<link rel="preload" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" as="style" type="text/css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<link rel="preconnect" href="https://maps.wikimedia.org/" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<script src="https://cdn.polyfill.io/v3/polyfill.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" async="" defer="" nomodule=""></script>
-		<script src="https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js" crossorigin="anonmyous" referrerpolicy="no-referrer" integrity="sha384-xyhN4T4+9VPh8uXl6uWjGzsqwNXN9C2tla8b6zSrSqYlMFUoeCdoxiEJU0js+GNE" async="" defer="" nomodule=""></script>
-		<!-- <script type="module" src="/js/index.js" async=""></script> -->
-		<script src="/js/index.min.js" referrerpolicy="no-referrer" async="" defer=""></script>
-		<link rel="manifest" href="/manifest.json" />
-		<link rel="license" href="/LICENSE" />
-		<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" sizes="any" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/img/icon-16.png" />
-		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#528ff9" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<!-- <link rel="stylesheet" href="/css/index.css" media="all" /> -->
-		<link rel="stylesheet" href="/css/index.min.css" referrerpolicy="no-rerferrer" media="all" />
-	</head>
+<html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-layout="full" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#" itemscope="">
+	{% include head.html %}
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
 		<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-3">
 			<button type="button" is="app-list" id="app-menu" source="krv-maps" hidden="">
@@ -80,7 +32,7 @@ pinned: true
 		</nav>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.75444393106021,-118.42502302653762" class="relative custom-element contain-content z-1" zoom="18" maxzoom="19" minzoom="12" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
+			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="12" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
 				<div class="center">
 					<div class="status-box alert inline-block">
 						<b class="block">Your browser is not supported</b>
@@ -118,7 +70,7 @@ pinned: true
 					{% include business-marker.html business=business icon="store" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
-					{% include business-marker.html business=business icon="business" %}
+					{% include local-business-marker.html business=business icon="business" %}
 				{% endfor %}
 				{% for business in site.data.places.banks %}
 					{% include business-marker.html business=business icon="atm" %}

@@ -3,6 +3,7 @@
 		<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
 		<meta itemprop="longitude" content="{{ include.business.geo.longitude }}" />
 	</div>
+	<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
 	<img src="/img/markers/{{ include.icon | default: 'business' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
 	<div slot="popup">
 		<h3 itemprop="name">{{ include.business.name }}</h3>
