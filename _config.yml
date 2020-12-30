@@ -89,6 +89,7 @@ include:
   - .well-known
   - _headers
   - _redirects
+  - /places/
 exclude:
   - ".gitkeep"
   - "*.rb"

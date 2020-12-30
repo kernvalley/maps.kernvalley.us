@@ -84,6 +84,10 @@ tags:
 				{% for business in site.data.places.campgrounds %}
 					{% include local-business-marker.html business=business icon="tent" type="campground" %}
 				{% endfor %}
+				{% for business in site.data.places.civic %}
+					{% assign icon=site.data.places.iconmap[business['@type']] %}
+					{% include local-business-marker.html business=business icon=icon type="public" %}
+				{% endfor %}
 			</leaflet-map>
 		</main>
 		<footer id="footer">

@@ -1,7 +1,7 @@
 - name: Sierra Gateway Market
   identifier: f7e94bcf-4d3c-4e6b-a6d8-bc5a569f282f
   "@context": "https://schema.org"
-  "@type": "Store"
+  "@type": Store
   telephone: 760-376-2424
   location:
     geo:

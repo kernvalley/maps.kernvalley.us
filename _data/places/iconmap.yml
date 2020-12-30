@@ -1,0 +1,15 @@
+Restuarant: restuarant
+LocalBusiness: business
+Store: store
+Campground: tent
+Motel: hotel
+GasStation: gas
+Hospital: hospital
+Museum: museum
+BusStop: bus
+ParkingFacility: parking
+PublicToilet: outhouse
+EventVenue: event
+FireStation: fire-truck
+Cemetery: grave-stone
+PlaceOfWorship: church
