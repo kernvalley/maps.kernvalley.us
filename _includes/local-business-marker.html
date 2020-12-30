@@ -1,0 +1,31 @@
+<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'business' }}" itemscope="">
+	<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+		<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
+		<meta itemprop="longitude" content="{{ include.business.geo.longitude }}" />
+	</div>
+	<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
+	{% if include.business.image %}<meta itemprop="image" content="{{ include.business.image }}" />{% endif %}
+	{% if include.business.logo %}<meta itemprop="image" content="{{ include.business.logo }}" />{% endif %}
+	<img src="/img/markers/{{ include.icon | default: 'business' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+	<div slot="popup">
+		<h3 itemprop="name">{{ include.business.name }}</h3>
+		{% if include.business.description %}<blockquote itemprop="description">{{ include.business.description }}</blockquote>{% endif %}
+		{% if include.business.address %}<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+			<div itemprop="streetAddress">{{ include.business.address.streetAddress }}</div>
+			<div>
+				<span itemprop="addressLocality">{{ include.business.address.addressLocality }}</span>,
+				<span itemprop="addressRegion">{{ include.business.address.addressRegion }}</span>
+				<meta itemprop="postalCode" content="{{ include.business.address.postalCode }}" />
+				<meta itemprop="addressCountry" content="{{ include.business.address.addressCountry | default: 'US' }}" />
+			</div>
+		</address>{% endif %}
+		{% if include.business.telephone %}<div><a href="tel:+{{ restarant.telephone }}" itemprop="telephone" content="{{ include.business.telephone }}">
+			{% include icon.html icon="call-start" width="20" height="20" fill="currentColor" %}
+			<span>{{ include.business.telephone }}</span>
+		</a></div>{% endif %}
+		{% if include.business.url %}<div><a href="{{ include.business.url }}" itemprop="url" rel="noopener noreferrer external">
+			{% include icon.html icon="link-external" height="20" width="20" fill="currentColor" %}
+			<span>{{ include.business.url | replace: 'https://', '' | replace: 'www.', '' }}</span>
+		</a></div>{% endif %}
+	</div>
+</leaflet-marker>

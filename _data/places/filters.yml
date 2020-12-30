@@ -1,0 +1,28 @@
+- name: Gas Stations
+  type: gas
+  icon: gas
+  checked: true
+- name: Lodging
+  type: lodging
+  icon: hotel
+  checked: true
+- name: Restaurants
+  type: restuarant
+  icon: restaurant
+  checked: true
+- name: Banks & ATMs
+  type: bank
+  icon: atm
+  checked: false
+- name: Campgrounds
+  type: campground
+  icon: tent
+  checked: false
+- name: Coffee
+  type: cafe
+  icon: cafe
+  checked: false
+- name: Bars
+  type: bar
+  icon: bar
+  checked: false

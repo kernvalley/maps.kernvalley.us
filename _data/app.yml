@@ -1,0 +1,79 @@
+name: Kern Valley Maps
+shortName: KRV Maps
+version: 2.0.0
+lang: en
+dir: ltr
+display: standalone
+orientation: any
+description: "Map of the Kern River Valley and surrounding areas"
+icons-file: /img/icons.svg
+theme:
+  color: '#007bff'
+  background: '#242424'
+icons:
+  - src: /img/favicon.svg
+    type: image/svg+xml
+    sizes: 150x150
+    purpose: maskable any
+  - src: /img/apple-touch-icon.png
+    rel: apple-touch-icon
+    type: image/png
+    sizes: 180x180
+  - src: /img/icon-512.png
+    type: image/png
+    sizes: 512x512
+    purpose: maskable any
+  - src: /img/icon-192.png
+    type: image/png
+    sizes: 192x192
+    purpose: maskable any
+  - src: /img/icon-32.png
+    type: image/png
+    sizes: 32x32
+  - src: /img/icon-16.png
+    type: image/png
+    sizes: 16x16
+screenshots:
+  - src: https://i.imgur.com/9maR7jY.jpg
+    sizes: 1355x667
+    type: image/jepg
+  - src: https://i.imgur.com/9maR7jYg.jpg
+    sizes: 1024x504
+    type: image/jpeg
+  - src: https://i.imgur.com/9maR7jYl.jpg
+    sizes: 640x315
+    type: image/jpeg
+  - src: https://i.imgur.com/9maR7jYm.jpg
+    sizes: 320x158
+    type: image/jpeg
+  - src: https://i.imgur.com/9maR7jYt.jpg
+    sizes: 160x79
+    type: image/jpeg
+# https://web.dev/app-shortcuts/
+shortcuts:
+  - name: Kernville
+    description: Open map in Kernville
+    url: '/#kernville'
+  - name: Lake Isabella
+    description: Open map in Lake Isabella
+    url: '/#lake-isabella'
+  - name: Wofford Heights
+    description: Open map in Wofford Heights
+    url: '/#wofford-heights'
+  - name: Weldon
+    description: Open map in Weldon
+    url: '/#weldon'
+related_applications: []
+features:
+  - Offline map of the Kern River Valley
+  - Lists businesses, restaurants, campgrounds, gas stations, and more
+  - Quickly search for places by name
+  - Find information such as addresses, phone numbers, and websites
+  - Easily find and share places
+# https://github.com/w3c/manifest/wiki/Categories
+categories:
+  - business
+  - productivity
+  - utilities
+  - travel
+  - navigation

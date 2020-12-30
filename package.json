@@ -1,10 +1,10 @@
 {
   "name": "maps.kernvalley.us",
-  "version": "1.1.8",
+  "version": "2.0.0",
   "private": true,
   "description": "Maps for the Kern River Valley",
   "config": {
-    "icons": "./icons.csv",
+    "icons": "./_data/icons.csv",
     "serve": {
       "domain": "localhost",
       "path": "./",
@@ -14,7 +14,7 @@
       "css": "css/",
       "js": "js/",
       "img": "img/",
-      "html": "*.html **/*.html"
+      "html": "*.html _includes/*.html _layouts/*.html"
     }
   },
   "repository": {
@@ -33,17 +33,18 @@
   },
   "homepage": "https://github.com/kernvalley/maps.kernvalley.us",
   "scripts": {
-    "test": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "test": "npm run lint",
     "start": "npm run netlify",
     "preinstall": "npm run git:submodules",
     "postinstall": "npm run build",
     "git:fetch": "git fetch --prune --tags",
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
-    "lint:css": "if [ -f '.stylelintrc.json' ]; then stylelint ${npm_package_config_dir_css}; fi",
-    "lint:html": "if [ -f '.htmlhintrc' ]; then htmlhint ${npm_package_config_dir_html}; fi",
-    "lint:js": "if [ -f '.eslintrc.json' ]; then eslint .; fi",
-    "fix:css": "if [ -f './stylelintrc.json' ]; then stylelint ${npm_package_config_dir_css} --fix; fi",
-    "fix:js": "if [ -f '.eslintrc.json' ]; then eslint. --fix; fi",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "if [ -f .eslintrc.json ]; then eslint .; fi",
+    "lint:css": "if [ -f .stylelintrc.json ]; then stylelint './**.css'; fi",
+    "lint:html": "if [ -f .htmlhintrc ]; then htmlhint ${npm_package_config_dir_html}; fi",
+    "fix:css": "stylelint './**.css' --fix",
+    "fix:js": "eslint. --fix",
     "build": "npm run build:icons && npm run build:css && npm run build:js",
     "build:site": "JEKYLL_ENV=production bundle exec jekyll build",
     "build:site:dev": "bundle exec jekyll build --drafts --unpublished --future --profile --trace --strict_front_matter",
@@ -68,7 +69,7 @@
     "eslint": "^7.16.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-babel": "^5.3.1",
-    "htmlhint": "^0.14.2",
+    "eslint-plugin-frontmatter": "0.0.8",
     "netlify-cli": "^2.69.11",
     "postcss": "^7.0.35",
     "postcss-cli": "^7.1.2",

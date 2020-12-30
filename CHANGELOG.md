@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.0] - 2020-12-29
+
+### Changed
+- Rewrite to use Jekyll instead of static HTML
+- Store place info in `_data/places/*.yml`
+
 ## [v1.1.8] - 2020-12-13
 
 ### Added
