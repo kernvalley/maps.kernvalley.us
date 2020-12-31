@@ -1,18 +1,20 @@
 <leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" itemscope="">
-	<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-		<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
-		<meta itemprop="longitude" content="{{ include.business.geo.longitude }}" />
-	</div>
-	<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
-	<meta itemprop="servesCuisine" content="{{ include.business.servesCuisine }}" />
-	{% if include.business.image %}{% for img in include.business.image %}
-		<meta itemprop="image" content="{{ img.url }}" />
-	{% endfor %}{% endif %}
-	{% if include.business.logo %}{% for img in include.business.logo %}
-		<meta itemprop="image" content="{{ img.url }}" />
-	{% endfor %}{% endif %}
-	<img src="/img/markers/{{ include.icon | default: 'restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+	<img src="/img/markers/{{ include.icon | default: 'Restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
 	<template slot="popup">
+		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+			<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
+			<meta itemprop="longitude" content="{{ include.business.geo.longitude }}" />
+		</div>
+		<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
+		{% if include.business.servesCuisine %}{% for cuisine in include.business.servesCuisine %}
+			<meta itemprop="servesCuisine" content="{{ cuisine | escape }}" />
+		{% endfor %}{% endif %}
+		{% if include.business.image %}{% for img in include.business.image %}
+			<meta itemprop="image" content="{{ img.url }}" />
+		{% endfor %}{% endif %}
+		{% if include.business.logo %}{% for img in include.business.logo %}
+			<meta itemprop="image" content="{{ img.url }}" />
+		{% endfor %}{% endif %}
 		<h3 itemprop="name">{{ include.business.name }}</h3>
 		{% if include.business.description %}<blockquote itemprop="description">{{ include.business.description }}</blockquote>{% endif %}
 		{% if include.business.address %}<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
