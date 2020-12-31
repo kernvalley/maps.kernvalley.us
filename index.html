@@ -73,7 +73,7 @@ tags:
 					{% include local-business-marker.html business=business icon="business" type="other" %}
 				{% endfor %}
 				{% for business in site.data.places.banks %}
-					{% include business-marker.html business=business icon="atm" type="bank" %}
+					{% include local-business-marker.html business=business icon="atm" type="bank" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
 					{% include local-business-marker.html business=business icon="gas" type="gas" %}
