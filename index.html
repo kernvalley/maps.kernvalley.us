@@ -49,7 +49,7 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
-					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/AdministrativeArea" itemscope="">
+					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
