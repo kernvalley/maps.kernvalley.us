@@ -9,12 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `openingHoursSpecification` support
+- Add WIP template for creating responsive images from an array of `ImageObject`s
+- Several new icons
+- Add CORS headers for map icons (`/img/markers/*.svg`)
 
 ### Changed
 - Replace `_data/places/` directory with `kernvalley/places` submodule
 - Update preloading
 - Use `<template>` for Leaflet popups for simpler DOM
 - Use `address.html` template for marker addresses
+- Update icons to be primarily based on `@type` unless explicitly given icon to use
 
 ## [v2.0.0] - 2020-12-29
 
