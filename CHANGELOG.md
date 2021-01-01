@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use `<template>` for Leaflet popups for simpler DOM
 - Use `address.html` template for marker addresses
 - Update icons to be primarily based on `@type` unless explicitly given icon to use
+- Reduced icon / marker size
+- Use CDN for map marker icons
+
+### Fixed
+- Invalid phone links
 
 ## [v2.0.0] - 2020-12-29
 

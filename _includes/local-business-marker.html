@@ -1,6 +1,6 @@
 {% assign type=include.business['@type'] | default: 'LocalBusiness' %}
-<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'LocalBusiness' }}" itemscope="">
-	<img src="/img/markers/{{ include.icon | default: site.data.iconmap[type] | default: 'business' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'LocalBusiness' }}" itemscope="">
+	<img src="https://cdn.kernvalley.us/img/markers/{{ include.icon | default: site.data.iconmap[type] | default: 'business' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="27" width="27" />
 	<template slot="popup">
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 			<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
@@ -16,7 +16,7 @@
 		<h3 itemprop="name">{{ include.business.name }}</h3>
 		{% if include.business.description %}<blockquote itemprop="description">{{ include.business.description }}</blockquote>{% endif %}
 		{% if include.business.address %}{% include address.html address=include.business.address %}{% endif %}
-		{% if include.business.telephone %}<div><a href="tel:+{{ restarant.telephone }}" itemprop="telephone" content="{{ include.business.telephone }}">
+		{% if include.business.telephone %}<div><a href="tel:+{{ include.business.telephone }}" itemprop="telephone" content="{{ include.business.telephone }}">
 			<span>{{ include.business.telephone }}</span>
 			{% include icon.html icon="call-start" width="20" height="20" fill="currentColor" %}
 		</a></div>{% endif %}
