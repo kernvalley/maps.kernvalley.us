@@ -67,26 +67,25 @@ tags:
 					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" %}
 				{% endfor %}
 				{% for business in site.data.places.stores %}
-					{% include local-business-marker.html business=business icon="store" type="store" %}
+					{% include local-business-marker.html business=business type="store" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
-					{% include local-business-marker.html business=business icon="business" type="other" %}
+					{% include local-business-marker.html business=business type="other" %}
 				{% endfor %}
 				{% for business in site.data.places.banks %}
 					{% include local-business-marker.html business=business icon="atm" type="bank" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
-					{% include local-business-marker.html business=business icon="gas" type="gas" %}
+					{% include local-business-marker.html business=business type="gas" %}
 				{% endfor %}
 				{% for business in site.data.places.lodging %}
-					{% include local-business-marker.html business=business icon="hotel" type="lodging" %}
+					{% include local-business-marker.html business=business type="lodging" %}
 				{% endfor %}
 				{% for business in site.data.places.campgrounds %}
-					{% include local-business-marker.html business=business icon="tent" type="campground" %}
+					{% include local-business-marker.html business=business type="campground" %}
 				{% endfor %}
 				{% for business in site.data.places.civic %}
-					{% assign icon=site.data.iconmap[business['@type']] %}
-					{% include local-business-marker.html business=business icon=icon type="public" %}
+					{% include local-business-marker.html business=business type="public" %}
 				{% endfor %}
 			</leaflet-map>
 		</main>

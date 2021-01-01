@@ -1,5 +1,6 @@
+{% assign type=include.business['@type'] | default: 'LocalBusiness' %}
 <leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" itemscope="">
-	<img src="/img/markers/{{ include.icon | default: 'Restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+	<img src="/img/markers/{{ include.icon | default: site.data.iconmap[type] | default: 'Restaurant' }}.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
 	<template slot="popup">
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 			<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
