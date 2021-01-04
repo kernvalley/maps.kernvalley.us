@@ -15,6 +15,11 @@
   Content-Security-Policy: default-src 'none'
   Access-Control-Allow-Origin: *
 
+/img/markers/missing-image.*
+  X-Content-Type-Options: nosniff
+  Content-Security-Policy: default-src 'none'
+  Access-Control-Allow-Origin: *
+
 /:placeholder/
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY

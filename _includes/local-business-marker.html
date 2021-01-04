@@ -1,5 +1,6 @@
-<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'LocalBusiness' }}" itemscope="">
+<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'LocalBusiness' }}">
 	{% include schema-icon.html place=include.business %}
+	<script type="application/ld+json">{{ include.business | jsonify }}</script>
 	<template slot="popup">
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 			<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />
@@ -8,7 +9,9 @@
 		<meta itemprop="priceRange" content="{{ include.business.priceRange }}" />
 		{% if include.business.image %}{% for img in include.business.image %}
 			<meta itemprop="image" content="{{ img.url }}" />
-		{% endfor %}{% endif %}
+		{% endfor %}{% else %}
+			<meta itemprop="image" content="/img/missing-image.png" />
+		{% endif %}
 		{% if include.business.logo %}{% for img in include.business.logo %}
 			<meta itemprop="image" content="{{ img.url }}" />
 		{% endfor %}{% endif %}
