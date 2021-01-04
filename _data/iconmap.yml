@@ -1,30 +1,30 @@
-FoodEstablishment: restuarant
-Restuarant: restuarant
-FastFoodRestaurant: food
-BarOrPub: bar
-CafeOrCoffeeShop: cafe
-LocalBusiness: business
-Store: shopping
-Campground: tent
-Motel: hotel
-GasStation: gas
-Museum: museum
-MovieTheater: movie-roll
-BowlingAlley: bowling
-BusStop: bus
-ParkingFacility: parking
-AutoRepair: engine-outline
-PublicToilet: outhouse
-EventVenue: event
-Hospital: hospital
-FireStation: fire-truck
-EmergencyService: ambulance
-PoliceStation: police
-Pharmacy: pharmacy
-Library: library
-PostOffice: postage-stamp
-Cemetery: grave-stone
-PlaceOfWorship: church
-Florist: florist
-RadioStation: radio-tower
+# FoodEstablishment: restuarant
+# Restuarant: restuarant
+# FastFoodRestaurant: food
+# BarOrPub: bar
+# CafeOrCoffeeShop: cafe
+# LocalBusiness: business
+# Store: shopping
+# Campground: tent
+# Motel: hotel
+# GasStation: gas
+# Museum: museum
+# MovieTheater: movie-roll
+# BowlingAlley: bowling
+# BusStop: bus
+# ParkingFacility: parking
+# AutoRepair: engine-outline
+# PublicToilet: outhouse
+# EventVenue: event
+# Hospital: hospital
+# FireStation: fire-truck
+# EmergencyService: ambulance
+# PoliceStation: police
+# Pharmacy: pharmacy
+# Library: library
+# PostOffice: postage-stamp
+# Cemetery: grave-stone
+# PlaceOfWorship: church
+# Florist: florist
+# RadioStation: radio-tower
 # MovieTheater: 
