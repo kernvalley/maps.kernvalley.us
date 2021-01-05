@@ -1,1 +1,3 @@
-/places/:type /places/:type.json
+/places/:type		/places/:type.json
+/marker-icon.png	/img/octicons/location.svg
+/marker-shadow.png	/img/null.svg

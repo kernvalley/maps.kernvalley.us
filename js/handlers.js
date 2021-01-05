@@ -1,4 +1,4 @@
-import { createCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { createCustomElement, getLocation, sleep } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { site } from './consts.js';
 
 export async function locate() {
@@ -22,9 +22,11 @@ export async function stateHandler({ state }) {
 
 		if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
 			const map = marker.closest('leaflet-map');
-			await map.ready;
 			document.title = `${title} | ${site.title}`;
+			await Promise.allSettled([map.ready, marker.ready, sleep(200)]);
 			map.center = marker;
+			map.zoom = Math.max(marker.maxZoom || 18, 18);
+			marker.hidden = false;
 			marker.open = true;
 		}
 	} else if (! (Number.isNaN(longitude) || Number.isNaN(latitude))) {

@@ -106,16 +106,16 @@ Promise.allSettled([
 		const map = document.querySelector('leaflet-map');
 		await map.ready;
 
-		document.getElementById('search-items').append(...map.markers.map(({ title }) => {
-			const item = document.createElement('option');
-			item.textContent = title;
-			return item;
+		document.getElementById('search-items').append(...[...new Set([...document.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
+			const option = document.createElement('option');
+			option.textContent = name;
+			return option;
 		}));
 	}
 
 	$('#locate-btn').click(locate);
 
-	$('leaflet-marker').on('open', ({target}) => {
+	$('leaflet-marker[id]').on('open', ({target}) => {
 		const url = new URL(location.pathname, location.origin);
 		url.hash = `#${target.id}`;
 		document.title = `${target.title} | ${site.title}`;
@@ -143,7 +143,7 @@ Promise.allSettled([
 				el.open = false;
 			});
 
-			const matches = markers.filter(el => el.title.toLowerCase().startsWith(value));
+			const matches = markers.filter(el => el.title.toLowerCase().includes(value));
 			matches.forEach(el => el.hidden = false);
 
 			if (matches.length === 1) {
