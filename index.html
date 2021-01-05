@@ -32,7 +32,7 @@ tags:
 		</nav>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="11" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
+			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="9" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
 				<div class="center">
 					<div class="status-box alert inline-block">
 						<b class="block">Your browser is not supported</b>
@@ -54,7 +54,25 @@ tags:
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
 						<img src="https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg" slot="icon" loading="lazy" decoding="async" referrerPlocy="no-referrer" alt="" height="32" width="32" />
-						<div slot="popup">{{ town.name }}</div>
+						<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+							<meta itemprop="addressLocality" content="{{ town.address.addressLocality | default: town.name }}" />
+							<meta itemprop="addressRegion" content="{{ town.address.addressRegion | default: 'CA' }}" />
+							<meta itemprop="addressCountry" content="{{ town.address.addressCountry | default: 'US' }}" />
+							{% for code in town.address.postalCode %}
+								<meta itemprop="postalCode" content="{{ code }}" />
+							{% endfor %}
+						</address>
+						<div slot="popup">
+							<h3>
+								{% if town.url %}
+									<a href="{{ town.url }}" itemprop="url" rel="noopener noreferrer external">
+										<span itemprop="name">{{ town.name }}</span>, CA
+									</a>
+								{% else %}
+									<span itemprop="name">{{ town.name }}</span>, CA
+								{% endif %}
+							</h3>
+						</div>
 					</leaflet-marker>
 				{% endfor %}
 				{% for restaurant in site.data.places.restaurants %}
