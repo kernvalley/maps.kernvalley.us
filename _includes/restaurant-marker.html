@@ -1,6 +1,10 @@
-<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}">
+<leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" minzoom="{{ include.minZoom }}" maxzoom="{{ include.maxZoom }}" hidden="">
 	<script type="application/ld+json">{{ include.business | jsonify }}</script>
-	{% include schema-icon.html place=include.business size=include.size %}
+	{% if include.business.logo.size != 0 and include.business.logo.first.encodingFormat == 'image/svg+xml' %}
+		<img slot="icon" src="{{ include.business.logo.first.url }}" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" decoding="async" height="30" width="30" alt="" />
+	{% else %}
+		{% include schema-icon.html place=include.business size=include.size %}
+	{% endif %}
 	<template slot="popup">
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 			<meta itemprop="latitude" content="{{ include.business.geo.latitude }}" />

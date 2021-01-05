@@ -7,11 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.1] - 2021-01-05
+
 ### Added
 - `openingHoursSpecification` support
 - Add WIP template for creating responsive images from an array of `ImageObject`s
 - Several new icons
 - Add CORS headers for map icons (`/img/markers/*.svg`)
+- Toggling of marker visibility based on map zoom level
 
 ### Changed
 - Replace `_data/places/` directory with `kernvalley/places` submodule
@@ -24,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Invalid phone links
+- Centering and zooming into markers based on URL hash
 
 ## [v2.0.0] - 2020-12-29
 

@@ -32,7 +32,7 @@ tags:
 		</nav>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="12" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
+			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="11" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
 				<div class="center">
 					<div class="status-box alert inline-block">
 						<b class="block">Your browser is not supported</b>
@@ -49,7 +49,7 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
-					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="">
+					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="" maxzoom="15">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
@@ -58,34 +58,34 @@ tags:
 					</leaflet-marker>
 				{% endfor %}
 				{% for restaurant in site.data.places.restaurants %}
-					{% include restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" %}
+					{% include restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" minZoom="15" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.bars %}
-					{% include restaurant-marker.html business=restaurant icon="bar" type="bar" %}
+					{% include restaurant-marker.html business=restaurant icon="bar" type="bar" minZoom="16" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.cafes %}
-					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" %}
+					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" minZoom="17" %}
 				{% endfor %}
 				{% for business in site.data.places.stores %}
-					{% include local-business-marker.html business=business type="store" %}
+					{% include local-business-marker.html business=business type="store" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
-					{% include local-business-marker.html business=business type="other" %}
+					{% include local-business-marker.html business=business type="other" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.banks %}
-					{% include local-business-marker.html business=business icon="atm" type="bank" %}
+					{% include local-business-marker.html business=business icon="atm" type="bank" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
-					{% include local-business-marker.html business=business type="gas" %}
+					{% include local-business-marker.html business=business type="gas" minZoom="12" %}
 				{% endfor %}
 				{% for business in site.data.places.lodging %}
-					{% include local-business-marker.html business=business type="lodging" %}
+					{% include local-business-marker.html business=business type="lodging" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.campgrounds %}
-					{% include local-business-marker.html business=business type="campground" %}
+					{% include local-business-marker.html business=business type="campground" minZoom="15" %}
 				{% endfor %}
 				{% for business in site.data.places.civic %}
-					{% include local-business-marker.html business=business type="public" %}
+					{% include local-business-marker.html business=business type="public" minZoom="17" %}
 				{% endfor %}
 			</leaflet-map>
 		</main>
