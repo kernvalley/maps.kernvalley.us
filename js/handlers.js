@@ -1,8 +1,13 @@
 import { createCustomElement, getLocation, sleep } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { site } from './consts.js';
 
 export async function locate() {
-	const { coords: { longitude, latitude }} = await getLocation({ enableHighAccuracy: true });
+	const { coords: { longitude, latitude }} = await getLocation({
+		enableHighAccuracy: true,
+		maxAge: 5 * SECONDS,
+	});
+
 	const url = new URL(location.href);
 	url.hash = `#${latitude},${longitude}`;
 	history.pushState({

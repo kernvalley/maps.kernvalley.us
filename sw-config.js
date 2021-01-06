@@ -25,12 +25,16 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/github/user.html',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
+		'https://cdn.kernvalley.us/components/ad/block.html',
+		'https://cdn.kernvalley.us/components/weather/current.html',
 
 		/* CSS */
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
+		'https://cdn.kernvalley.us/components/ad/block.css',
+		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 
 		/* Images & Icons */
@@ -50,6 +54,6 @@ const config = {
 		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 		/https:\/\/api\.github\.com\/users\/*/,
-		/https:\/\/baconipsum\.com\/api\/*/,
+		/https:\/\/api\.openweathermap\.org\/data\/*/,
 	],
 };

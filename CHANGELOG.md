@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.1.0] - 2021-01-06
+
 ### Added
 - Sharing of places via `<button is="share-button">`
+- WIP filtering of markers by type (`data-marker-type`)
+- Sidebar, ads, and weather
+
+### Changed
+- Use fullscreen icon from Octicons instead
+- Updated places submodule to pass structured data tests
 
 ### Fixed
 - Re-add find location button
+- Make mutli-column footer work with Chrome by just using `float` and `margin`s
 
 ## [v2.0.1] - 2021-01-05
 

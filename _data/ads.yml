@@ -2,9 +2,17 @@ source: krv-maps
 medium: web
 campaign: kv-ads
 sidebar:
-  - url: https://ads.kernvalley.us
+  - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
+    url: https://ads.kernvalley.us
     label: Kern Valley Ads
-    description: Advertise on sites throughout the Kern River Valley
+    description: Advertise on local sites throughout the Kern River Valley
     callToAction: Click here to get started!
-    image: https://ads.kernvalley.us/img/favicon.svg
-    layout: card
+    image: https://cdn.kernvalley.us/img/branding/ads.kernvalley.us.svg
+    imageFit: contain;
+  - uuid: 430d5e5f-a4fd-448f-8557-5b6801a14a7d
+    label: Kern Valley Events
+    url: https://events.kernvalley.us/
+    description: The best things going on in the Valley
+    image: https://cdn.kernvalley.us/img/branding/events.kernvalley.us.svg
+    imageFit: contain;
+    callToAction: See what's going on today.
