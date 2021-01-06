@@ -37,7 +37,7 @@ export async function stateHandler({ state }) {
 		]);
 		const map = document.querySelector('leaflet-map');
 		await map.ready;
-		const Marker = customElements.get('leaflet-marker')
+		const Marker = customElements.get('leaflet-marker');
 		const marker = new Marker({
 			latitude,
 			longitude,
@@ -46,7 +46,7 @@ export async function stateHandler({ state }) {
 			popup: body || `Marked Location: ${latitude}, ${longitude}`,
 		});
 		marker.title = title;
-		marker.addEventListener('close', ({ target }) => target.remove());
+		marker.addEventListener('close', ({ target }) => sleep(750).then(() => target.remove()));
 		map.append(marker);
 
 		map.center = marker;
