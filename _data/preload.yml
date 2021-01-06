@@ -26,3 +26,13 @@
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
+- href: https://cdn.kernvalley.us/components/ad/block.css
+  as: style
+  type: text/css
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer
+- href: https://cdn.kernvalley.us/components/weather/current.css
+  as: style
+  type: text/css
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer

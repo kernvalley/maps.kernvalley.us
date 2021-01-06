@@ -21,12 +21,17 @@ tags:
 			<span class="grow-4"></span>
 			<button type="button" id="fs-btn" class="btn" data-full-screen="leaflet-map" title="Go Fullscreen">
 				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#view-fullscreen"></use>
+					<use xlink:href="/img/icons.svg#screen-full"></use>
 				</svg>
 			</button>
 			<button type="button" id="locate-btn" class="btn" title="Find Me">
 				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
 					<use xlink:href="/img/icons.svg#find-location"></use>
+				</svg>
+			</button>
+			<button type="button" id="filter-btn" class="btn" title="Show Map Settings" data-show-modal="#settings-dialog">
+				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#settings"></use>
 				</svg>
 			</button>
 			<button is="pwa-install" id="install-btn" class="btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
@@ -55,7 +60,7 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
-					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="" maxzoom="15">
+					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="" maxzoom="15" data-postal-code="{{ town.address.postalCode.first }}">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
@@ -114,9 +119,28 @@ tags:
 				{% endfor %}
 			</leaflet-map>
 		</main>
+		<aside id="sidebar">
+			<div class="center">
+				{% include weather.html appId=site.data.keys.openWeatherMap theme="auto" postalCode=93240 %}
+			</div>
+			<div class="ad-container">
+				{% for ad in site.data.ads.sidebar %}{% include ad.html
+					label=ad.label
+					description=ad.description
+					callToAction=ad.callToAction
+					image=ad.image
+					url=ad.description
+					layout=ad.layout
+					theme=ad.theme
+					imageFit = include.imageFit
+					imagePosition=include.imagePosition
+					content="sidebar"
+				%}{% endfor %}
+			</div>
+		</aside>
 		<footer id="footer">
-			<div class="social-links cols-2" id="org-info">
-				<div class="cols inline-block" id="social-links">
+			<div class="social-links clearfix" id="org-info">
+				<div class="inline-block float-left" id="social-links">
 					<a class="block" href="https://github.com/kernvalley/" target="_blank" rel="external noopener noreferrer">
 						<svg class="current-color icon social-icon">
 							<use xlink:href="/img/icons.svg#mark-github" />
@@ -136,7 +160,7 @@ tags:
 						<span>Report a Problem</span>
 					</a>
 				</div>
-				<div class="cols inline-block">
+				<div class="inline-block float-left">
 					<a class="block" href="https://www.facebook.com/KernValley.us/" target="_blank" rel="external noopener noreferrer" itemprop="sameAs">
 						<svg class="icon social-icon">
 							<use xlink:href="/img/icons.svg#facebook" />
@@ -158,7 +182,7 @@ tags:
 				</div>
 			</div>
 			<hr />
-			<div class="copyright">
+			<div class="copyright flex row wrap space-evenly">
 				<github-user user="kernvalley">
 					<h3 slot="header" class="center">Created By</h3>
 					<div slot="footer">
@@ -183,5 +207,66 @@ referrerpolicy="no-referrer" width="256" height="282"/>
 				<use xlink:href="/img/icons.svg#public-share"></use>
 			</svg>
 		</button>
+		<dialog id="settings-dialog">
+			<form id="mapSettings" class="no-submit">
+				<fieldset class="no-border">
+					<legend>Toggle Marker Visibility</legend>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-restaurants" name="restaurants" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='restaurant']" hidden="" />
+						<label for="toggle-restaurants" class="input-label btn btn-toggle">
+							<span>Restaurants</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-gas" name="gas" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='gas']" hidden="" />
+						<label for="toggle-gas" class="input-label btn btn-toggle">
+							<span>Gas Stations</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-lodging" name="lodging" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='lodging']" hidden="" />
+						<label for="toggle-lodging" class="input-label btn btn-toggle">
+							<span>Lodging</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-camping" name="camping" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='campground']" hidden="" />
+						<label for="toggle-camping" class="input-label btn btn-toggle">
+							<span>Campgrounds</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-stores" name="stores" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='store']" hidden="" />
+						<label for="toggle-stores" class="input-label btn btn-toggle">
+							<span>Stores</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" id="toggle-towns" name="town" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='town']" hidden="" />
+						<label for="toggle-towns" class="input-label btn btn-toggle">
+							<span>Towns</span>
+							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+						</label>
+					</div>
+				</fieldset>
+			</form>
+			<hr />
+			<div class="flex row space-evenly">
+				<button type="button" class="btn btn-primary grow-1" data-close="#settings-dialog">
+					<span>Close</span>
+					{% include icon.html icon="x" width="20" height="20" fill="currentColor" %}
+				</button>
+		</dialog>
 	</body>
 </html>

@@ -8,8 +8,10 @@ import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
+import 'https://cdn.kernvalley.us/components/ad/block.js';
+import 'https://cdn.kernvalley.us/components/weather/current.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, sleep } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { stateHandler, locate } from './handlers.js';
 import { site, GA } from './consts.js';
@@ -114,8 +116,12 @@ Promise.allSettled([
 	}
 
 	$('#locate-btn').click(locate);
+	$('.no-submit').submit(event => event.preventDefault());
 
-	$('[data-marker-type="town"]').on('open', () => $('leaflet-map').attr({ zoom: 17 }));
+	$('leaflet-marker[data-postal-code]').on('open', ({ target }) => {
+		sleep(200).then(() => $('leaflet-map').attr({ zoom: 17 }));
+		$('weather-current').attr({ postalcode: target.dataset.postalCode }).then($els => $els.first.update());
+	});
 
 	$('leaflet-marker[id]').on('open', ({target}) => {
 		const url = new URL(location.pathname, location.origin);
@@ -157,5 +163,10 @@ Promise.allSettled([
 
 	}, {
 		passive: true,
+	});
+
+	requestIdleCallback(() => {
+		$('leaflet-marker[maxzoom]').each(el => el.dataset.maxZoom = el.maxZoom);
+		$('leaflet-marker[minzoom]').each(el => el.dataset.minZoom = el.minZoom);
 	});
 });
