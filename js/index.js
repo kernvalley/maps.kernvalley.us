@@ -115,6 +115,8 @@ Promise.allSettled([
 
 	$('#locate-btn').click(locate);
 
+	$('[data-marker-type="town"]').on('open', () => $('leaflet-map').attr({ zoom: 17 }));
+
 	$('leaflet-marker[id]').on('open', ({target}) => {
 		const url = new URL(location.pathname, location.origin);
 		url.hash = `#${target.id}`;

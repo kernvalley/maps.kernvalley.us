@@ -13,17 +13,23 @@ tags:
 	{% include head.html %}
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
 		<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-3">
-			<button type="button" is="app-list" id="app-menu" source="krv-maps" hidden="">
+			<button type="button" is="app-list" id="app-menu" class="btn" source="krv-maps" hidden="">
 				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
 					<use xlink:href="/img/icons.svg#apps"></use>
 				</svg>
 			</button>
-			<button type="button" id="fs-btn" data-full-screen="leaflet-map" title="Go Fullscreen">
+			<span class="grow-4"></span>
+			<button type="button" id="fs-btn" class="btn" data-full-screen="leaflet-map" title="Go Fullscreen">
 				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
 					<use xlink:href="/img/icons.svg#view-fullscreen"></use>
 				</svg>
 			</button>
-			<button is="pwa-install" id="install-btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+			<button type="button" id="locate-btn" class="btn" title="Find Me">
+				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#find-location"></use>
+				</svg>
+			</button>
+			<button is="pwa-install" id="install-btn" class="btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
 				<svg class="icon current-color" role="img" aria-hidden="true">
 					<use xlink:href="/img/icons.svg#system-software-install"></use>
 				</svg>
@@ -32,7 +38,7 @@ tags:
 		</nav>
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
-			<leaflet-map center="35.664676,-118.450685" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="9" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
+			<leaflet-map center="35.664676,-118.450685" id="map" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="9" crossorigin="annonymous" detectretina="detectretina" toolbar="" zoomcontrol="">
 				<div class="center">
 					<div class="status-box alert inline-block">
 						<b class="block">Your browser is not supported</b>
@@ -172,17 +178,6 @@ referrerpolicy="no-referrer" width="256" height="282"/>
 </a>
 			</div>
 		</footer>
-		<toast-message id="map-filters" class="custom-elements if-defined" backdrop="">
-			<div slot="content" class="flex row wrap space-evenly">
-				{% for marker in site.data.filters %}
-					<span class="marker-filter-item center" data-type="{{ marker.type }}">
-						<img src="/img/markers/{{ marker.icon }}.svg" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="64" height="64" alt="" />
-						<br />
-						<span>{{ marker.name }}</span>
-					</span>
-				{% endfor %}
-			</div>
-		</toast-message>
 		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="btn btn-primary round shadow fixed z-4" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>

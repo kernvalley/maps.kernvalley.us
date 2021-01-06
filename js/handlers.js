@@ -31,44 +31,26 @@ export async function stateHandler({ state }) {
 		}
 	} else if (! (Number.isNaN(longitude) || Number.isNaN(latitude))) {
 		document.title = `${title || 'Marked Location'} | ${site.title}`;
+		await Promise.all([
+			customElements.whenDefined('leaflet-map'),
+			customElements.whenDefined('leaflet-marker'),
+		]);
 		const map = document.querySelector('leaflet-map');
 		await map.ready;
-		const marker = await map.addMarker({
+		const Marker = customElements.get('leaflet-marker')
+		const marker = new Marker({
 			latitude,
 			longitude,
 			title,
 			icon: new URL('./img/adwaita-icons/actions/mark-location.svg', site.iconBaseUri).href,
-			open: false,
-			center: false,
 			popup: body || `Marked Location: ${latitude}, ${longitude}`,
 		});
-
-		// if (body instanceof HTMLElement) {
-		// 	body.slot = 'popup';
-		// 	body.append(document.createElement('hr'), await getShareButton({text: title}));
-
-		// 	if ('part' in body) {
-		// 		body.part.add('popup');
-		// 	}
-		// 	marker.append(body);
-		// } else if (typeof body === 'string') {
-		// 	const popup = document.createElement('div');
-		// 	const h4 = document.createElement('h4');
-		// 	const content = document.createElement('div');
-
-		// 	h4.textContent = title;
-		// 	content.textContent = body;
-		// 	popup.slot = 'popup';
-		// 	popup.append(h4, content, document.createElement('hr'), await getShareButton({text: title}));
-
-		// 	if ('part' in popup) {
-		// 		popup.part.add('popup');
-		// 	}
-
-		// 	marker.append(popup);
-		// }
+		marker.title = title;
+		marker.addEventListener('close', ({ target }) => target.remove());
+		map.append(marker);
 
 		map.center = marker;
+		map.zoom = 17;
 		marker.open = true;
 	} else if (state === null) {
 		document.title = `Home | ${site.title}`;

@@ -2,6 +2,6 @@
 @import url("https://cdn.kernvalley.us/css/core-css/theme/properties.css");
 
 :root {
-	--map-width: 100vw;
+	--map-width: 100%;
 	--map-height: calc(90vh - var(--nav-height, 4rem));
 }

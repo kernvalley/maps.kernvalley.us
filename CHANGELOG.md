@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Sharing of places via `<button is="share-button">`
 
+### Fixed
+- Re-add find location button
+
 ## [v2.0.1] - 2021-01-05
 
 ### Added
