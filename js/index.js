@@ -1,8 +1,8 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
+import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
@@ -112,15 +112,6 @@ Promise.all([
 			}
 		}).catch(console.error);
 
-		const map = document.querySelector('leaflet-map');
-		await map.ready;
-
-		document.getElementById('search-items').append(...[...new Set([...map.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
-			const option = document.createElement('option');
-			option.textContent = name;
-			return option;
-		}));
-
 		$('#locate-btn').click(locate);
 
 		$('leaflet-marker[data-postal-code]').on('open', ({ target }) => {
@@ -177,4 +168,13 @@ Promise.all([
 	}
 
 	$('.no-submit').submit(event => event.preventDefault());
+
+	const map = document.querySelector('leaflet-map');
+	await map.ready;
+
+	document.getElementById('search-items').append(...[...new Set([...map.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
+		const option = document.createElement('option');
+		option.textContent = name;
+		return option;
+	}));
 });
