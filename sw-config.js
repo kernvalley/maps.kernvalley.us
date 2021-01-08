@@ -9,7 +9,7 @@ const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
 		/* Root document */
-		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
+		'/',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* Other HTML */
@@ -18,7 +18,7 @@ const config = {
 		'/img/icons.svg',
 
 		/* JS */
-		'https://cdn.kernvalley.us/components/share-target.js',
+		'https://cdn.kernvalley.us/js/std-js/no-console.js',
 
 		/* `customElements`templates */
 		'https://cdn.kernvalley.us/components/toast-message.html',
@@ -51,7 +51,7 @@ const config = {
 	allowed: [
 		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
 		/https:\/\/i\.imgur\.com\/*/,
-		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
+		// /https:\/\/secure\.gravatar\.com\/avatar\/*/,
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 		/https:\/\/api\.github\.com\/users\/*/,
 		/https:\/\/api\.openweathermap\.org\/data\/*/,
