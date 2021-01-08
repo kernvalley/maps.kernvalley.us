@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.1.1]
+
+### Fixed
+- Update to resolve Chrome issues (custom element attributes, `ready()` issues)
+
 ## [v2.1.0] - 2021-01-06
 
 ### Added

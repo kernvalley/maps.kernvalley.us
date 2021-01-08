@@ -1,8 +1,8 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
+import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
@@ -21,52 +21,58 @@ $(document.documentElement).toggleClass({
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
 	'no-js': false,
-});
+}).catch(console.error);
 
-requestIdleCallback(() => {
-	if (typeof GA === 'string' && GA.length !== 0) {
-		importGa(GA).then(async ({ ga }) => {
-			ga('create', GA, 'auto');
-			ga('set', 'transport', 'beacon');
-			ga('send', 'pageview');
+try {
+	requestIdleCallback(() => {
+		if (typeof GA === 'string' && GA.length !== 0) {
+			importGa(GA).then(async ({ ga }) => {
+				ga('create', GA, 'auto');
+				ga('set', 'transport', 'beacon');
+				ga('send', 'pageview');
 
-			await ready();
+				await ready();
 
-			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
-		});
-	}
-});
+				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+			}).catch(console.error);
+		}
+	});
+} catch(err) {
+	console.error(err);
+}
 
 if (location.search.includes('geo=geo')) {
-	const params = new URLSearchParams(location.search);
+	try {
+		const params = new URLSearchParams(location.search);
 
-	if (params.has('geo')) {
-		const geo = params.get('geo');
-		if (geo.startsWith('geo:')) {
-			const [latitude = NaN, longitude = NaN] = geo.substr(4).split(';', 2)[0].split(',', 2).map(parseFloat);
+		if (params.has('geo')) {
+			const geo = params.get('geo');
+			if (geo.startsWith('geo:')) {
+				const [latitude = NaN, longitude = NaN] = geo.substr(4).split(';', 2)[0].split(',', 2).map(parseFloat);
 
-			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-				const url = new URL(location.pathname, location.origin);
-				url.hash = `#${latitude},${longitude}`;
+				if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+					const url = new URL(location.pathname, location.origin);
+					url.hash = `#${latitude},${longitude}`;
 
-				history.replaceState({
-					latitude,
-					longitude,
-					title: 'Location',
-					body: `Coorinates: ${latitude}, ${longitude}`,
-				}, `Location: ${site.title}`, url.href);
+					history.replaceState({
+						latitude,
+						longitude,
+						title: 'Location',
+						body: `Coorinates: ${latitude}, ${longitude}`,
+					}, `Location: ${site.title}`, url.href);
+				}
 			}
 		}
+	} catch(err) {
+		console.error(err);
 	}
 }
 
-Promise.allSettled([
-	ready(),
+Promise.all([
+	init().catch(console.error),
 ]).then(async () => {
-	init().catch(console.error);
-
 	if (location.pathname === '/') {
 		addEventListener('popstate', stateHandler);
 
@@ -104,69 +110,71 @@ Promise.allSettled([
 			} else if (history.state !== null) {
 				stateHandler(history);
 			}
-		});
-		const map = document.querySelector('leaflet-map');
-		await map.ready;
+		}).catch(console.error);
 
-		document.getElementById('search-items').append(...[...new Set([...document.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
-			const option = document.createElement('option');
-			option.textContent = name;
-			return option;
-		}));
+		$('#locate-btn').click(locate);
+
+		$('leaflet-marker[data-postal-code]').on('open', ({ target }) => {
+			sleep(200).then(() => $('leaflet-map').attr({ zoom: 17 }));
+			$('weather-current').attr({ postalcode: target.dataset.postalCode }).then($els => $els.first.update());
+		});
+
+		$('leaflet-marker[id]').on('open', ({target}) => {
+			const url = new URL(location.pathname, location.origin);
+			url.hash = `#${target.id}`;
+			document.title = `${target.title} | ${site.title}`;
+
+			if (location.hash.substr(1) !== target.id) {
+				history.pushState({
+					latitude: target.latitude,
+					longitude: target.longitude,
+					title: target.title,
+					uuid: target.id,
+				}, document.title, url.href);
+			}
+		});
+
+		$('#search').input(async ({ target }) => {
+			const value = target.value.toLowerCase();
+			const map = document.querySelector('leaflet-map');
+			await map.ready;
+
+			const markers = map.markers;
+
+			if (value !== '') {
+				markers.forEach(el => {
+					el.hidden = true;
+					el.open = false;
+				});
+
+				const matches = markers.filter(el => el.title.toLowerCase().includes(value));
+				matches.forEach(el => el.hidden = false);
+
+				if (matches.length === 1) {
+					matches[0].open = true;
+				}
+			} else {
+				markers.forEach(el => el.hidden = false);
+			}
+
+		}, {
+			passive: true,
+		});
+
+		// requestIdleCallback(() => {
+		// 	$('leaflet-marker[maxzoom]').each(el => el.dataset.maxZoom = el.maxZoom);
+		// 	$('leaflet-marker[minzoom]').each(el => el.dataset.minZoom = el.minZoom);
+		// });
 	}
 
-	$('#locate-btn').click(locate);
 	$('.no-submit').submit(event => event.preventDefault());
 
-	$('leaflet-marker[data-postal-code]').on('open', ({ target }) => {
-		sleep(200).then(() => $('leaflet-map').attr({ zoom: 17 }));
-		$('weather-current').attr({ postalcode: target.dataset.postalCode }).then($els => $els.first.update());
-	});
+	const map = document.querySelector('leaflet-map');
+	await map.ready;
 
-	$('leaflet-marker[id]').on('open', ({target}) => {
-		const url = new URL(location.pathname, location.origin);
-		url.hash = `#${target.id}`;
-		document.title = `${target.title} | ${site.title}`;
-
-		if (location.hash.substr(1) !== target.id) {
-			history.pushState({
-				latitude: target.latitude,
-				longitude: target.longitude,
-				title: target.title,
-				uuid: target.id,
-			}, document.title, url.href);
-		}
-	});
-
-	$('#search').input(async ({ target }) => {
-		const value = target.value.toLowerCase();
-		const map = document.querySelector('leaflet-map');
-		await map.ready;
-
-		const markers = map.markers;
-
-		if (value !== '') {
-			markers.forEach(el => {
-				el.hidden = true;
-				el.open = false;
-			});
-
-			const matches = markers.filter(el => el.title.toLowerCase().includes(value));
-			matches.forEach(el => el.hidden = false);
-
-			if (matches.length === 1) {
-				matches[0].open = true;
-			}
-		} else {
-			markers.forEach(el => el.hidden = false);
-		}
-
-	}, {
-		passive: true,
-	});
-
-	requestIdleCallback(() => {
-		$('leaflet-marker[maxzoom]').each(el => el.dataset.maxZoom = el.maxZoom);
-		$('leaflet-marker[minzoom]').each(el => el.dataset.minZoom = el.minZoom);
-	});
+	document.getElementById('search-items').append(...[...new Set([...map.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
+		const option = document.createElement('option');
+		option.textContent = name;
+		return option;
+	}));
 });
