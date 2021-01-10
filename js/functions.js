@@ -26,3 +26,12 @@ export function registerMapSearch(form = document.forms.search) {
 		});
 	}
 }
+
+export async function geoGranted() {
+	if ('permissions' in navigator && navigator.permissions.query instanceof Function) {
+		const { state } = await navigator.permissions.query({ name: 'geolocation' });
+		return state === 'granted';
+	} else {
+		return false;
+	}
+}

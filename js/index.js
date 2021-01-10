@@ -10,9 +10,11 @@ import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
+import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { $, ready, sleep } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, sleep, getCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import { geoGranted } from './functions.js';
 import { stateHandler, locate } from './handlers.js';
 import { site, GA } from './consts.js';
 
@@ -77,10 +79,11 @@ Promise.all([
 		addEventListener('popstate', stateHandler);
 
 		Promise.all([
+			geoGranted(),
+			getCustomElement('leaflet-marker'),
 			customElements.whenDefined('leaflet-map'),
-			customElements.whenDefined('leaflet-marker'),
-		]).then(async () => {
-			if (history.state === null && location.hash !== '') {
+		]).then(async ([hasGeo, Marker]) => {
+			if (history.state === null && location.hash.length > 1) {
 				if (location.hash.includes(',')) {
 					const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',', 2).map(parseFloat);
 					history.replaceState({
@@ -93,6 +96,19 @@ Promise.all([
 					stateHandler(history);
 				} else {
 					const marker = document.getElementById(location.hash.substr(1));
+
+					if (hasGeo) {
+						getLocation({ enableHighAccuracy: true, maxAge: 15 * SECONDS }).then(({ coords }) => {
+							const map = document.querySelector('leaflet-map');
+							map.append(new Marker({
+								latitude: coords.latitude,
+								longitude: coords.longitude,
+								popup: `<h3>Current Location</h3> Lat: ${coords.latitude} Lng: ${coords.longitude}`,
+								icon: 'https://cdn.kernvalley.us/img/octicons/location.svg',
+
+							}));
+						});
+					}
 
 					if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
 						document.title = `${marker.title} | ${site.title}`;
@@ -109,6 +125,16 @@ Promise.all([
 				}
 			} else if (history.state !== null) {
 				stateHandler(history);
+			} else if (hasGeo) {
+				getLocation({ enableHighAccuracy: true, maxAge: 15 * SECONDS }).then(({ coords }) => {
+					const map = document.querySelector('leaflet-map');
+					map.append(new Marker({
+						latitude: coords.latitude,
+						longitude: coords.longitude,
+						popup: `<h3>Current Location</h3>Lat: ${coords.latitude} Lng: ${coords.longitude}`,
+						icon: 'https://cdn.kernvalley.us/img/octicons/location.svg',
+					}));
+				});
 			}
 		}).catch(console.error);
 
