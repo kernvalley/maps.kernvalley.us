@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Sitemap (not sure if useful for basically single-page with hashes for markers)
+- Show location on first page load if permission granted
+
+### Changed
+- Use `https://cdn.kernvalley.us/img/markers.svg` as SVG sprites for map markers
+
 ## [v2.1.1]
 
 ### Fixed

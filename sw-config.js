@@ -4,6 +4,7 @@ layout: null
 'use strict';
 /* eslint-env serviceworker */
 /* eslint no-unused-vars: 0 */
+/* dfg*/
 
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
@@ -16,6 +17,7 @@ const config = {
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
+		'https://cdn.kernvalley.us/img/markers.svg',
 
 		/* JS */
 		'https://cdn.kernvalley.us/js/std-js/no-console.js',
