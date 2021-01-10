@@ -1,3 +1,9 @@
+- href: https://cdn.kernvalley.us/img/markers.svg
+  as: image
+  type: image/svg+xml
+  crossOrigin: anonymous
+  referrerPolicy: no-referrer
+  importance: high
 - href: https://cdn.kernvalley.us/components/leaflet/map.css
   as: style
   type: text/css

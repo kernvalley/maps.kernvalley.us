@@ -1,7 +1,7 @@
 ---
 author: Chris Zuber
 title: Kern Valley Maps
-url: https://maps.kernvalley.us/
+url: https://maps.kernvalley.us
 markdown: kramdown
 version: 2.1.1
 timezone: America/Los_Angeles
@@ -13,6 +13,7 @@ robots: 'follow, index'
 referrer: no-referrer
 manifest: /manifest.json
 tiles-config: /browserconfig.xml
+markers: https://cdn.kernvalley.us/img/markers.svg
 service_worker: "./service-worker.js"
 og-type: website
 description: "Maps for the Kern River Valley"
