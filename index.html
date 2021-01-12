@@ -138,70 +138,7 @@ tags:
 				%}{% endfor %}
 			</div>
 		</aside>
-		<footer id="footer">
-			<div class="social-links clearfix" id="org-info">
-				<div class="inline-block float-left" id="social-links">
-					<a class="block" href="https://github.com/kernvalley/" target="_blank" rel="external noopener noreferrer">
-						<svg class="current-color icon social-icon">
-							<use xlink:href="/img/icons.svg#mark-github" />
-						</svg>
-						<span>GitHub Profile</span>
-					</a>
-					<a class="block" href="https://github.com/kernvalley/maps.kernvalley.us" target="_blank" rel="external noopener noreferrer">
-						<svg class="current-color icon social-icon">
-							<use xlink:href="/img/icons.svg#repo" />
-						</svg>
-						<span>GitHub Repo</span>
-					</a>
-					<a class="block" href="https://github.com/kernvalley/maps.kernvalley.us/issues" target="_blank" rel="external noopener noreferrer">
-						<svg class="current-color icon social-icon">
-							<use xlink:href="/img/icons.svg#issue-opened" />
-						</svg>
-						<span>Report a Problem</span>
-					</a>
-				</div>
-				<div class="inline-block float-left">
-					<a class="block" href="https://www.facebook.com/KernValley.us/" target="_blank" rel="external noopener noreferrer" itemprop="sameAs">
-						<svg class="icon social-icon">
-							<use xlink:href="/img/icons.svg#facebook" />
-						</svg>
-						<span>On Facebook</span>
-					</a>
-					<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener noreferrer" itemprop="sameAs">
-						<svg class="icon social-icon">
-							<use xlink:href="/img/icons.svg#twitter" />
-						</svg>
-						<span>On Twitter</span>
-					</a>
-					<a class="block" href="https://www.linkedin.com/company/18644791/" target="_blank" rel="external noopener noreferrer" itemprop="sameAs">
-						<svg class="icon social-icon">
-							<use xlink:href="/img/icons.svg#linkedin" />
-						</svg>
-						<span>LinkedIn</span>
-					</a>
-				</div>
-			</div>
-			<hr />
-			<div class="copyright flex row wrap space-evenly">
-				<github-user user="kernvalley">
-					<h3 slot="header" class="center">Created By</h3>
-					<div slot="footer">
-						<span>©</span>
-						<time itemprop="copyrightYear">2020</time>
-						<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-							<a href="https://kernvalley.us" target="_blank" rel="external noopener noreferrer" itemprop="url">
-								<span itemprop="name">KernValley.US</span>
-							</a>
-						</span>
-					</div>
-				</github-user>
-				<a href="https://www.kernriverconservancy.org/?utm_source=kern-valley-maps&amp;utm_medium=web&amp;utm_campaign=keep-kern-clean" target="_blank" rel="noopener external" title="#KeepKernClean">
-<img src="https://cdn.kernvalley.us/img/keep-kern-clean.svg"
-alt="#KeepKernClean" decoding="async" loading="lazy" crossorigin="anonymous"
-referrerpolicy="no-referrer" width="256" height="282"/>
-</a>
-			</div>
-		</footer>
+		{% include footer.html %}
 		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="btn btn-primary round shadow fixed z-4" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>

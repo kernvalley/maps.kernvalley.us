@@ -2,12 +2,13 @@
 	<button type="button" is="app-list" id="app-menu" source="{{ site.data.ads.source | default: site.title | escape }}" title="Show KRV Apps Menu" hidden="">
 		{% include icon.html icon="apps" height="22" width="22" fill="currentColor" %}
 	</button>
-	{% for link in site.data.nav-links %}
-		<a href="{{ link.href }}" class="nav-link center inline-block{% if link.href == page.url %} active no-pointer-events{% endif %}" title="{{ link.label | escape }}">
+	{% for link in site.data.links.nav %}
+		<a href="{{ link.href }}" class="nav-link center inline-block{% if link.href == page.url %} active no-pointer-events{% endif %}" title="{{ link.label | escape }}" rel="{{ link.rel | join: ' ' }}" target="{{ link.target | default: '_self' }}">
 			{% if link.icon %}{% include icon.html icon=link.icon %}<br />{% endif %}
 			<span class="nav-link-label">{{ link.label }}</span>
 		</a>
 	{% endfor %}
+	<span class="grow-4"></span>
 	{% if site.service_worker %}
 		<button type="button" is="pwa-install" id="install-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
 			{% include icon.html height="22" width="22" fill="currentColor" icon="system-software-install" %}
