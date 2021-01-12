@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.1.2] - 2020-01-11
+
 ### Added
 - Sitemap (not sure if useful for basically single-page with hashes for markers)
 - Show location on first page load if permission granted
+- App store support via links in footer
 
 ### Changed
 - Use `https://cdn.kernvalley.us/img/markers.svg` as SVG sprites for map markers
+- Update footer layout and links
 
 ## [v2.1.1]
 

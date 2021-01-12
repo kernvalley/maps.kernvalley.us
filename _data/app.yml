@@ -63,7 +63,12 @@ shortcuts:
   - name: Weldon
     description: Open map in Weldon
     url: '/#weldon'
-related_applications: []
+related_applications:
+  - platform: play
+    id: com.krv_maps.twa
+    url: https://play.google.com/store/apps/details?id=com.krv_maps.twa
+  - platform: webapp
+    url: https://maps.kernvalley.us
 features:
   - Offline map of the Kern River Valley
   - Lists businesses, restaurants, campgrounds, gas stations, and more
