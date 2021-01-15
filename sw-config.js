@@ -54,7 +54,6 @@ const config = {
 	allowed: [
 		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
 		/https:\/\/i\.imgur\.com\/*/,
-		// /https:\/\/secure\.gravatar\.com\/avatar\/*/,
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 		/https:\/\/api\.github\.com\/users\/*/,
 		/https:\/\/api\.openweathermap\.org\/data\/*/,
