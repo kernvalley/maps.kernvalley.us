@@ -68,7 +68,7 @@ related_applications:
     id: com.krv_maps.twa
     url: https://play.google.com/store/apps/details?id=com.krv_maps.twa
   - platform: webapp
-    url: https://maps.kernvalley.us
+    url: https://maps.kernvalley.us/manifest.json
 features:
   - Offline map of the Kern River Valley
   - Lists businesses, restaurants, campgrounds, gas stations, and more
