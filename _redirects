@@ -1,3 +1,4 @@
 /places/:type		/places/:type.json
 /marker-icon.png	/img/octicons/location.svg
 /marker-shadow.png	/img/null.svg
+/contact		https://contact.kernvalley.us/	301!
