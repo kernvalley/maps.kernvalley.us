@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v2.1.2] - 2020-01-11
+## [v2.1.3] - 2021-01-17
+
+### Added
+- Amenities/features to markers where available and supported
+- Support for custom icons via `additionalProperty` with name of `"icon"`
+
+### Changed
+- Use CDN for service worker
+- Update places submodule with much more data
+
+## [v2.1.2] - 2021-01-11
 
 ### Added
 - Sitemap (not sure if useful for basically single-page with hashes for markers)
