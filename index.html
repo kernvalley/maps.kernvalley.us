@@ -60,11 +60,11 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
-					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/City" itemscope="" maxzoom="15" data-postal-code="{{ town.address.postalCode.first }}">
+					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/{{ town['@type'] | default: 'City' }}" itemscope="" maxzoom="15" data-postal-code="{{ town.address.postalCode.first }}">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.latitude }}" />
-						<img src="https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg" slot="icon" loading="lazy" decoding="async" crossorigin="anonymous" referrerPlocy="no-referrer" alt="" height="32" width="32" />
+						{% include map-icon.html icon="city" %}
 						<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
 							<meta itemprop="addressLocality" content="{{ town.address.addressLocality | default: town.name }}" />
 							<meta itemprop="addressRegion" content="{{ town.address.addressRegion | default: 'CA' }}" />
@@ -102,7 +102,13 @@ tags:
 				{% for business in site.data.places.businesses %}
 					{% include local-business-marker.html business=business type="other" minZoom="18" %}
 				{% endfor %}
-				{% for business in site.data.places.banks %}
+				{% for business in site.data.places.activities %}
+					{% include local-business-marker.html business=business type="other" minZoom="15" %}
+				{% endfor %}
+				{% for business in site.data.places.landmarks %}
+					{% include local-business-marker.html business=business type="other" minZoom="12" %}
+				{% endfor %}
+				{% for business in site.data.places.financial %}
 					{% include local-business-marker.html business=business icon="atm" type="bank" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
