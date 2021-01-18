@@ -60,6 +60,7 @@ tags:
 					<datalist id="search-items"></datalist>
 				</div>
 				{% for town in site.data.places.towns %}
+					<script type="application/ld+json">{{ town | jsonify }}</script>
 					<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.geo.latitude }}" longitude="{{ town.geo.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/{{ town['@type'] | default: 'City' }}" itemscope="" maxzoom="15" data-postal-code="{{ town.address.postalCode.first }}">
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.geo.longitude }}" />
@@ -88,39 +89,51 @@ tags:
 					</leaflet-marker>
 				{% endfor %}
 				{% for restaurant in site.data.places.restaurants %}
+					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
 					{% include restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" minZoom="15" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.bars %}
+					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
 					{% include restaurant-marker.html business=restaurant icon="bar" type="bar" minZoom="16" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.cafes %}
+					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
 					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" minZoom="17" %}
 				{% endfor %}
 				{% for business in site.data.places.stores %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="store" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="other" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.activities %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="other" minZoom="15" %}
 				{% endfor %}
 				{% for business in site.data.places.landmarks %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="other" minZoom="12" %}
 				{% endfor %}
 				{% for business in site.data.places.financial %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business icon="atm" type="bank" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="gas" minZoom="12" %}
 				{% endfor %}
 				{% for business in site.data.places.lodging %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="lodging" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.campgrounds %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="campground" minZoom="15" %}
 				{% endfor %}
 				{% for business in site.data.places.civic %}
+					<script type="application/ld+json">{{ business | jsonify }}</script>
 					{% include local-business-marker.html business=business type="public" minZoom="14" %}
 				{% endfor %}
 			</leaflet-map>
