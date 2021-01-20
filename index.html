@@ -2,15 +2,18 @@
 layout: null
 pinned: true
 description: Map of the Kern River Valley and surrounding areas
-title: Kern Valley Map
+title: Kern Valley Maps
 tags:
   - map
   - Kern Valley
   - Kern River Valley
+faq:
+  - question: Is this going to work
+    answer: Looks like it does
 ---
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-layout="full" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#" itemscope="">
-	{% include head.html %}
+	{% include common/head.html %}
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
 		<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-3">
 			<button type="button" is="app-list" id="app-menu" class="btn" source="krv-maps" hidden="">
@@ -65,7 +68,7 @@ tags:
 						<meta itemprop="name" content="{{ town.name | escape }}" />
 						<meta itemprop="longitude" content="{{ town.geo.longitude }}" />
 						<meta itemprop="latitude" content="{{ town.geo.latitude }}" />
-						{% include map-icon.html icon="city" %}
+						{% include leaflet/map-icon.html icon="city" %}
 						<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
 							<meta itemprop="addressLocality" content="{{ town.address.addressLocality | default: town.name }}" />
 							<meta itemprop="addressRegion" content="{{ town.address.addressRegion | default: 'CA' }}" />
@@ -78,7 +81,7 @@ tags:
 							<h3>
 								{% if town.url %}
 									<a href="{{ town.url }}" itemprop="url" rel="noopener noreferrer external">
-										{% include icon.html icon="link-external" fill="currentColor" height="20" width="20" %}
+										{% include common/icon.html icon="link-external" fill="currentColor" height="20" width="20" %}
 										<span itemprop="name">{{ town.name }}</span>, CA
 									</a>
 								{% else %}
@@ -90,74 +93,65 @@ tags:
 				{% endfor %}
 				{% for restaurant in site.data.places.restaurants %}
 					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
-					{% include restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" minZoom="15" %}
+					{% include leaflet/restaurant-marker.html business=restaurant icon="restaurant" type="restaurant" minZoom="15" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.bars %}
 					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
-					{% include restaurant-marker.html business=restaurant icon="bar" type="bar" minZoom="16" %}
+					{% include leaflet/restaurant-marker.html business=restaurant icon="bar" type="bar" minZoom="16" %}
 				{% endfor %}
 				{% for restaurant in site.data.places.cafes %}
 					<script type="application/ld+json">{{ restaurant | jsonify }}</script>
-					{% include restaurant-marker.html business=restaurant icon="cafe" type="cafe" minZoom="17" %}
+					{% include leaflet/restaurant-marker.html business=restaurant icon="cafe" type="cafe" minZoom="17" %}
 				{% endfor %}
 				{% for business in site.data.places.stores %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="store" minZoom="16" %}
+					{% include leaflet/local-business-marker.html business=business type="store" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.businesses %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="other" minZoom="18" %}
+					{% include leaflet/local-business-marker.html business=business type="other" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.activities %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="other" minZoom="15" %}
+					{% include leaflet/local-business-marker.html business=business type="other" minZoom="15" %}
 				{% endfor %}
 				{% for business in site.data.places.landmarks %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="other" minZoom="12" %}
+					{% include leaflet/local-business-marker.html business=business type="other" minZoom="12" %}
 				{% endfor %}
 				{% for business in site.data.places.financial %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business icon="atm" type="bank" minZoom="16" %}
+					{% include leaflet/local-business-marker.html business=business icon="atm" type="bank" minZoom="16" %}
 				{% endfor %}
 				{% for business in site.data.places.gas %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="gas" minZoom="12" %}
+					{% include leaflet/local-business-marker.html business=business type="gas" minZoom="12" %}
 				{% endfor %}
 				{% for business in site.data.places.lodging %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="lodging" minZoom="18" %}
+					{% include leaflet/local-business-marker.html business=business type="lodging" minZoom="18" %}
 				{% endfor %}
 				{% for business in site.data.places.campgrounds %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="campground" minZoom="15" %}
+					{% include leaflet/local-business-marker.html business=business type="campground" minZoom="15" %}
 				{% endfor %}
 				{% for business in site.data.places.civic %}
 					<script type="application/ld+json">{{ business | jsonify }}</script>
-					{% include local-business-marker.html business=business type="public" minZoom="14" %}
+					{% include leaflet/local-business-marker.html business=business type="public" minZoom="14" %}
 				{% endfor %}
 			</leaflet-map>
 		</main>
 		<aside id="sidebar">
 			<div class="center">
-				{% include weather.html appId=site.data.keys.openWeatherMap theme="auto" postalCode=93240 %}
+				{% include common/weather.html appId=site.data.keys.openWeatherMap theme="auto" postalCode=93240 %}
 			</div>
 			<div class="ad-container">
-				{% for ad in site.data.ads.sidebar %}{% include ad.html
-					label=ad.label
-					description=ad.description
-					callToAction=ad.callToAction
-					image=ad.image
-					url=ad.description
-					layout=ad.layout
-					theme=ad.theme
-					imageFit = include.imageFit
-					imagePosition=include.imagePosition
-					content="sidebar"
-				%}{% endfor %}
+				{% for ad in site.data.ads.sidebar %}
+					{% include common/ad.html ad=ad content="sidebar" %}
+				{% endfor %}
 			</div>
 		</aside>
-		{% include footer.html %}
+		{% include common/footer.html keep-kern-clean=true %}
 		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="btn btn-primary round shadow fixed z-4" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>
@@ -171,48 +165,48 @@ tags:
 						<input type="checkbox" id="toggle-restaurants" name="restaurants" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='restaurant']" hidden="" />
 						<label for="toggle-restaurants" class="input-label btn btn-toggle">
 							<span>Restaurants</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 					<div class="form-group">
 						<input type="checkbox" id="toggle-gas" name="gas" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='gas']" hidden="" />
 						<label for="toggle-gas" class="input-label btn btn-toggle">
 							<span>Gas Stations</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 					<div class="form-group">
 						<input type="checkbox" id="toggle-lodging" name="lodging" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='lodging']" hidden="" />
 						<label for="toggle-lodging" class="input-label btn btn-toggle">
 							<span>Lodging</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 					<div class="form-group">
 						<input type="checkbox" id="toggle-camping" name="camping" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='campground']" hidden="" />
 						<label for="toggle-camping" class="input-label btn btn-toggle">
 							<span>Campgrounds</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 					<div class="form-group">
 						<input type="checkbox" id="toggle-stores" name="stores" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='store']" hidden="" />
 						<label for="toggle-stores" class="input-label btn btn-toggle">
 							<span>Stores</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 					<div class="form-group">
 						<input type="checkbox" id="toggle-towns" name="town" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='town']" hidden="" />
 						<label for="toggle-towns" class="input-label btn btn-toggle">
 							<span>Towns</span>
-							{% include icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
-							{% include icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+							{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+							{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
 						</label>
 					</div>
 				</fieldset>
@@ -221,7 +215,7 @@ tags:
 			<div class="flex row space-evenly">
 				<button type="button" class="btn btn-primary grow-1" data-close="#settings-dialog">
 					<span>Close</span>
-					{% include icon.html icon="x" width="20" height="20" fill="currentColor" %}
+					{% include common/icon.html icon="x" width="20" height="20" fill="currentColor" %}
 				</button>
 		</dialog>
 	</body>

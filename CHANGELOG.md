@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Update to use `_includes/common/` and `_includes/leaflet/` as submodules
+
 ## [v2.1.4] - 2021-01-19
 
 ### Added
