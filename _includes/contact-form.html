@@ -19,7 +19,7 @@
 			</label>
 			<input type="tel" name="phone" id="phone" class="input" autocomplete="tel" placeholder="+1-555-555-5555" pattern="(\+?(\d{1,3})[\-\.\s]?)?((\d{3}[\-\.\s]?)|(\(\d{3}\)\s?))\d{3}[\-\.\s]?\d{4}" />
 		</div>{% endif %}
-		{% if include.subject %}<div class="form-group">
+		{% unless include.subject == false %}<div class="form-group">
 			<label for="subject" class="input-label block required">
 				<b>Subject</b>
 			</label>
@@ -27,7 +27,7 @@
 			{% if include.suggestedSubjects %}
 				<datalist id="subject-suggestions">
 				{% for subject in include.suggestedSubjects %}<option value="{{ subject }}" />{% endfor %}
-			</datalist>{% endif %}
+			</datalist>{% endunless %}
 		</div>{% endif %}
 		<div class="form-group">
 			<label for="body" class="input-label block required">
@@ -44,7 +44,7 @@
 	<br />
 	<div class="align-left">
 		<button type="submit" class="btn btn-accept btn-wide">
-			{% include icon.html icon="check" %}
+			{% include common/icon.html icon="check" %}
 			<span>Send</span>
 		</button>
 	</div>
