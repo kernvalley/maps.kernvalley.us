@@ -5,6 +5,7 @@ import 'https://cdn.kernvalley.us/components/current-year.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
+import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
@@ -15,9 +16,13 @@ import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { $, ready, sleep, getCustomElement, getLocation } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
-import { geoGranted } from './functions.js';
+import { geoGranted, consumeHandler } from './functions.js';
 import { stateHandler, locate } from './handlers.js';
 import { site, GA } from './consts.js';
+
+if ('launchQueue' in window) {
+	launchQueue.setConsumer(consumeHandler);
+}
 
 $(document.documentElement).toggleClass({
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,

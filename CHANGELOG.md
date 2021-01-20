@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.1.4] - 2021-01-19
+
+### Added
+- Handling for `.geojson` files
+- Icons for app shortcuts
+
 ## [v2.1.3] - 2021-01-17
 
 ### Added
