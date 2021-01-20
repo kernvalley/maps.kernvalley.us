@@ -1,6 +1,6 @@
 name: Kern Valley Maps
 shortName: KRV Maps
-version: 2.1.1
+version: 2.1.2
 lang: en
 dir: ltr
 display: standalone
@@ -54,27 +54,67 @@ shortcuts:
   - name: Kernville
     description: Open map in Kernville
     url: '/#kernville'
+    icons:
+      - src: /img/icon-192.png
+        type: image/png
+        sizes: 192x192
+        purpose: maskable any
+      - src: /img/icon-32.png
+        type: image/png
+        sizes: 32x32
   - name: Lake Isabella
     description: Open map in Lake Isabella
     url: '/#lake-isabella'
+    icons:
+      - src: /img/icon-192.png
+        type: image/png
+        sizes: 192x192
+        purpose: maskable any
+      - src: /img/icon-32.png
+        type: image/png
+        sizes: 32x32
   - name: Wofford Heights
     description: Open map in Wofford Heights
     url: '/#wofford-heights'
+    icons:
+      - src: /img/icon-192.png
+        type: image/png
+        sizes: 192x192
+        purpose: maskable any
+      - src: /img/icon-32.png
+        type: image/png
+        sizes: 32x32
   - name: Weldon
     description: Open map in Weldon
     url: '/#weldon'
+    icons:
+      - src: /img/icon-192.png
+        type: image/png
+        sizes: 192x192
+        purpose: maskable any
+      - src: /img/icon-32.png
+        type: image/png
+        sizes: 32x32
 related_applications:
   - platform: play
     id: com.krv_maps.twa
     url: https://play.google.com/store/apps/details?id=com.krv_maps.twa
   - platform: webapp
     url: https://maps.kernvalley.us/manifest.json
+file_handlers:
+  - action: /
+    accept:
+      application/geo+json:
+        - .geojson
 features:
   - Offline map of the Kern River Valley
   - Lists businesses, restaurants, campgrounds, gas stations, and more
   - Quickly search for places by name
   - Find information such as addresses, phone numbers, and websites
+  - Mark your location on the map and see nearby places
   - Easily find and share places
+  - Over 168 places marked including restaurants, campgrounds, motels, schools, and landmarks
+  - Support for opening GeoJSON files
 # https://github.com/w3c/manifest/wiki/Categories
 categories:
   - business

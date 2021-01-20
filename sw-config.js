@@ -46,6 +46,7 @@ const config = {
 		'/img/icon-32.png',
 		'/img/favicon.svg',
 		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
+		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
