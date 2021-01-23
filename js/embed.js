@@ -1,3 +1,5 @@
+'use strict';
+
 async function ready() {
 	if (document.readyState === 'loading') {
 		await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));

@@ -13,7 +13,6 @@ const config = {
 		'/',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		/* Other HTML */
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
