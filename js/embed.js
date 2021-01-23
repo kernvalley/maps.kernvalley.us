@@ -27,6 +27,7 @@ Promise.all([
 		zoom: parseInt(params.get('zoom')),
 		watch: parseInt(params.get('watch')),
 		zoomControl: params.has('zoomcontrol'),
+		find: parseInt(params.get('find')),
 	});
 
 	document.body.append(map);
