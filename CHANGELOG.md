@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Update to use `_includes/common/` and `_includes/leaflet/` as submodules
+- Use `<leaflet-map router>` instead of handling all that here
 
 ## [v2.1.4] - 2021-01-19
 
