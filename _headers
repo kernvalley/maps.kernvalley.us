@@ -22,9 +22,18 @@
 
 /:placeholder/
   X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  Feature-Policy: geolocation 'self';
   Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://apps.kernvalley.us/apps.json https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/; font-src https://cdn.kernvalley.us; media-src *; frame-src https://www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+
+/embed
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Feature-Policy: geolocation 'self';
+  Link: </js/embed.js> as=script; referrerpolicy=no-referrer;
+  Link: </js/embed.css> as=style; referrerpolicy=no-referrer;
+  Link: <https://cdn.kernvalley.us/img/markers.svg> as=image; type=image/svg+xml; crossorigin=anonymous; referrerpolicy=no-referrer;
+  Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://maps.kernvalley.us/; font-src https://cdn.kernvalley.us; media-src *; frame-src 'none'; form-action 'none'; manifest-src 'none'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
   Clear-Site-Data: "cache", "cookies", "storage"

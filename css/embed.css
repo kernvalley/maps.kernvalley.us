@@ -1,0 +1,18 @@
+:root {
+	--map-width: 100%;
+	--map-height: 100vh;
+	box-sizing: border-box;
+}
+
+:root, body {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	overflow: hidden;
+}

@@ -12,7 +12,6 @@ import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
-// import { SECONDS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
@@ -81,6 +80,13 @@ Promise.all([
 			customElements.whenDefined('leaflet-marker'),
 		]);
 
+		const map = document.querySelector('leaflet-map');
+		await map.ready;
+
+		if (location.hash.length < 2 && await map.hasGeoPermission(['granted'])) {
+			map.locate({ setView: true, maxZoom: 14, enableHighAccuracy: true });
+		}
+
 		$('#locate-btn').click(() => {
 			document.querySelector('leaflet-map')
 				.locate({ maxZoom: 16 });
@@ -116,16 +122,14 @@ Promise.all([
 		}, {
 			passive: true,
 		});
+
+		document.getElementById('search-items').append(...[...new Set([...map.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
+			const option = document.createElement('option');
+			option.textContent = name;
+			return option;
+		}));
 	}
 
 	$('.no-submit').submit(event => event.preventDefault());
 
-	const map = document.querySelector('leaflet-map');
-	await map.ready;
-
-	document.getElementById('search-items').append(...[...new Set([...map.querySelectorAll('leaflet-marker[title]')].map(({ title }) => title))].map(name => {
-		const option = document.createElement('option');
-		option.textContent = name;
-		return option;
-	}));
 });
