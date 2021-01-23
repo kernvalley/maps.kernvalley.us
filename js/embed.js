@@ -22,11 +22,11 @@ Promise.all([
 		detectRetina: true,
 		latitude: parseFloat(params.get('latitude')) || 35.678054901407855,
 		longitude: parseFloat(params.get('longitude')) || -118.42575073242189,
-		maxZoom: parseInt(params.get('zoom')) || 19,
-		minZoom: parseInt(params.get('minzoom')) || 1,
+		maxZoom: parseInt(params.get('maxZoom')) || 19,
+		minZoom: parseInt(params.get('minZoom')) || 1,
 		zoom: parseInt(params.get('zoom')),
 		watch: parseInt(params.get('watch')),
-		zoomControl: params.has('zoomcontrol'),
+		zoomControl: params.has('zoomControl'),
 		find: parseInt(params.get('find')),
 	});
 
