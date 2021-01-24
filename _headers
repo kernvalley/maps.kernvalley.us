@@ -33,7 +33,7 @@
   Link: </js/embed.js> as=script; referrerpolicy=no-referrer;
   Link: </js/embed.css> as=style; referrerpolicy=no-referrer;
   Link: <https://cdn.kernvalley.us/img/markers.svg> as=image; type=image/svg+xml; crossorigin=anonymous; referrerpolicy=no-referrer;
-  Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://maps.kernvalley.us/; font-src https://cdn.kernvalley.us; media-src *; frame-src 'none'; form-action 'none'; manifest-src 'none'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Content-Security-Policy: default-src 'none'; img-src * data:; script-src 'self' https://cdn.kernvalley.us/components/leaflet/map.min.js; style-src 'self' https://cdn.kernvalley.us/components/leaflet/map.css https://unpkg.com/leaflet@1.7.1/dist/leaflet.css; connect-src 'self' https://cdn.kernvalley.us/components/leaflet/map.html https://maps.kernvalley.us/; font-src https://cdn.kernvalley.us/fonts/; media-src 'none'; frame-src 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
   Clear-Site-Data: "cache", "cookies", "storage"
