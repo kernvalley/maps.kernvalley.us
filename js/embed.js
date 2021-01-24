@@ -6,6 +6,19 @@ async function ready() {
 	}
 }
 
+function getIcon(icon = 'map-marker', { size = 28 } = {}) {
+	const url = new URL('https://cdn.kernvalley.us/img/markers.svg');
+	const img = new Image(size, size);
+	img.crossOrigin = 'anonymous';
+	img.referrerPolicy = 'no-referrer';
+	img.loading = 'lazy';
+	img.decoding = 'async';
+	url.hash = `#${icon}`;
+	img.src = url.href;
+	img.slot = 'icon';
+	return img;
+}
+
 async function getCustomElement(tag) {
 	await customElements.whenDefined(tag);
 	return customElements.get(tag);
@@ -32,6 +45,10 @@ Promise.all([
 
 	document.body.append(map);
 
+	if (params.has('tiles') && LeafletMap.tileServers.hasOwnProperty(params.get('tiles'))) {
+		map.setTileServer(LeafletMap.tileServers[params.get('tiles')]);
+	}
+
 	if (params.has('markers')) {
 		await Promise.all([
 			map.ready,
@@ -39,14 +56,14 @@ Promise.all([
 		]);
 	}
 
-	if (params.has('markerLatitude') && params.has('markerLongitude') && params.has('popup')) {
-		const icon = new URL('https://cdn.kernvalley.us/img/markers.svg');
-		icon.hash = `#${params.get('icon') || 'map-marker'}`;
+	if (params.has('popup') && params.has('latitude') && params.has('longitude')) {
 		const marker = new LeafletMarker({
-			latitude: parseFloat(params.get('markerLatitude')),
-			longitude: parseFloat(params.get('markerLongitude')),
+			latitude: parseFloat(params.get('markerLatitude')) || parseFloat(params.get('latitude')),
+			longitude: parseFloat(params.get('markerLongitude')) || parseFloat(params.get('longitude')),
 			popup: params.get('popup'),
-			icon: icon.href,
+			icon: getIcon(params.get('icon') || 'map-marker', {
+				size: parseInt(params.get('iconSize')) || 28,
+			}),
 		});
 
 		marker.open = true;
