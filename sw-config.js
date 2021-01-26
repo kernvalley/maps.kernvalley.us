@@ -4,19 +4,18 @@ layout: null
 'use strict';
 /* eslint-env serviceworker */
 /* eslint no-unused-vars: 0 */
-/* dfg*/
 
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
 		/* Root document */
 		'/',
+		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
-		'https://cdn.kernvalley.us/img/markers.svg',
 
 		/* JS */
 		'https://cdn.kernvalley.us/js/std-js/no-console.js',
@@ -52,10 +51,12 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
-		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
-		/https:\/\/i\.imgur\.com\/*/,
+		'https://maps.wikimedia.org/osm-intl/',
+		'https://i.imgur.com/',
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
-		/https:\/\/api\.github\.com\/users\/*/,
-		/https:\/\/api\.openweathermap\.org\/data\/*/,
+		'https://api.github.com/users/',
 	],
+	allowedFresh: [
+		'https://api.openweathermap.org/data/',
+	]
 };

@@ -31,3 +31,10 @@ footer:
       - noreferrer
       - noopener
       - external
+  - label: Places Data
+    icon: find-location
+    href: https://github.com/kernvalley/places
+    rel:
+      - noopener
+      - noreferrer
+      - external
