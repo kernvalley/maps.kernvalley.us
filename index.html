@@ -3,6 +3,8 @@ layout: null
 pinned: true
 description: Map of the Kern River Valley and surrounding areas
 title: Kern Valley Maps
+no-header: true
+data-layout: full
 tags:
   - map
   - Kern Valley
@@ -15,35 +17,7 @@ faq:
 <html lang="en" dir="ltr" class="no-js border-box smooth-scroll" data-layout="full" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#" itemscope="">
 	{% include common/head.html %}
 	<body id="top" class="font-main background-primary color-default overflow-x-hidden">
-		<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-3">
-			<button type="button" is="app-list" id="app-menu" class="btn" source="krv-maps" hidden="">
-				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#apps"></use>
-				</svg>
-			</button>
-			<span class="grow-4"></span>
-			<button type="button" id="fs-btn" class="btn" data-full-screen="leaflet-map" title="Go Fullscreen">
-				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#screen-full"></use>
-				</svg>
-			</button>
-			<button type="button" id="locate-btn" class="btn" title="Find Me">
-				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#find-location"></use>
-				</svg>
-			</button>
-			<button type="button" id="filter-btn" class="btn" title="Show Map Settings" data-show-modal="#settings-dialog">
-				<svg class="icon" fill="currentColor" height="22" width="22" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#settings"></use>
-				</svg>
-			</button>
-			<button is="pwa-install" id="install-btn" class="btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
-				<svg class="icon current-color" role="img" aria-hidden="true">
-					<use xlink:href="/img/icons.svg#system-software-install"></use>
-				</svg>
-				<span class="mobile-hidden">Install</span>
-			</button>
-		</nav>
+		{% include nav.html %}
 		<main id="main" class="no-margin relative z-1">
 			<noscript>This site requires JavaScript</noscript>
 			<leaflet-map center="35.664676,-118.450685" id="map" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="9" crossorigin="annonymous" detectretina="detectretina" router="" toolbar="" zoomcontrol="">
@@ -141,22 +115,9 @@ faq:
 				{% endfor %}
 			</leaflet-map>
 		</main>
-		<aside id="sidebar">
-			<div class="center">
-				{% include common/weather.html appId=site.data.keys.openWeatherMap theme="auto" postalCode=93240 %}
-			</div>
-			<div class="ad-container">
-				{% for ad in site.data.ads.sidebar %}
-					{% include common/ad.html ad=ad content="sidebar" %}
-				{% endfor %}
-			</div>
-		</aside>
+		{% include sidebar.html %}
 		{% include common/footer.html keep-kern-clean=true %}
-		<button type="button" is="share-button" text="Maps for the Kern River Valley" class="btn btn-primary round shadow fixed z-4" aria-label="Share" hidden="">
-			<svg class="current-color icon">
-				<use xlink:href="/img/icons.svg#public-share"></use>
-			</svg>
-		</button>
+		{% include common/share-button.html text="Maps for the Kern River Valley" %}
 		<dialog id="settings-dialog">
 			<form id="mapSettings" class="no-submit">
 				<fieldset class="no-border">
