@@ -8,6 +8,7 @@ timezone: America/Los_Angeles
 lang: en
 dir: ltr
 charset: utf-8
+keep-kern-clean: true
 viewport: "width=device-width, viewport-fit=cover"
 robots: 'follow, index'
 referrer: no-referrer

@@ -1,17 +1,94 @@
-<leaflet-map center="{{ include.geo.latitude }},{{ include.geo.longitude }}" zoom="{{ include.zoom | default: '13' }}" minzoom="{{ include.minzoom | default: 13 }}" maxzoom="{{ include.maxzoom | default: 15 }}" crossorigin="annonymous" loading="{{ include.loading | default: 'eager' }}" zoomcontrol="" detectretina="" aria-hidden="true"{% if include.hidden %} hidden=""{% endif %}>
-	<leaflet-marker latitude="{{ include.geo.latitude }}" longitude="{{ include.geo.longitude }}" open="">
-		{% if include.geo.url %}
-			<a href="{{ include.geo.url }}" rel="noopener external" slot="popup">
-				{% include icon.html icon="link-external" height="16" width="16" %}
-				<div>{{ include.geo.name }}</div>
-				{% if include.content %}{{ include.content }}{% endif %}
-			</a>
-		{% else %}
+<leaflet-map center="35.664676,-118.450685" id="map" class="relative custom-element contain-content z-1" zoom="12" maxzoom="19" minzoom="9" crossorigin="annonymous" detectretina="detectretina" router="" toolbar="" zoomcontrol="">
+	<div class="center">
+		<div class="status-box alert inline-block">
+			<b class="block">Your browser is not supported</b>
+			<p>This web app requires modern features that are not supported by your browser</p>
+			<ul>
+				<li><code>customElements.define()</code></li>
+				<li><code>element.attachShadow()</code></li>
+			</ul>
+		</div>
+		<br /><br />
+	</div>
+	<div slot="toolbar" class="if-defined">
+		<input type="search" id="search" list="search-items" placeholder="Search for..." class="fixed top right z-2 no-border shadow" />
+		<datalist id="search-items"></datalist>
+	</div>
+	{% for town in site.data.places.towns %}
+		<script type="application/ld+json">{{ town | jsonify }}</script>
+		<leaflet-marker id="{{ town.identifier }}" class="custom-elements if-defined" data-marker-type="town" latitude="{{ town.geo.latitude }}" longitude="{{ town.geo.longitude }}" title="{{ town.name | escape }}" itemtype="https://schema.org/{{ town['@type'] | default: 'City' }}" itemscope="" maxzoom="15" data-postal-code="{{ town.address.postalCode.first }}">
+			<meta itemprop="name" content="{{ town.name | escape }}" />
+			<meta itemprop="longitude" content="{{ town.geo.longitude }}" />
+			<meta itemprop="latitude" content="{{ town.geo.latitude }}" />
+			{% include leaflet/map-icon.html icon="city" %}
+			<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+				<meta itemprop="addressLocality" content="{{ town.address.addressLocality | default: town.name }}" />
+				<meta itemprop="addressRegion" content="{{ town.address.addressRegion | default: 'CA' }}" />
+				<meta itemprop="addressCountry" content="{{ town.address.addressCountry | default: 'US' }}" />
+				{% for code in town.address.postalCode %}
+					<meta itemprop="postalCode" content="{{ code }}" />
+				{% endfor %}
+			</address>
 			<div slot="popup">
-				<div>{{ include.geo.name }}</div>
-				{% if include.content %}{{ include.content }}{% endif %}
+				<h3>
+					{% if town.url %}
+						<a href="{{ town.url }}" itemprop="url" rel="noopener noreferrer external">
+							{% include common/icon.html icon="link-external" fill="currentColor" height="20" width="20" %}
+							<span itemprop="name">{{ town.name }}</span>, CA
+						</a>
+					{% else %}
+						<span itemprop="name">{{ town.name }}</span>, CA
+					{% endif %}
+				</h3>
 			</div>
-		{% endif %}
-		<img slot="icon" src="{{ include.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" width="32" height="32" decoding="async" loading="lazy" />
-	</leaflet-marker>
+		</leaflet-marker>
+	{% endfor %}
+	{% for place in site.data.places.restaurants %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/restaurant-marker.html business=place icon="restaurant" type="restaurant" minZoom="15" %}
+	{% endfor %}
+	{% for place in site.data.places.bars %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/restaurant-marker.html business=place icon="bar" type="bar" minZoom="16" %}
+	{% endfor %}
+	{% for place in site.data.places.cafes %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/restaurant-marker.html business=place icon="cafe" type="cafe" minZoom="17" %}
+	{% endfor %}
+	{% for place in site.data.places.stores %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="store" minZoom="16" %}
+	{% endfor %}
+	{% for place in site.data.places.businesses %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="other" minZoom="18" %}
+	{% endfor %}
+	{% for place in site.data.places.activities %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="other" minZoom="15" %}
+	{% endfor %}
+	{% for place in site.data.places.landmarks %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="other" minZoom="12" %}
+	{% endfor %}
+	{% for place in site.data.places.financial %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place icon="atm" type="bank" minZoom="16" %}
+	{% endfor %}
+	{% for place in site.data.places.gas %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="gas" minZoom="12" %}
+	{% endfor %}
+	{% for place in site.data.places.lodging %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="lodging" minZoom="18" %}
+	{% endfor %}
+	{% for place in site.data.places.campgrounds %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="campground" minZoom="15" %}
+	{% endfor %}
+	{% for place in site.data.places.civic %}
+		<script type="application/ld+json">{{ place | jsonify }}</script>
+		{% include leaflet/local-business-marker.html business=place type="public" minZoom="14" %}
+	{% endfor %}
 </leaflet-map>

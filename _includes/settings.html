@@ -1,0 +1,61 @@
+<dialog id="settings-dialog">
+	<form id="mapSettings" class="no-submit">
+		<fieldset class="no-border">
+			<legend>Toggle Marker Visibility</legend>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-restaurants" name="restaurants" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='restaurant']" hidden="" />
+				<label for="toggle-restaurants" class="input-label btn btn-toggle">
+					<span>Restaurants</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-gas" name="gas" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='gas']" hidden="" />
+				<label for="toggle-gas" class="input-label btn btn-toggle">
+					<span>Gas Stations</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-lodging" name="lodging" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='lodging']" hidden="" />
+				<label for="toggle-lodging" class="input-label btn btn-toggle">
+					<span>Lodging</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-camping" name="camping" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='campground']" hidden="" />
+				<label for="toggle-camping" class="input-label btn btn-toggle">
+					<span>Campgrounds</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-stores" name="stores" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='store']" hidden="" />
+				<label for="toggle-stores" class="input-label btn btn-toggle">
+					<span>Stores</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+			<div class="form-group">
+				<input type="checkbox" id="toggle-towns" name="town" class="input hidden" data-toggle-attribute="hidden" data-selector="leaflet-marker[data-marker-type='town']" hidden="" />
+				<label for="toggle-towns" class="input-label btn btn-toggle">
+					<span>Towns</span>
+					{% include common/icon.html icon="x" class="icon when-checked" fill="red" height="18" width="18" %}
+					{% include common/icon.html icon="check" class="icon when-unchecked" fill="green" height="18" width="18" %}
+				</label>
+			</div>
+		</fieldset>
+	</form>
+	<hr />
+	<div class="flex row space-evenly">
+		<button type="button" class="btn btn-primary grow-1" data-close="#settings-dialog">
+			<span>Close</span>
+			{% include common/icon.html icon="x" width="20" height="20" fill="currentColor" %}
+		</button>
+</dialog>

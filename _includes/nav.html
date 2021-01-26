@@ -1,0 +1,19 @@
+<nav id="nav" class="flex row no-wrap overflow-x-auto background-accent color-alt shadow sticky top z-3">
+	<button type="button" is="app-list" id="app-menu" class="btn" source="krv-maps" hidden="">
+		{% include common/icon.html icon="apps" height="22" width="22" fill="currentColor" %}
+	</button>
+	<span class="grow-4"></span>
+	<button type="button" id="fs-btn" class="btn" data-full-screen="leaflet-map" title="Go Fullscreen">
+		{% include common/icon.html icon="screen-full" height="22" width="22" fill="currentColor" %}
+	</button>
+	<button type="button" id="locate-btn" class="btn" title="Find Me">
+		{% include common/icon.html icon="find-location" height="22" width="22" fill="currentColor" %}
+	</button>
+	<button type="button" id="filter-btn" class="btn" title="Show Map Settings" data-show-modal="#settings-dialog">
+		{% include common/icon.html icon="settings" height="22" width="22" fill="currentColor" %}
+	</button>
+	<button is="pwa-install" id="install-btn" class="btn" src="service-worker.js" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+		{% include common/icon.html icon="system-software-install" height="22" width="22" fill="currentColor" %}
+		<span class="mobile-hidden">Install</span>
+	</button>
+</nav>
