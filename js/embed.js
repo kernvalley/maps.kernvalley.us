@@ -19,10 +19,62 @@ function getIcon(icon = 'map-marker', { size = 28 } = {}) {
 	return img;
 }
 
+function markerHandler({ type }) {
+	const { id, title, latitude, longitude } = this;
+	switch(type) {
+		case 'open':
+			window.postMessage({ opened: { id, title, latitude, longitude }});
+			break;
+
+		case 'close':
+			window.postMessage({ closed: { id, title, latitude, longitude }});
+			break;
+	}
+}
+
 async function getCustomElement(tag) {
 	await customElements.whenDefined(tag);
 	return customElements.get(tag);
 }
+
+window.addEventListener('message', async ({ data }) => {
+	await Promise.all([ready(), customElements.whenDefined('leaflet-map')]);
+
+	if (Array.isArray(data.loadMarkers)) {
+		await document.body.firstElementChild.loadMarkers(...data.loadMarkers);
+		window.dispatchEvent(new Event('markers'));
+	}
+
+	if (typeof data.marker === 'object' && (typeof data.marker.latitude === 'number' && typeof data.marker.longitude === 'number')) {
+		const LeafletMarker = await getCustomElement('leaflet-marker');
+		document.querySelector('leaflet-map').append(new LeafletMarker(data.marker));
+	}
+
+	if (typeof data.open === 'string') {
+		const marker = document.getElementById(data.open);
+
+		if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
+			marker.open = true;
+		}
+	}
+
+	if (typeof data.longitude === 'number' && data.latitude === 'number') {
+		const { latitude, longitude } = data;
+		document.querySelector('leaflet-map').center = { latitude, longitude };
+	}
+
+	if (Number.isSafeInteger(data.zoom)) {
+		document.querySelector('leaflet-map').zoom = data.zoom;
+	}
+
+	if (Number.isSafeInteger(data.locate)) {
+		document.querySelector('leaflet-map').locate({ maxZoom: data.locate });
+	}
+
+	if (Number.isSafeInteger(data.watch)) {
+		document.querySelector('leaflet-map').locate({ maxZoom: data.watch, watch: true });
+	}
+});
 
 Promise.all([
 	getCustomElement('leaflet-map'),
@@ -41,6 +93,15 @@ Promise.all([
 		watch: parseInt(params.get('watch')),
 		zoomControl: params.has('zoomControl'),
 		find: parseInt(params.get('find')),
+	});
+
+	map.id = 'leaflet-map';
+
+	map.addEventListener('markerschange', ({ detail }) => {
+		detail.forEach(marker => {
+			marker.addEventListener('open', markerHandler);
+			marker.addEventListener('close', markerHandler);
+		});
 	});
 
 	document.body.append(map);
@@ -77,4 +138,6 @@ Promise.all([
 			map.flyTo(marker, 16);
 		}
 	}
+
+	await map.ready;
 });
