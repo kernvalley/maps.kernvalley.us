@@ -2,7 +2,8 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
-  Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://apps.kernvalley.us/apps.json https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/; font-src https://cdn.kernvalley.us; media-src *; frame-src https://www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Feature-Policy: geolocation 'self';
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us/apps.json api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /places/:placeholder.json
   X-Content-Type-Options: nosniff
@@ -24,7 +25,7 @@
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Feature-Policy: geolocation 'self';
-  Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://apps.kernvalley.us/apps.json https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/; font-src https://cdn.kernvalley.us; media-src *; frame-src https://www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us/apps.json api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /embed
   X-Content-Type-Options: nosniff
@@ -34,16 +35,16 @@
   Cross-Origin-Embedder-Policy: unsafe-none
   Link: </js/embed.js>; rel=preload; as=script; referrerpolicy=no-referrer;
   Link: </css/embed.css>; rel=preload; as=style; referrerpolicy=no-referrer;
-  Link: <https://cdn.kernvalley.us/components/leaflet/map.min.js>; rel=preload; as=script; crossorigin; referrerpolicy=no-referrer;
-  Content-Security-Policy: default-src 'none'; img-src * data:; script-src 'self' https://cdn.kernvalley.us/components/leaflet/map.min.js; style-src 'self' https://cdn.kernvalley.us/components/leaflet/map.css https://unpkg.com/leaflet@1.7.1/dist/leaflet.css; connect-src 'self' https://cdn.kernvalley.us/components/leaflet/map.html https://maps.kernvalley.us/places/; font-src https://cdn.kernvalley.us/fonts/; media-src 'none'; frame-src 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content;
+  Link: <//cdn.kernvalley.us/components/leaflet/map.min.js>; rel=preload; as=script; crossorigin; referrerpolicy=no-referrer;
+  Content-Security-Policy: default-src 'none'; img-src * data:; script-src 'self' cdn.kernvalley.us/components/leaflet/map.min.js; style-src 'self' cdn.kernvalley.us/components/leaflet/map.css unpkg.com/leaflet@1.7.1/dist/leaflet.css; connect-src 'self' cdn.kernvalley.us/components/leaflet/map.html maps.kernvalley.us/places/; font-src cdn.kernvalley.us/fonts/; media-src 'none'; frame-src 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content;
 
 /reset
   Clear-Site-Data: "cache", "cookies", "storage"
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.kernvalley.us;
+  Content-Security-Policy: default-src 'self'; script-src 'self' cdn.kernvalley.us;
 
 /service-worker.js
-  Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' https://cdn.kernvalley.us/service-worker.js;
-  Link: <https://cdn.kernvalley.us/service-worker.js>; rel=preload; as=script
+  Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' cdn.kernvalley.us/service-worker.js;
+  Link: <//cdn.kernvalley.us/service-worker.js>; rel=preload; as=script
   Link: </sw-config.js>; rel=preload; as=script
 
 /*
