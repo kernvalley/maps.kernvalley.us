@@ -53,6 +53,8 @@ const config = {
 	allowed: [
 		'https://maps.wikimedia.org/osm-intl/',
 		'https://i.imgur.com/',
+		'https://www.google-analytics.com/analytics.js',
+		'https://www.googletagmanager.com/gtag/js',
 		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 		'https://api.github.com/users/',
 	],
