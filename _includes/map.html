@@ -118,7 +118,7 @@
 	{% for place in site.data.places.churches %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
 		{% if place.geo %}
-			{% include leaflet/local-business-marker.html business=place type="public" minZoom="14" %}
+			{% include leaflet/local-business-marker.html business=place type="public" minZoom="15" %}
 		{% endif %}
 	{% endfor %}
 </leaflet-map>
