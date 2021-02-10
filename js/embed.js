@@ -111,10 +111,36 @@ Promise.all([
 	}
 
 	if (params.has('markers')) {
-		await Promise.all([
-			map.ready,
-			map.loadMarkers(...params.get('markers').split('|')).catch(console.error),
-		]);
+		const types = params.get('markers').split('|');
+		if (types.includes('all')) {
+			await map.ready;
+			const resp = await fetch('/places/all.json');
+			const json = await resp.json();
+			/* @TODO handle orgs with `marker.location.geo` */
+			const markers = await Promise.all(Object.values(json).flat()
+				.filter(marker => 'geo' in marker)
+				.map(async marker => {
+					const markerEl = new LeafletMarker({
+						latitude: marker.geo.latitude,
+						longitude: marker.geo.longitude,
+						popup: `<h3>${marker.name}</h3>`,
+						icon: await LeafletMarker.getSchemaIcon(marker),
+					});
+
+					if (typeof marker.identifier === 'string') {
+						markerEl.id = marker.identifier;
+						markerEl.title = marker.name;
+					}
+
+					return markerEl;
+				}));
+			map.append(...markers);
+		} else {
+			await Promise.all([
+				map.ready,
+				map.loadMarkers(...types).catch(console.error),
+			]);
+		}
 	}
 
 	if (params.has('popup') && params.has('latitude') && params.has('longitude')) {
