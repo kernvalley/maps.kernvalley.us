@@ -32,16 +32,18 @@ $(document.documentElement).toggleClass({
 try {
 	requestIdleCallback(() => {
 		if (typeof GA === 'string' && GA.length !== 0) {
-			importGa(GA).then(async ({ ga }) => {
-				ga('create', GA, 'auto');
-				ga('set', 'transport', 'beacon');
-				ga('send', 'pageview');
+			importGa(GA).then(async ({ hasGa, ga, create, set }) => {
+				if (hasGa()) {
+					create(GA, 'auto');
+					set('transport', 'beacon');
+					ga('send', 'pageview');
 
-				await ready();
+					await ready();
 
-				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+					$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+					$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+					$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+				}
 			}).catch(console.error);
 		}
 	});

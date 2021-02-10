@@ -8,7 +8,6 @@ layout: null
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
-		/* Root document */
 		'/',
 		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),
@@ -55,8 +54,8 @@ const config = {
 		'https://i.imgur.com/',
 		'https://www.google-analytics.com/analytics.js',
 		'https://www.googletagmanager.com/gtag/js',
-		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 		'https://api.github.com/users/',
+		/https:\/\/*\.githubusercontent\.com\/u\/*/,
 	],
 	allowedFresh: [
 		'https://api.openweathermap.org/data/',
