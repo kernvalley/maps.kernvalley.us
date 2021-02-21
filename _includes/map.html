@@ -45,85 +45,85 @@
 	{% endfor %}
 	{% for place in site.data.places.restaurants %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place icon="restaurant" type="restaurant" minZoom="15" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.bars %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place icon="bar" type="bar" minZoom="16" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.cafes %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/restaurant-marker.html business=place icon="cafe" type="cafe" minZoom="17" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.stores %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="store" minZoom="16" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.businesses %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="other" minZoom="18" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.activities %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="other" minZoom="15" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.landmarks %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="other" minZoom="12" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.financial %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place icon="atm" type="bank" minZoom="16" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.gas %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="gas" minZoom="12" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.lodging %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="lodging" minZoom="18" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.campgrounds %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="campground" minZoom="15" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.civic %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="public" minZoom="14" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.schools %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="public" minZoom="14" %}
 		{% endif %}
 	{% endfor %}
 	{% for place in site.data.places.churches %}
 		<script type="application/ld+json">{{ place | jsonify }}</script>
-		{% if place.geo %}
+		{% if place.geo or place.location.geo %}
 			{% include leaflet/local-business-marker.html business=place type="public" minZoom="15" %}
 		{% endif %}
 	{% endfor %}
