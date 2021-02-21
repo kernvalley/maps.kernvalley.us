@@ -12,12 +12,9 @@ const config = {
 		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		'/css/index.min.css',
-		'/js/index.min.js',
-		'/img/icons.svg',
-
 		/* JS */
 		'https://cdn.kernvalley.us/js/std-js/no-console.js',
+		'/js/index.min.js',
 
 		/* `customElements`templates */
 		'https://cdn.kernvalley.us/components/toast-message.html',
@@ -28,6 +25,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/weather/current.html',
 
 		/* CSS */
+		'/css/index.min.css',
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.css',
@@ -37,11 +35,12 @@ const config = {
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 
 		/* Images & Icons */
+		'/img/icons.svg',
+		'/img/favicon.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-512.png',
 		'/img/icon-192.png',
 		'/img/icon-32.png',
-		'/img/favicon.svg',
 		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 
@@ -55,7 +54,7 @@ const config = {
 		'https://www.google-analytics.com/analytics.js',
 		'https://www.googletagmanager.com/gtag/js',
 		'https://api.github.com/users/',
-		/https:\/\/*\.githubusercontent\.com\/u\/*/,
+		/https:\w+\.githubusercontent\.com\/u\/*/,
 	],
 	allowedFresh: [
 		'https://api.openweathermap.org/data/',
