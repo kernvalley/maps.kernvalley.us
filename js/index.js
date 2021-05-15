@@ -13,7 +13,8 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
+import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { consumeHandler } from './functions.js';
 import { GA } from './consts.js';
@@ -30,22 +31,24 @@ $(document.documentElement).toggleClass({
 }).catch(console.error);
 
 try {
-	requestIdleCallback(() => {
-		if (typeof GA === 'string' && GA.length !== 0) {
-			importGa(GA).then(async ({ hasGa, ga, create, set }) => {
-				if (hasGa()) {
-					create(GA, 'auto');
-					set('transport', 'beacon');
-					ga('send', 'pageview');
+	loaded().then(() => {
+		requestIdleCallback(() => {
+			if (typeof GA === 'string' && GA.length !== 0) {
+				importGa(GA).then(async ({ hasGa, ga, create, set }) => {
+					if (hasGa()) {
+						create(GA, 'auto');
+						set('transport', 'beacon');
+						ga('send', 'pageview');
 
-					await ready();
+						await ready();
 
-					$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-					$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-					$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
-				}
-			}).catch(console.error);
-		}
+						$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+						$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+						$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+					}
+				}).catch(console.error);
+			}
+		});
 	});
 } catch(err) {
 	console.error(err);
@@ -73,9 +76,9 @@ if (location.search.includes('geo=geo')) {
 	}
 }
 
-Promise.all([
-	init().catch(console.error),
-]).then(async () => {
+ready().then(async () => {
+	init();
+
 	if (location.pathname === '/') {
 		await Promise.all([
 			customElements.whenDefined('leaflet-map'),
@@ -133,5 +136,4 @@ Promise.all([
 	}
 
 	$('.no-submit').submit(event => event.preventDefault());
-
 });

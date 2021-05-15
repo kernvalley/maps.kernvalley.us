@@ -55,8 +55,10 @@ const config = {
 		'https://www.googletagmanager.com/gtag/js',
 		'https://api.github.com/users/',
 		/https:\w+\.githubusercontent\.com\/u\/*/,
+		/\.(png|jpg|webp|gif|svg)$/,
 	],
 	allowedFresh: [
 		'https://api.openweathermap.org/data/',
+		/\.(html|js|css|json)$/,
 	]
 };
