@@ -12,7 +12,9 @@ import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
+import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded, toggleClass, on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
@@ -76,6 +78,11 @@ if (location.search.includes('geo=geo')) {
 
 ready().then(async () => {
 	init();
+
+	getCustomElement('install-prompt').then(HTMLInstallPromptElement => {
+		on('#install-btn', ['click'], () => new HTMLInstallPromptElement().show())
+			.forEach(el => el.hidden = false);
+	})
 
 	if (location.pathname === '/') {
 		await Promise.all([
