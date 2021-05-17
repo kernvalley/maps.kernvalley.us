@@ -7,7 +7,6 @@ import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
-import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
@@ -15,7 +14,6 @@ import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded, toggleClass, on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { consumeHandler } from './functions.js';
@@ -105,7 +103,9 @@ ready().then(async () => {
 
 		on('leaflet-marker[data-postal-code]', ['open'], ({ target }) => {
 			document.querySelector('leaflet-map').flyTo(target, 18);
-			$('weather-current').attr({ postalcode: target.dataset.postalCode }).then($els => $els.first.update());
+			const weather = document.querySelector('weather-current');
+			attr([weather], { postalcode: target.dataset.postalCode });
+			weather.update();
 		});
 
 		on('#search', ['input'], async ({ target }) => {
