@@ -13,7 +13,6 @@ const config = {
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* JS */
-		'https://cdn.kernvalley.us/js/std-js/no-console.js',
 		'/js/index.min.js',
 
 		/* `customElements`templates */
@@ -23,6 +22,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/ad/block.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
+		'https://cdn.kernvalley.us/components/install/prompt.html',
 
 		/* CSS */
 		'/css/index.min.css',
@@ -33,10 +33,12 @@ const config = {
 		'https://cdn.kernvalley.us/components/ad/block.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+		'https://cdn.kernvalley.us/components/install/prompt.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
 		'/img/favicon.svg',
+		'/favicon.ico',
 		'/img/apple-touch-icon.png',
 		'/img/icon-512.png',
 		'/img/icon-192.png',
