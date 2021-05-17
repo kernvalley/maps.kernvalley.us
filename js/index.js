@@ -14,7 +14,7 @@ import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
-import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { ready, loaded, toggleClass, on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { consumeHandler } from './functions.js';
 import { GA } from './consts.js';
@@ -23,7 +23,7 @@ if ('launchQueue' in window) {
 	launchQueue.setConsumer(consumeHandler);
 }
 
-$(document.documentElement).toggleClass({
+toggleClass(document.documentElement, {
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
@@ -40,11 +40,9 @@ try {
 						set('transport', 'beacon');
 						ga('send', 'pageview');
 
-						await ready();
-
-						$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-						$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-						$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+						on('a[rel~="external"]', ['click'], externalHandler, { passive: true, capture: true });
+						on('a[href^="tel:"]', ['click'], telHandler, { passive: true, capture: true });
+						on('a[href^="mailto:"]', ['click'], mailtoHandler, { passive: true, capture: true });
 					}
 				}).catch(console.error);
 			}
@@ -92,17 +90,18 @@ ready().then(async () => {
 			map.locate({ setView: true, maxZoom: 14, enableHighAccuracy: true });
 		}
 
-		$('#locate-btn').click(() => {
-			document.querySelector('leaflet-map')
-				.locate({ maxZoom: 16 });
+		on('.no-submit', ['submit'], event => event.preventDefault());
+
+		on('#locate-btn', ['click'], () => {
+			document.querySelector('leaflet-map').locate({ maxZoom: 16 });
 		});
 
-		$('leaflet-marker[data-postal-code]').on('open', ({ target }) => {
+		on('leaflet-marker[data-postal-code]', ['open'], ({ target }) => {
 			document.querySelector('leaflet-map').flyTo(target, 18);
 			$('weather-current').attr({ postalcode: target.dataset.postalCode }).then($els => $els.first.update());
 		});
 
-		$('#search').input(async ({ target }) => {
+		on('#search', ['input'], async ({ target }) => {
 			const value = target.value.toLowerCase();
 			const map = document.querySelector('leaflet-map');
 			await map.ready;
@@ -134,6 +133,4 @@ ready().then(async () => {
 			return option;
 		}));
 	}
-
-	$('.no-submit').submit(event => event.preventDefault());
 });
