@@ -10,6 +10,7 @@ const config = {
 	fresh: [
 		'/',
 		'https://cdn.kernvalley.us/img/markers.svg',
+		'/webapp.webmanifest',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* JS */
