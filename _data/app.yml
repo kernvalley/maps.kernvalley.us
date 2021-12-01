@@ -113,7 +113,7 @@ protocol_handlers:
     url: /?geo=%s
   - protocol: web+geo
     url: /?geo=%s
-  - protocol: krvplace
+  - protocol: web+krvplace
     url: /?place=%s
 features:
   - Offline map of the Kern River Valley
