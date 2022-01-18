@@ -8,10 +8,10 @@ import { days, months } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js
 const ICON = 'https://cdn.kernvalley.us/img/markers.svg#event';
 const IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
 const UTM = {
-	campaign: 'krv-events',
-	source: 'krv-maps',
-	medium: 'referral',
-	content: 'marker',
+	utm_campaign: 'krv-events',
+	utm_source: 'krv-maps',
+	utm_medium: 'referral',
+	utm_content: 'marker',
 };
 
 function formatDate(date) {
