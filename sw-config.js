@@ -11,6 +11,7 @@ const config = {
 		'/',
 		'https://cdn.kernvalley.us/img/markers.svg',
 		'/webapp.webmanifest',
+		'https://events.kernvalley.us/events.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* JS */
@@ -24,6 +25,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/ad/block.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
 		'https://cdn.kernvalley.us/components/install/prompt.html',
+		'https://cdn.kernvalley.us/components/krv/events.html',
 
 		/* CSS */
 		'/css/index.min.css',
@@ -35,6 +37,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/install/prompt.css',
+		'https://cdn.kernvalley.us/components/krv/events.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',

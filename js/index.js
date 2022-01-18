@@ -12,11 +12,13 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
+import 'https://cdn.kernvalley.us/components/krv/events.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { ready, loaded, toggleClass, on, attr } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { consumeHandler } from './functions.js';
+import { addEventsToMap } from './events.js';
 import { GA } from './consts.js';
 
 if ('launchQueue' in window) {
@@ -89,6 +91,7 @@ ready().then(async () => {
 		]);
 
 		const map = document.querySelector('leaflet-map');
+		addEventsToMap(map).catch(console.error);
 		await map.ready;
 
 		if (location.hash.length < 2 && await map.hasGeoPermission(['granted'])) {
