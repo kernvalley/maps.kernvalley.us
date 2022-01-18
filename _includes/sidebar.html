@@ -2,6 +2,9 @@
 	<div class="center">
 		{% include common/weather.html appId=site.data.keys.openWeatherMap theme="auto" postalCode=93240 %}
 	</div>
+	<div class="center">
+		<krv-events></krv-events>
+	</div>
 	<div class="ad-container">
 		{% for ad in site.data.ads.sidebar %}
 			{% include common/ad.html ad=ad content="sidebar" %}
