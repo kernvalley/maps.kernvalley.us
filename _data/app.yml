@@ -2,7 +2,7 @@ name: Kern Valley Maps
 shortName: KRV Maps
 id: KRVMaps
 startUrl: /?utm_source=pwa&utm_medium=pwa
-version: 2.2.0
+version: 2.2.0-2022-05-25
 lang: en
 dir: ltr
 display: standalone
@@ -103,11 +103,11 @@ related_applications:
   - platform: play
     id: com.krv_maps.twa
     url: https://play.google.com/store/apps/details?id=com.krv_maps.twa
-# file_handlers:
-#   - action: /
-#     accept:
-#       application/geo+json:
-#         - .geojson
+file_handlers:
+  - action: /
+    accept:
+      application/geo+json:
+        - .geojson
 protocol_handlers:
   - protocol: geo
     url: /?geo=%s
