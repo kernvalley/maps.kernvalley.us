@@ -143,7 +143,14 @@ Promise.all([
 		}
 	}
 
-	if (params.has('popup') && params.has('latitude') && params.has('longitude')) {
+	if (location.hash.length > 1) {
+		const marker = document.getElementById(location.hash.substr(1));
+
+		if (marker instanceof HTMLElement) {
+			marker.open = true;
+			map.flyTo(marker, 16);
+		}
+	} else if (params.has('popup') && params.has('latitude') && params.has('longitude')) {
 		const marker = new LeafletMarker({
 			latitude: parseFloat(params.get('markerLatitude')) || parseFloat(params.get('latitude')),
 			longitude: parseFloat(params.get('markerLongitude')) || parseFloat(params.get('longitude')),
