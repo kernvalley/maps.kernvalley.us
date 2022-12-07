@@ -116,13 +116,12 @@ Promise.all([
 			await map.ready;
 			const resp = await fetch('/places/all.json');
 			const json = await resp.json();
-			/* @TODO handle orgs with `marker.location.geo` */
 			const markers = await Promise.all(Object.values(json).flat()
-				.filter(marker => 'geo' in marker)
+				.filter(marker => 'geo' in marker || ('location' in marker && 'geo' in marker.location))
 				.map(async marker => {
 					const markerEl = new LeafletMarker({
-						latitude: marker.geo.latitude,
-						longitude: marker.geo.longitude,
+						latitude: 'geo' in markers ? marker.geo.latitude : marker.location.geo.latitude,
+						longitude: 'geo' in markers ? marker.geo.longitude : marker.location.geo.longitude,
 						popup: `<h3>${marker.name}</h3>`,
 						icon: await LeafletMarker.getSchemaIcon(marker),
 					});
