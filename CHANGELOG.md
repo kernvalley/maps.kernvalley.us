@@ -7,12 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.2.0] - 2022-25-18
+
 ### Added
 - `<iframe>` embedding URL `/embed`
 
 ### Changed
 - Update to use `_includes/common/` and `_includes/leaflet/` as submodules
 - Use `<leaflet-map router>` instead of handling all that here
+- Update Leaflet to v1.8.0
 
 ## [v2.1.4] - 2021-01-19
 

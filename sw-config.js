@@ -35,7 +35,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
 		'https://cdn.kernvalley.us/components/ad/block.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
-		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
+		'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/install/prompt.css',
 		'https://cdn.kernvalley.us/components/krv/events.css',
 
