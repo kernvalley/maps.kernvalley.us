@@ -85,6 +85,8 @@ Promise.all([
 	const map = new LeafletMap({
 		crossOrigin: 'anonymous',
 		detectRetina: true,
+		allowFullscreen: params.has('fullscreen'),
+		allowLocate: params.has('locate'),
 		latitude: parseFloat(params.get('latitude')) || 35.678054901407855,
 		longitude: parseFloat(params.get('longitude')) || -118.42575073242189,
 		maxZoom: parseInt(params.get('maxZoom')) || 19,
