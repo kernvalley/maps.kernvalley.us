@@ -100,10 +100,6 @@ ready().then(async () => {
 
 		on('.no-submit', ['submit'], event => event.preventDefault());
 
-		on('#locate-btn', ['click'], () => {
-			document.querySelector('leaflet-map').locate({ maxZoom: 16 });
-		});
-
 		on('leaflet-marker[data-postal-code]', ['open'], ({ target }) => {
 			document.querySelector('leaflet-map').flyTo(target, 18);
 			const weather = document.querySelector('weather-current');

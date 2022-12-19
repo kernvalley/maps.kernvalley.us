@@ -1,9 +1,10 @@
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { getJSON, setURLParams } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { setURLParams } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { create, ready, data } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { days, months } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
+import { getEvents } from 'https://cdn.kernvalley.us/js/std-js/krv/events.js';
 
 const ICON = 'https://cdn.kernvalley.us/img/markers.svg#event';
 const IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
@@ -101,7 +102,7 @@ function createOrganizer({ name, telephone, email, url, '@type': type = 'LocalBu
 			]
 		}));
 	} else {
-		container.append('span', { itemprop: 'name', text: name });
+		container.append(create('span', { itemprop: 'name', text: name }));
 	}
 
 	if (typeof email === 'string') {
@@ -130,7 +131,7 @@ function createOrganizer({ name, telephone, email, url, '@type': type = 'LocalBu
 export async function addEventsToMap(map) {
 	const now = Date.now();
 	const [events, LeafletMarker] = await Promise.all([
-		getJSON('https://events.kernvalley.us/events.json'),
+		getEvents(),
 		getCustomElement('leaflet-marker'),
 		customElements.whenDefined('leaflet-map'),
 		ready(),
