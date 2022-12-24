@@ -37,7 +37,7 @@
   Link: </js/embed.js>; rel=preload; as=script; referrerpolicy=no-referrer;
   Link: </css/embed.css>; rel=preload; as=style; referrerpolicy=no-referrer;
   Link: <//cdn.kernvalley.us/components/leaflet/map.min.js>; rel=preload; as=script; crossorigin; referrerpolicy=no-referrer;
-  Content-Security-Policy: default-src 'none'; img-src *; script-src 'self' cdn.kernvalley.us/components/leaflet/map.min.js; style-src 'self' cdn.kernvalley.us/components/leaflet/map.css unpkg.com/leaflet@1.8.0/dist/leaflet.css; connect-src 'self' cdn.kernvalley.us/components/leaflet/map.html maps.kernvalley.us/places/; font-src cdn.kernvalley.us/fonts/; media-src 'none'; frame-src 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content;
+  Content-Security-Policy: default-src 'none'; img-src *; script-src 'self' cdn.kernvalley.us/components/leaflet/map.min.js; style-src 'self' cdn.kernvalley.us/components/leaflet/map.css unpkg.com; connect-src 'self' cdn.kernvalley.us/components/leaflet/map.html maps.kernvalley.us/places/; font-src cdn.kernvalley.us/fonts/; media-src 'none'; frame-src 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content;
 
 /reset
   Referrer-Policy: no-referrer
