@@ -3,7 +3,7 @@ author: Chris Zuber
 title: Kern Valley Maps
 url: https://maps.kernvalley.us
 markdown: kramdown
-version: 2.1.4
+version: 2.2.0
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
