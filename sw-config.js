@@ -16,6 +16,8 @@ const config = {
 	stale: [
 		/* JS */
 		'/js/index.min.js',
+		'https://cdn.kernvalley.us/js/shims.min.js',
+		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* `customElements`templates */
 		'https://cdn.kernvalley.us/components/toast-message.html',
