@@ -17,6 +17,7 @@ const config = {
 		/* JS */
 		'/js/index.min.js',
 		'https://cdn.kernvalley.us/js/shims.min.js',
+		'https://cdn.kernvalley.us/js/security.min.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* `customElements`templates */
@@ -24,7 +25,6 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/github/user.html',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
-		'https://cdn.kernvalley.us/components/ad/block.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
 		'https://cdn.kernvalley.us/components/install/prompt.html',
 		'https://cdn.kernvalley.us/components/krv/events.html',
@@ -35,9 +35,9 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
-		'https://cdn.kernvalley.us/components/ad/block.css',
+		'https://cdn.kernvalley.us/components/krv/ad.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
-		'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css',
+		'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/install/prompt.css',
 		'https://cdn.kernvalley.us/components/krv/events.css',
 

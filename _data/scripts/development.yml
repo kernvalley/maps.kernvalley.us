@@ -2,6 +2,10 @@
   referrerPolicy: no-referrer
   crossOrigin: anonymous
   defer: true
+- src: https://cdn.kernvalley.us/js/security.min.js
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+  defer: true
 - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
   referrerPolicy: no-referrer
   crossOrigin: anonymous

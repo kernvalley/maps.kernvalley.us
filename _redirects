@@ -1,7 +1,7 @@
 /places/:type				/places/:type.json		301
 /marker-icon.png			/img/octicons/location.svg
 /marker-shadow.png			/img/null.svg
-/contact				https://contact.kernvalley.us/	301!
+/contact				https://contact.kernvalley.us/?url=https://maps.kernvalley.us	301!
 /embed/:latitude/:longitude/:zoom	/embed?latitude=:latitude&longitude=:longitude&zoom=:zoom
 /embed/:latitude/:longitude		/embed?latitude=:latitude&longitude=:longitude
 /embed/:identifier			/embed?markers=all&open=:identifier
