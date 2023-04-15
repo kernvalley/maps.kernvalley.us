@@ -24,3 +24,7 @@ img.avatar {
 #settings-dialog[open] {
 	min-width: 400px;
 }
+
+leaflet-marker:not(:defined) {
+	display: none;
+}

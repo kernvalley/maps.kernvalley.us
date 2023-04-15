@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.2.1] - 2023-04-15
+
+### Added
+- Implement TrustedTypes
+
+### Changed
+- Switch from `<ad-block>` to `<krv-ad>`
+
+### Fixed
+- Use correct Leaflet version
+
 ## [v2.2.0] - 2022-25-18
 
 ### Added

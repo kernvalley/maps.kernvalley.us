@@ -5,12 +5,13 @@ import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import 'https://cdn.kernvalley.us/components/ad/block.js';
+import 'https://cdn.kernvalley.us/components/krv/ad.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/krv/events.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { getGooglePolicy } from 'https://cdn.kernvalley.us/js/std-js/trust-policies.js';
 import { ready, loaded, toggleClass, on, attr } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { consumeHandler } from './functions.js';
@@ -30,9 +31,11 @@ toggleClass(document.documentElement, {
 
 try {
 	loaded().then(() => {
+		const policy = getGooglePolicy();
+
 		requestIdleCallback(() => {
 			if (typeof GA === 'string' && GA.length !== 0) {
-				importGa(GA).then(async ({ hasGa, ga, create, set }) => {
+				importGa(GA,{}, { policy }).then(async ({ hasGa, ga, create, set }) => {
 					if (hasGa()) {
 						create(GA, 'auto');
 						set('transport', 'beacon');
