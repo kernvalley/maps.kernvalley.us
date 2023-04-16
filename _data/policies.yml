@@ -11,3 +11,4 @@ trusted:
   - krv-events#html
   - weather-current#html
   - pwa-install
+  - dompurify
