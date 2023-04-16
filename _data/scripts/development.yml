@@ -13,3 +13,6 @@
 - src: /js/index.js
   type: module
   referrerPolicy: no-referrer
+# - src: /js/index.min.js
+#   referrerPolicy: no-referrer
+#   defer: true

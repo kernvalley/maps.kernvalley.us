@@ -2,7 +2,7 @@ name: Kern Valley Maps
 shortName: KRV Maps
 id: KRVMaps
 startUrl: /?utm_source=pwa&utm_medium=pwa
-version: 2.2.1
+version: 2.2.2
 lang: en
 dir: ltr
 display: standalone
@@ -29,6 +29,10 @@ icons:
     type: image/png
     sizes: 192x192
     purpose: maskable any
+  - src: /img/icon-96.png
+    type: image/png
+    sizes: 96x96
+    purpose: any
   - src: /img/icon-32.png
     type: image/png
     sizes: 32x32
@@ -61,6 +65,10 @@ shortcuts:
         type: image/png
         sizes: 192x192
         purpose: maskable any
+      - src: /img/icon-96.png
+        type: image/png
+        sizes: 96x96
+        purpose: any
       - src: /img/icon-32.png
         type: image/png
         sizes: 32x32
@@ -72,6 +80,10 @@ shortcuts:
         type: image/png
         sizes: 192x192
         purpose: maskable any
+      - src: /img/icon-96.png
+        type: image/png
+        sizes: 96x96
+        purpose: any
       - src: /img/icon-32.png
         type: image/png
         sizes: 32x32
@@ -83,6 +95,10 @@ shortcuts:
         type: image/png
         sizes: 192x192
         purpose: maskable any
+      - src: /img/icon-96.png
+        type: image/png
+        sizes: 96x96
+        purpose: any
       - src: /img/icon-32.png
         type: image/png
         sizes: 32x32
@@ -94,6 +110,10 @@ shortcuts:
         type: image/png
         sizes: 192x192
         purpose: maskable any
+      - src: /img/icon-96.png
+        type: image/png
+        sizes: 96x96
+        purpose: any
       - src: /img/icon-32.png
         type: image/png
         sizes: 32x32

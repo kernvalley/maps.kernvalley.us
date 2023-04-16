@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.2.2] - 2023-04-16
+
+### Fixed
+- Use correct security script in production
+- Fixed typo in CSP headers for TrustedTypess
+- Web App Manifest now sets `scope`
+- Allow DOMPurify policy
+
+### Added
+- Create 96x96px icon
+
 ## [v2.2.1] - 2023-04-15
 
 ### Added
