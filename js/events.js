@@ -1,10 +1,10 @@
-import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { setURLParams } from 'https://cdn.kernvalley.us/js/std-js/http.js';
-import { create, ready, data } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { loadImage } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
-import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
-import { days, months } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
-import { getEvents } from 'https://cdn.kernvalley.us/js/std-js/krv/events.js';
+import { getCustomElement } from 'std-js/custom-elements.js';
+import { setURLParams } from 'std-js/http.js';
+import { create, ready, data } from 'std-js/dom.js';
+import { loadImage } from 'std-js/loader.js';
+import { useSVG } from 'std-js/svg.js';
+import { days, months } from 'std-js/date-consts.js';
+import { getEvents } from 'std-js/krv/events.js';
 
 const ICON = 'https://cdn.kernvalley.us/img/markers.svg#event';
 const IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';

@@ -16,8 +16,8 @@ const config = {
 	stale: [
 		/* JS */
 		'/js/index.min.js',
-		'https://cdn.kernvalley.us/js/shims.min.js',
-		'https://cdn.kernvalley.us/js/security.min.js',
+		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js',
+		'src: https://unpkg.com/@shgysk8zer0/kazoo@0.0.5/harden.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* `customElements`templates */

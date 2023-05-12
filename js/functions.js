@@ -1,5 +1,5 @@
-import { ready } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { ready } from 'std-js/dom.js';
+import { getCustomElement } from 'std-js/custom-elements.js';
 
 export async function consumeHandler({ files }) {
 	if (files.length === 1) {
