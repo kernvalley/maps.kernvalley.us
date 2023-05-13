@@ -2,6 +2,7 @@
   "name": "maps.kernvalley.us",
   "version": "2.2.2",
   "private": true,
+  "type": "module",
   "description": "Maps for the Kern River Valley",
   "config": {
     "icons": "./_data/icons.csv",
