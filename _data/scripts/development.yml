@@ -1,10 +1,11 @@
-- src: https://cdn.kernvalley.us/js/shims.min.js
-  referrerPolicy: no-referrer
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js
   crossOrigin: anonymous
+  referrerPolicy: no-referrer
+  integrity: sha384-xoY6kDRPTvbDfGdGA3S6Ercudev5mWGBWZIErLB38f7TeN6hV7zof6WBpzMdx/z0
   defer: true
 - src: https://cdn.kernvalley.us/js/security.min.js
-  referrerPolicy: no-referrer
   crossOrigin: anonymous
+  referrerPolicy: no-referrer
   defer: true
 - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
   referrerPolicy: no-referrer
