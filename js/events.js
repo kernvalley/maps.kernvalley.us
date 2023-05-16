@@ -1,10 +1,11 @@
-import { getCustomElement } from 'std-js/custom-elements.js';
-import { setURLParams } from 'std-js/http.js';
-import { create, ready, data } from 'std-js/dom.js';
-import { loadImage } from 'std-js/loader.js';
-import { useSVG } from 'std-js/svg.js';
-import { days, months } from 'std-js/date-consts.js';
-import { getEvents } from 'std-js/krv/events.js';
+import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
+import { setURLParams } from '@shgysk8zer0/kazoo/http.js';
+import { ready, data } from '@shgysk8zer0/kazoo/dom.js';
+import { createElement } from '@shgysk8zer0/kazoo/elements.js';
+import { loadImage } from '@shgysk8zer0/kazoo/loader.js';
+import { useSVG } from '@shgysk8zer0/kazoo/svg.js';
+import { days, months } from '@shgysk8zer0/kazoo/date-consts.js';
+import { getEvents } from '@shgysk8zer0/kazoo/krv/events.js';
 
 const ICON = 'https://cdn.kernvalley.us/img/markers.svg#event';
 const IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
@@ -37,44 +38,44 @@ function createAddress({
 	address.setAttribute('itemprop', 'address');
 
 	if (typeof name === 'string') {
-		address.append(create('h3', { text: name, itemprop: 'name' }));
+		address.append(createElement('h3', { text: name, itemprop: 'name' }));
 	}
 
 	if (typeof streetAddress === 'string') {
-		address.append(create('div', {
+		address.append(createElement('div', {
 			children: [
-				create('div', {
+				createElement('div', {
 					children: [
-						create('div', {
+						createElement('div', {
 							children: [
 								useSVG('mark-location', { height: 16, width: 16, fill: 'currentColor' }),
-								create('span', { text: ' ' }),
-								create('span', { text: streetAddress, itemprop: 'streetAddress' }),
+								createElement('span', { text: ' ' }),
+								createElement('span', { text: streetAddress, itemprop: 'streetAddress' }),
 							]
 						}),
-						create('span', { text: ' ' }),
-						create('span', { text: addressLocality, itemprop: 'addressLocality' }),
-						create('span', { text: ', '}),
-						create('span', { text: addressRegion, itemprop: 'addressRegion' }),
+						createElement('span', { text: ' ' }),
+						createElement('span', { text: addressLocality, itemprop: 'addressLocality' }),
+						createElement('span', { text: ', '}),
+						createElement('span', { text: addressRegion, itemprop: 'addressRegion' }),
 					]
 				}),
-				create('meta', { itemprop: 'addressCountry', content: addressCountry }),
-				create('meta', { itemprop: 'postalCode', content: postalCode }),
+				createElement('meta', { itemprop: 'addressCountry', content: addressCountry }),
+				createElement('meta', { itemprop: 'postalCode', content: postalCode }),
 			]
 		}));
 	} else {
 		address.append(
-			create('div', {
+			createElement('div', {
 				children: [
 					useSVG('mark-location', { height: 16, width: 16, fill: 'currentColor' }),
-					create('span', { text: ' ' }),
-					create('span', { text: addressLocality, itemprop: 'addressLocality' }),
-					create('span', { text: ', '}),
-					create('span', { text: addressRegion, itemprop: 'addressRegion' }),
+					createElement('span', { text: ' ' }),
+					createElement('span', { text: addressLocality, itemprop: 'addressLocality' }),
+					createElement('span', { text: ', '}),
+					createElement('span', { text: addressRegion, itemprop: 'addressRegion' }),
 				]
 			}),
-			create('meta', { itemprop: 'addressCountry', content: addressCountry }),
-			create('meta', { itemprop: 'postalCode', content: postalCode }),
+			createElement('meta', { itemprop: 'addressCountry', content: addressCountry }),
+			createElement('meta', { itemprop: 'postalCode', content: postalCode }),
 		);
 	}
 
@@ -83,46 +84,46 @@ function createAddress({
 }
 
 function createOrganizer({ name, telephone, email, url, '@type': type = 'LocalBusiness' }) {
-	const container = create('div', {
+	const container = createElement('div', {
 		itemprop: 'organizer',
 		itemtype: `https://schema.org/${type}`,
 		itemscope: true,
-		children: [create('h4', { text: 'Organized by' })]
+		children: [createElement('h4', { text: 'Organized by' })]
 	});
 
 	if (typeof url === 'string') {
-		container.append(create('a', {
+		container.append(createElement('a', {
 			href: setURLParams(url, UTM).href,
 			rel: 'noopener noreferrer external',
 			itemprop: 'url',
 			children: [
-				create('span', { itemprop: 'name', text: name }),
-				create('span', { text: ' ' }),
+				createElement('span', { itemprop: 'name', text: name }),
+				createElement('span', { text: ' ' }),
 				useSVG('link-external', { height: 16, width: 16, fill: 'currentColor' }),
 			]
 		}));
 	} else {
-		container.append(create('span', { itemprop: 'name', text: name }));
+		container.append(createElement('span', { itemprop: 'name', text: name }));
 	}
 
 	if (typeof email === 'string') {
 		container.append(
 			document.createElement('br'),
-			create('a', {
+			createElement('a', {
 				href: `mailto:${email}`,
 				itemprop: 'email',
 				content: email,
 				children:[
 					useSVG('mail', { height: 18, width: 18, fill: 'currentColor' }),
-					create('span', { text: ' '}),
-					create('span', { text: email }),
+					createElement('span', { text: ' '}),
+					createElement('span', { text: email }),
 				]
 			}),
 		);
 	}
 
 	if (typeof telephone === 'string') {
-		container.append(create('meta', { itemprop: 'telephone', content: telephone }));
+		container.append(createElement('meta', { itemprop: 'telephone', content: telephone }));
 	}
 
 	return container;
@@ -159,50 +160,50 @@ export async function addEventsToMap(map) {
 		marker.title = name;
 		data([marker], { startDate, endDate });
 		marker.append(
-			create('div', {
+			createElement('div', {
 				slot: 'popup',
 				children: [
-					create('h2', {
+					createElement('h2', {
 						children: [
-							create('a', {
+							createElement('a', {
 								href: setURLParams(url, UTM).href,
 								rel: 'noopener noreferrer external',
 								itemprop: 'url',
 								children: [
-									create('span', { text: name, itemprop: 'name' }),
-									create('span', { text: ' ' }),
+									createElement('span', { text: name, itemprop: 'name' }),
+									createElement('span', { text: ' ' }),
 									useSVG('link-external', { height: 16, width: 16, fill: 'currentColor' }),
 								],
 							})
 						]
 					}),
-					create('div', {
+					createElement('div', {
 						children: [
-							create('div', {
+							createElement('div', {
 								children: [
-									create('b', {
+									createElement('b', {
 										children: [
 											useSVG('calendar', { height: 16, width: 16, fill: 'currentColor' }),
-											create('span', { text: ' Start: '}),
+											createElement('span', { text: ' Start: '}),
 
 										]
 									}),
-									create('time', {
+									createElement('time', {
 										text: formatDate(startDate),
 										itemprop: 'startDate',
 										datetime: startDate,
 									}),
 								]
 							}),
-							create('div', {
+							createElement('div', {
 								children: [
-									create('b', {
+									createElement('b', {
 										children: [
 											useSVG('calendar', { height: 16, width: 16, fill: 'currentColor' }),
-											create('span', { text: ' End: ' }),
+											createElement('span', { text: ' End: ' }),
 										]
 									}),
-									create('time', {
+									createElement('time', {
 										text: formatDate(endDate),
 										itemprop: 'endDate',
 										datetime: endDate,
@@ -214,17 +215,17 @@ export async function addEventsToMap(map) {
 					}),
 					document.createElement('br'),
 					await loadImage(image || IMAGE, { itemprop: 'image', loading: 'lazy' }),
-					create('blockquote', { text: description, itemprop: 'description' }),
-					create('div', {
+					createElement('blockquote', { text: description, itemprop: 'description' }),
+					createElement('div', {
 						itemprop: 'location',
 						children: [
 							createAddress(address),
-							create('div', {
+							createElement('div', {
 								itemprop: 'geo',
 								itemtype: 'https://schema.org/GeoCoordinates',
 								children: [
-									create('meta', { itemprop: 'latitude', content: latitude }),
-									create('meta', { itemprop: 'longitude', content: longitude }),
+									createElement('meta', { itemprop: 'latitude', content: latitude }),
+									createElement('meta', { itemprop: 'longitude', content: longitude }),
 								]
 							})
 						]}

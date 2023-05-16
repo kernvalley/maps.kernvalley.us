@@ -1,5 +1,12 @@
 'use strict';
 
+if ('trustedTypes' in globalThis) {
+	const sanitizer = new Sanitizer();
+	trustedTypes.createPolicy('default', {
+		createHTML: input => sanitizer.sanitizeFor('div', input).innerHTML,
+	});
+}
+
 async function ready() {
 	if (document.readyState === 'loading') {
 		await new Promise(r => document.addEventListener('DOMContentLoaded', r, { once: true }));
@@ -33,8 +40,7 @@ function markerHandler({ type }) {
 }
 
 async function getCustomElement(tag) {
-	await customElements.whenDefined(tag);
-	return customElements.get(tag);
+	return customElements.whenDefined(tag);
 }
 
 window.addEventListener('message', async ({ data }) => {
@@ -155,7 +161,7 @@ Promise.all([
 		const marker = new LeafletMarker({
 			latitude: parseFloat(params.get('markerLatitude')) || parseFloat(params.get('latitude')),
 			longitude: parseFloat(params.get('markerLongitude')) || parseFloat(params.get('longitude')),
-			popup: params.get('popup'),
+			popup: trustedTypes.defaultPolicy.createHTML(params.get('popup')),
 			icon: getIcon(params.get('icon') || 'map-marker', {
 				size: parseInt(params.get('iconSize')) || 28,
 			}),

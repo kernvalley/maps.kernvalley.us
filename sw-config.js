@@ -16,30 +16,28 @@ const config = {
 	stale: [
 		/* JS */
 		'/js/index.min.js',
-		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js',
-		'https://cdn.kernvalley.us/js/security.min.js',
-		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
+		'{{ site.data.importmap.imports["@shgysk8zer0/polyfills"]',
+		'{{ site.data.importmap.imports["@shgysk8zer0/kazoo/"]harden.js',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.min.js',
 
 		/* `customElements`templates */
-		'https://cdn.kernvalley.us/components/toast-message.html',
-		'https://cdn.kernvalley.us/components/leaflet/map.html',
-		'https://cdn.kernvalley.us/components/github/user.html',
-		'https://cdn.kernvalley.us/components/pwa/prompt.html',
-		'https://cdn.kernvalley.us/components/weather/current.html',
-		'https://cdn.kernvalley.us/components/install/prompt.html',
-		'https://cdn.kernvalley.us/components/krv/events.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}pwa/prompt.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}weather/current.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}install/prompt.html',
+		'{{ site.data.importmap.imports["@kernvalley/components/"] }}events.html',
 
 		/* CSS */
 		'/css/index.min.css',
-		'https://cdn.kernvalley.us/components/toast-message.css',
-		'https://cdn.kernvalley.us/components/leaflet/map.css',
-		'https://cdn.kernvalley.us/components/github/user.css',
-		'https://cdn.kernvalley.us/components/pwa/prompt.css',
-		'https://cdn.kernvalley.us/components/krv/ad.css',
-		'https://cdn.kernvalley.us/components/weather/current.css',
-		'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
-		'https://cdn.kernvalley.us/components/install/prompt.css',
-		'https://cdn.kernvalley.us/components/krv/events.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}leaflet/map.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}github/user.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}pwa/prompt.css',
+		'{{ site.data.importmap.imports["@kernvalley/components/"] }}ad.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}weather/current.css',
+		'{{ site.data.importmap.imports["leaflet/"] }}leaflet.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components"] }}install/prompt.css',
+		'{{ site.data.importmap.imports["@kernvalley/components/"] }}events.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',

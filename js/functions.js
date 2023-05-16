@@ -1,5 +1,5 @@
-import { ready } from 'std-js/dom.js';
-import { getCustomElement } from 'std-js/custom-elements.js';
+import { ready } from '@shgysk8zer0/kazoo/dom.js';
+import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
 
 export async function consumeHandler({ files }) {
 	if (files.length === 1) {

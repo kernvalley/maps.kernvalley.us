@@ -1,4 +1,4 @@
-import 'std-js/theme-cookie.js';
+import '@shgysk8zer0/kazoo/theme-cookie.js';
 import '@shgysk8zer0/components/current-year.js';
 import '@shgysk8zer0/components/share-button.js';
 // import '@shgysk8zer0/components/leaflet/geojson.js';
@@ -9,14 +9,16 @@ import '@kernvalley/components/ad.js';
 import '@shgysk8zer0/components/weather/current.js';
 import '@shgysk8zer0/components/install/prompt.js';
 import '@kernvalley/components/events.js';
-import { init } from 'std-js/data-handlers.js';
-import { getCustomElement } from 'std-js/custom-elements.js';
-import { getGooglePolicy } from 'std-js/trust-policies.js';
-import { ready, loaded, toggleClass, on, attr } from 'std-js/dom.js';
-import { importGa, externalHandler, mailtoHandler, telHandler } from 'std-js/google-analytics.js';
+import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
+import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
+import { getGooglePolicy, getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
+import { ready, loaded, toggleClass, on, attr } from '@shgysk8zer0/kazoo/dom.js';
+import { importGa, externalHandler, mailtoHandler, telHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
 import { consumeHandler } from './functions.js';
 import { addEventsToMap } from './events.js';
 import { GA } from './consts.js';
+
+getDefaultPolicy();
 
 if ('launchQueue' in window) {
 	launchQueue.setConsumer(consumeHandler);
