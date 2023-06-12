@@ -116,6 +116,8 @@ Promise.all([
 
 	if (params.has('tiles') && LeafletMap.tileServers.hasOwnProperty(params.get('tiles'))) {
 		map.setTileServer(LeafletMap.tileServers[params.get('tiles')]);
+	} else {
+		map.setTileServer(LeafletMap.tileServers.osm);
 	}
 
 	if (params.has('markers')) {

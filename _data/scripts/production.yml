@@ -9,12 +9,12 @@
   noModule: true
   defer: true
   integrity: sha384-xyhN4T4+9VPh8uXl6uWjGzsqwNXN9C2tla8b6zSrSqYlMFUoeCdoxiEJU0js+GNE
-- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.7/all.min.js
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.8/all.min.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  integrity: sha384-6D7++ok/uTOBioRnypzDxJYKgBEgNUmmnNO1ZKJAUyA21GK1vuHmOsoGswvTN157
+  integrity: sha384-v+BhQM1c97/28YXILSO+e6fOcrvW/2gOeNCw6NjBTomnZCGE6UbsaLlL03UU/emh
   defer: true
-- src: https://unpkg.com/@shgysk8zer0/kazoo@0.0.12/harden.js
+- src: https://unpkg.com/@shgysk8zer0/kazoo@0.0.16/harden.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
   integrity: sha384-55L/wO9o0uIVTeubRIDQB4bewfNqyxrj4OXuxlW24NMEk+ioZwMHVw/tFV78mM+k
@@ -22,8 +22,8 @@
 - src: /js/index.min.js
   referrerPolicy: no-referrer
   defer: true
-- src: https://unpkg.com/@shgysk8zer0/components@0.0.8/leaflet/map.min.js
+- src: https://unpkg.com/@shgysk8zer0/components@0.0.9/leaflet/map.min.js
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-  integrity: sha384-Uo5BPcqeUshJgemZE97VSpFPVhVn3Sjz6PzK7QQk5k6vlqh1j3xdeXeYdEfSP7Qg
+  integrity: sha384-nBvezj/iSzoatR/amD1/t42qZqW/GUr5DYukSjozo/c6ZYsfyYdfUdAOcCmL8s0m
   defer: true
