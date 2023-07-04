@@ -1,11 +1,11 @@
 {
   "name": "maps.kernvalley.us",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "type": "module",
   "description": "Maps for the Kern River Valley",
   "config": {
-    "icons": "./_data/icons.csv",
+    "icons": "./_data/icons.yml",
     "serve": {
       "domain": "localhost",
       "path": "./",
@@ -29,6 +29,16 @@
   ],
   "author": "Chris Zuber <admin@kernvalley.us>",
   "license": "MIT",
+  "funding": [
+    {
+      "type": "librepay",
+      "url": "https://liberapay.com/shgysk8zer0"
+    },
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/shgysk8zer0"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/kernvalley/maps.kernvalley.us/issues"
   },
@@ -39,7 +49,7 @@
     "preinstall": "npm run git:submodules",
     "postinstall": "npm run build",
     "preversion": "npm test",
-    "create:lock": "npm i --package-lock-only",
+    "create:lock": "npm i --package-lock-only --ignore-scripts --no-audit --no-fund",
     "git:fetch": "git fetch --prune --tags",
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
@@ -53,7 +63,7 @@
     "build:site:dev": "bundle exec jekyll build --drafts --unpublished --future --profile --trace --strict_front_matter",
     "build:css": "if [ -f 'postcss.config.js' ]; then postcss ${npm_package_config_dir_css}index.css -o ${npm_package_config_dir_css}index.min.css; fi",
     "build:js": "if [ -f 'rollup.config.js' ]; then rollup --config; fi",
-    "build:icons": "if [ -f ${npm_package_config_icons} ]; then $(svg-sprite-generate -c ${npm_package_config_icons} -o 'img/icons.svg'); fi",
+    "build:icons": "if [ -f ${npm_package_config_icons} ]; then svg-use-symbols -c ${npm_package_config_icons} -o 'img/icons.svg'; fi",
     "serve:production": "npm run build && JEKYLL_ENV=production bundle exec jekyll serve",
     "serve:dev": "bundle exec jekyll serve --drafts --unpublished --future --profile --trace --strict_front_matter",
     "netlify": "if [ -f '.netlify/state.json' ]; then npm run netlify:live; else npm run netlify:serve; fi",
@@ -62,12 +72,12 @@
     "netlify:live": "netlify dev --live",
     "netlify:link": "netlify link",
     "version:bump": "npm run version:bump:patch",
-    "version:bump:patch": "npm version --no-git-tag-version patch",
-    "version:bump:minor": "npm version --no-git-tag-version minor",
-    "version:bump:major": "npm version --no-git-tag-version major"
+    "version:bump:patch": "npm version --no-git-tag-version patch && npm run create:lock",
+    "version:bump:minor": "npm version --no-git-tag-version minor && npm run create:lock",
+    "version:bump:major": "npm version --no-git-tag-version major && npm run create:lock"
   },
   "dependencies": {
     "eslint-plugin-frontmatter": "0.0.8",
-    "netlify-js-app": "^3.0.4"
+    "netlify-js-app": "^3.3.0s"
   }
 }
