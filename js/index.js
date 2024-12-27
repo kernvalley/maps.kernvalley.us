@@ -1,7 +1,6 @@
 import '@shgysk8zer0/kazoo/theme-cookie.js';
 import '@shgysk8zer0/components/current-year.js';
 import '@shgysk8zer0/components/share-button.js';
-// import '@shgysk8zer0/components/leaflet/geojson.js';
 import '@shgysk8zer0/components/github/user.js';
 import '@shgysk8zer0/components/app/list-button.js';
 import '@shgysk8zer0/components/app/stores.js';
@@ -14,6 +13,7 @@ import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
 import { getGooglePolicy, getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
 import { ready, loaded, toggleClass, on, attr } from '@shgysk8zer0/kazoo/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
+import { decodeGeohash, parseGeoURI } from 'https://unpkg.com/@shgysk8zer0/geoutils@1.0.2/geoutils.js';
 import { consumeHandler } from './functions.js';
 import { addEventsToMap } from './events.js';
 import { GA } from './consts.js';
@@ -55,22 +55,46 @@ try {
 	console.error(err);
 }
 
-if (location.search.includes('geo=geo')) {
-	try {
-		const params = new URLSearchParams(location.search);
+if (location.search.includes('geo')) {
+	const params = new URLSearchParams(location.search);
 
-		if (params.has('geo')) {
-			const geo = params.get('geo');
+	if (params.has('geo')) {
+		try {
+			const {
+				coords: { latitude = NaN, longitude = NaN } = {},
+				params: { zoom = 16 } = {},
+			} = parseGeoURI(params.get('geo'));
 
-			if (geo.startsWith('geo:')) {
-				const [latitude = NaN, longitude = NaN] = geo.substr(4).split(';', 2)[0]
-					.split(',', 2).map(parseFloat);
-
-				if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-					const url = new URL(location.pathname, location.origin);
-					url.hash = `#${latitude},${longitude}`;
-				}
+			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+				const url = new URL(location.pathname, location.origin);
+				url.hash = `#${latitude},${longitude},${zoom}`;
+				history.replaceState(history.state, '', url.href);
 			}
+		} catch(err) {
+			console.error(err);
+		}
+	} else if (params.has('geohash')) {
+		try {
+			const { latitude = NaN, longitude = NaN } = decodeGeohash(params.get('geohash'));
+
+			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+				const url = new URL(location.pathname, location.origin);
+				url.hash = `#${latitude},${longitude}`;
+				history.replaceState(history.state, '', url.href);
+			}
+		} catch(err) {
+			console.error(err);
+		}
+	}
+	//0123456789bcdefghjkmnpqrstuvwxyz 32-bit alphabet
+} else if (location.hash.length > 2 && /^#[0-9b-hjk-np-z]{2,12}$/.test(location.hash)) {
+	try {
+		const { latitude = NaN, longitude = NaN } = decodeGeohash(location.hash.substring(1));
+
+		if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+			const url = new URL(location.pathname, location.origin);
+			url.hash = `#${latitude},${longitude}`;
+			history.replaceState(history.state, '', url.href);
 		}
 	} catch(err) {
 		console.error(err);

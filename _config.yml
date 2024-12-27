@@ -3,7 +3,7 @@ author: Chris Zuber
 title: Kern Valley Maps
 url: https://maps.kernvalley.us
 markdown: kramdown
-version: 3.0.2
+version: 3.0.3
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -107,7 +107,6 @@ exclude:
   - "*.lock"
   - "*.log"
   - "*.config.js"
-  - ".gitkeep"
   - docs/
   - "/.github/"
   - Gemfile
