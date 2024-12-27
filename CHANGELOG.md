@@ -7,7 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v3.0.2] - 2023-007-04
+## [v3.0.3] - 2024-12-27
+
+### Added
+- Add support for geohashes via both `?geohash=:geohash` and `#:geohash`
+
+### Changed
+- Update to node v20.9.0
+- Switch to using `unpkg.com/@shgysk8zer0/core-css/`
+- Numerous package/dependency updates
+- Switch to use `importmap.json` instead of using YAML
+
+### Removed
+- Remove unused Trusted Types Policies
+- Remove old sources for CSP
+
+### Fixed
+- Fix `geo:` URI handling
+
+## [v3.0.2] - 2023-07-04
 
 ### Changed
 - Update dependencies and config

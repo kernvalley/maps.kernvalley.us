@@ -1,9 +1,12 @@
 'use strict';
 
 if ('trustedTypes' in globalThis) {
-	const sanitizer = new Sanitizer();
 	trustedTypes.createPolicy('default', {
-		createHTML: input => sanitizer.sanitizeFor('div', input).innerHTML,
+		createHTML(input) {
+			const template = document.createElement('template');
+			template.setHTML(input);
+			return template.innerHTML;
+		}
 	});
 }
 
