@@ -22,7 +22,6 @@ const config = {
 
 		/* CSS */
 		'/css/index.min.css',
-		// https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
 		'{{ site.data.importmap.imports["leaflet/"]}}leaflet.css',
 
 		/* Images & Icons */
