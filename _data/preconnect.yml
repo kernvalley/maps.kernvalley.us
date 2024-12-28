@@ -1,7 +1,5 @@
 - href: https://api.github.com
   crossOrigin: anonymous
-- href: https://maps.wikimedia.org/
-  crossOrigin: anonymous
   referrerPolicy: no-referrer
 - href: https://api.openweathermap.org/
   crossOrigin: anonymous

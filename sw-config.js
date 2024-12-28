@@ -20,23 +20,9 @@ const config = {
 		'{{ site.data.importmap.imports["@shgysk8zer0/kazoo/"] }}harden.js',
 		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.min.js',
 
-		/* `customElements`templates */
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.html',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.html',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}pwa/prompt.html',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}weather/current.html',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}install/prompt.html',
-		'{{ site.data.importmap.imports["@kernvalley/components/"] }}events.html',
-
 		/* CSS */
 		'/css/index.min.css',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.css',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.css',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}pwa/prompt.css',
-		'{{ site.data.importmap.imports["@kernvalley/components/"] }}ad.css',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}weather/current.css',
-		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}install/prompt.css',
-		'{{ site.data.importmap.imports["@kernvalley/components/"] }}events.css',
+		'{{ site.data.importmap.imports["leaflet/"]}}leaflet.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
@@ -54,7 +40,6 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
-		'https://maps.wikimedia.org/osm-intl/',
 		'https://i.imgur.com/',
 		'https://www.google-analytics.com/analytics.js',
 		'https://www.googletagmanager.com/gtag/js',

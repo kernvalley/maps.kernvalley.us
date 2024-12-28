@@ -47,6 +47,7 @@
     "@kernvalley/components/": "https://unpkg.com/@kernvalley/components@2.0.5/",
     "@webcomponents/custom-elements": "https://unpkg.com/@webcomponents/custom-elements@1.6.0/custom-elements.min.js",
     "leaflet": "https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js",
+    "leaflet/": "https://unpkg.com/leaflet@1.9.4/dist/",
     "urlpattern-polyfill": "https://unpkg.com/urlpattern-polyfill@10.0.0/index.js",
     "highlight.js": "https://unpkg.com/@highlightjs/cdn-assets@11.11.1/es/core.min.js",
     "highlight.js/": "https://unpkg.com/@highlightjs/cdn-assets@11.11.1/es/",
