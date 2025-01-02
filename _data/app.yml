@@ -2,7 +2,7 @@ name: Kern Valley Maps
 shortName: KRV Maps
 id: KRVMaps
 startUrl: /?utm_source=pwa&utm_medium=pwa
-version: 3.0.3-b
+version: 3.0.4
 lang: en
 dir: ltr
 display: standalone

@@ -8,8 +8,8 @@
   referrerPolicy: no-referrer
   integrity: sha384-55L/wO9o0uIVTeubRIDQB4bewfNqyxrj4OXuxlW24NMEk+ioZwMHVw/tFV78mM+k
   defer: true
-- src: /js/index.min.js
-  # type: module
+- src: /js/index.js
+  type: module
   defer: true
   referrerPolicy: no-referrer
 - src: https://unpkg.com/@shgysk8zer0/components@0.3.14/leaflet/bundle.min.js

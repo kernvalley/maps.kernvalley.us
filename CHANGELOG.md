@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### [v3.0.4] - 2025-01-01
+
+### Added
+- Add `geo:` URI query (`?q=`) handling as label for marker popups
+
 ## [v3.0.3] - 2024-12-27
 
 ### Added
