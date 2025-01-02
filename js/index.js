@@ -62,13 +62,31 @@ if (location.search.includes('geo')) {
 		try {
 			const {
 				coords: { latitude = NaN, longitude = NaN } = {},
-				params: { zoom = 16 } = {},
+				params: { zoom = 16, query = 'Marked Location' } = {},
 			} = parseGeoURI(params.get('geo'));
 
 			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-				const url = new URL(location.pathname, location.origin);
-				url.hash = `#${latitude},${longitude},${zoom}`;
-				history.replaceState(history.state, '', url.href);
+				Promise.all([
+					customElements.whenDefined('leaflet-marker'),
+					customElements.whenDefined('leaflet-map'),
+				]).then(([LeafletMarker]) => {
+					const popup = document.createElement('div');
+					const label = document.createElement('b');
+					const coords = document.createElement('pre');
+					const map = document.querySelector('leaflet-map');
+					const url = new URL(location.pathname, location.origin);
+
+					label.textContent = query;
+					coords.textContent = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+					popup.append(label, document.createElement('br'), coords);
+					const marker = new LeafletMarker({ latitude, longitude, popup, open: false });
+					marker.id = 'marked-geo-location';
+					map.append(marker);
+					map.zoom = zoom;
+					marker.open = true;
+					url.hash = `#${latitude},${longitude},${zoom}`;
+					history.replaceState(history.state, '', url.href);
+				});
 			}
 		} catch(err) {
 			console.error(err);
