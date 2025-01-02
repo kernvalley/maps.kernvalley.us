@@ -86,7 +86,7 @@ if (location.search.includes('geo')) {
 					marker.open = true;
 					url.hash = `#${latitude},${longitude},${zoom}`;
 					history.replaceState(history.state, '', url.href);
-				})
+				});
 			}
 		} catch(err) {
 			console.error(err);
