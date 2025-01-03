@@ -13,7 +13,6 @@ import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
 import { getGooglePolicy, getDefaultPolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
 import { ready, loaded, toggleClass, on, attr } from '@shgysk8zer0/kazoo/dom.js';
 import { importGa, externalHandler, mailtoHandler, telHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
-import { decodeGeohash, parseGeoURI } from 'https://unpkg.com/@shgysk8zer0/geoutils@1.0.2/geoutils.js';
 import { consumeHandler } from './functions.js';
 import { addEventsToMap } from './events.js';
 import { GA } from './consts.js';
@@ -56,67 +55,26 @@ try {
 }
 
 if (location.search.includes('geo')) {
-	const params = new URLSearchParams(location.search);
+	customElements.whenDefined('leaflet-map').then(() => {
+		const params = new URLSearchParams(location.search);
+		const map = document.getElementById('map');
+		const url = new URL(location.href);
 
-	if (params.has('geo')) {
-		try {
-			const {
-				coords: { latitude = NaN, longitude = NaN } = {},
-				params: { zoom = 16, query = 'Marked Location' } = {},
-			} = parseGeoURI(params.get('geo'));
-
-			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-				Promise.all([
-					customElements.whenDefined('leaflet-marker'),
-					customElements.whenDefined('leaflet-map'),
-				]).then(([LeafletMarker]) => {
-					const popup = document.createElement('div');
-					const label = document.createElement('b');
-					const coords = document.createElement('pre');
-					const map = document.querySelector('leaflet-map');
-					const url = new URL(location.pathname, location.origin);
-
-					label.textContent = query;
-					coords.textContent = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
-					popup.append(label, document.createElement('br'), coords);
-					const marker = new LeafletMarker({ latitude, longitude, popup, open: false });
-					marker.id = 'marked-geo-location';
-					map.append(marker);
-					map.zoom = zoom;
-					marker.open = true;
-					url.hash = `#${latitude},${longitude},${zoom}`;
-					history.replaceState(history.state, '', url.href);
-				});
-			}
-		} catch(err) {
-			console.error(err);
-		}
-	} else if (params.has('geohash')) {
-		try {
-			const { latitude = NaN, longitude = NaN } = decodeGeohash(params.get('geohash'));
-
-			if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-				const url = new URL(location.pathname, location.origin);
-				url.hash = `#${latitude},${longitude}`;
-				history.replaceState(history.state, '', url.href);
-			}
-		} catch(err) {
-			console.error(err);
-		}
-	}
-	//0123456789bcdefghjkmnpqrstuvwxyz 32-bit alphabet
-} else if (location.hash.length > 2 && /^#[0-9b-hjk-np-z]{2,12}$/.test(location.hash)) {
-	try {
-		const { latitude = NaN, longitude = NaN } = decodeGeohash(location.hash.substring(1));
-
-		if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-			const url = new URL(location.pathname, location.origin);
-			url.hash = `#${latitude},${longitude}`;
+		if (params.has('geo')) {
+			map.geo = params.get('geo');
+			url.searchParams.delete('geo');
+			history.replaceState(history.state, '', url.href);
+		} else if (params.has('geohash')) {
+			map.geohash = params.get('geohash');
+			url.searchParams.delete('geohash');
 			history.replaceState(history.state, '', url.href);
 		}
-	} catch(err) {
-		console.error(err);
-	}
+	});
+	//0123456789bcdefghjkmnpqrstuvwxyz 32-bit alphabet
+} else if (location.hash.length > 2 && /^#[0-9b-hjk-np-z]{2,12}$/.test(location.hash)) {
+	customElements.whenDefined('leaflet-map').then(() => {
+		document.getElementById('map').geohash = location.hash.substring(1);
+	});
 }
 
 ready().then(async () => {

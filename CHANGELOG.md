@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.5] - 2025-01-03
+
+### Changed
+- Update to have `<leaflet-map>` handle `geo:` URIs and geohashes
+
 ### [v3.0.4] - 2025-01-01
 
 ### Added
