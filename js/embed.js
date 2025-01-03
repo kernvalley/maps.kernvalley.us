@@ -153,6 +153,10 @@ Promise.all([
 				map.loadMarkers(...types).catch(console.error),
 			]);
 		}
+	} else if (params.has('geo')) {
+		map.geo = params.get('geo');
+	} else if (params.has('geohash')) {
+		map.geohash = params.get('geohash');
 	}
 
 	if (location.hash.length > 1) {
