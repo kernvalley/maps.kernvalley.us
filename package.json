@@ -81,7 +81,7 @@
     "netlify-js-app": "^3.3.5"
   },
   "devDependencies": {
-    "@shgysk8zer0/eslint-config": "^1.0.4",
+    "@shgysk8zer0/eslint-config": "^1.0.5",
     "@shgysk8zer0/importmap": "^1.7.9",
     "@shgysk8zer0/rollup-import": "^2.0.2",
     "@shgysk8zer0/svg-use-symbols": "^1.1.3"
