@@ -1,24 +1,13 @@
-- src: https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.6.2/browser.min.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  noModule: true
-  defer: true
-  integrity: sha384-xyhN4T4+9VPh8uXl6uWjGzsqwNXN9C2tla8b6zSrSqYlMFUoeCdoxiEJU0js+GNE
-- src: https://unpkg.com/@shgysk8zer0/polyfills@0.4.8/browser.min.js
-  crossOrigin: anonymous
-  referrerPolicy: no-referrer
-  integrity: sha384-S6IiMVrhK2h8SpNcu3w1ybvXAcAPLcN6DC8dy35bqDEcqIt4wP5zBGTYd96qtGRi
-  defer: true
-- src: https://unpkg.com/@shgysk8zer0/kazoo@1.0.9/harden.js
-  crossOrigin: anonymous
-  referrerPolicy: no-referrer
-  integrity: sha384-55L/wO9o0uIVTeubRIDQB4bewfNqyxrj4OXuxlW24NMEk+ioZwMHVw/tFV78mM+k
+  integrity: OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb
   defer: true
 - src: /js/index.min.js
   referrerPolicy: no-referrer
   defer: true
-- src: https://unpkg.com/@shgysk8zer0/components@0.3.15/leaflet/bundle.min.js
+- src: https://unpkg.com/@shgysk8zer0/components@0.3.22/leaflet/bundle.min.js
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-  integrity: sha384-WUuJCItQM/sZRdTS+c7zbGzU70OOUCssPIU4RchSbaxr9joY5B+6eqIIyXhWH8vD
+  integrity: sha384-SQENG/0i6JBMgZBYIb+afNMCXpbn61PZDEuoaPsaw/7CAvEgdmgM8bNGdMebD/6t
   defer: true
