@@ -1,7 +1,7 @@
-- src: https://unpkg.com/@shgysk8zer0/polyfills@0.6.2/browser.min.js
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.6.3/browser.min.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  integrity: OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb
+  integrity: sha384-vx8wPMSS/Ml/fR3V5rbzeTmLKFs+pgzfftsGK3EUEl5HrsWV8DNlfkpqpf6hesKw
   defer: true
 - src: /js/index.min.js
   referrerPolicy: no-referrer
