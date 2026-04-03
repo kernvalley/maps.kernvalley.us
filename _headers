@@ -2,9 +2,9 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
-  Referrer-Policy: no-referrer
+  Referrer-Policy: origin
   Feature-Policy: geolocation 'self';
-  Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.6.2/browser.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
+  Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.6.3/browser.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
   Link: <https://unpkg.com/@shgysk8zer0/components@0.3.22/leaflet/bundle.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrer;
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrer;
@@ -32,11 +32,11 @@
 /embed
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
-  Referrer-Policy: no-referrer
+  Referrer-Policy: origin
   Tk: N
   Feature-Policy: geolocation 'self';
   Cross-Origin-Embedder-Policy: unsafe-none
-  Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.6.2/browser.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
+  Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.6.3/browser.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
   Link: <https://unpkg.com/@shgysk8zer0/components@0.3.22/leaflet/bundle.min.js>; rel=preload; as=script; referrerpolicy=no-referrer; crossorigin=anonymous;
   Link: </js/embed.js>; rel=preload; as=script; referrerpolicy=no-referrer;
   Link: </css/embed.css>; rel=preload; as=style; referrerpolicy=no-referrer;

@@ -11,7 +11,7 @@ charset: utf-8
 keep-kern-clean: true
 viewport: "width=device-width, viewport-fit=cover"
 robots: 'follow, index'
-referrer: no-referrer
+referrer: origin
 manifest: /webapp.webmanifest
 tiles-config: /browserconfig.xml
 markers: https://cdn.kernvalley.us/img/markers.svg
