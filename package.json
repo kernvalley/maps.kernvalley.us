@@ -85,5 +85,13 @@
     "@shgysk8zer0/importmap": "^1.10.6",
     "@shgysk8zer0/rollup-import": "^2.0.2",
     "@shgysk8zer0/svg-use-symbols": "^1.1.4"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "esbuild@0.28.0": true,
+    "fsevents@2.3.3": true,
+    "netlify-cli@26.2.0": true,
+    "sharp@0.34.5": true,
+    "unix-dgram@2.0.7": true
   }
 }
